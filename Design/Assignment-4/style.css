@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display&display=swap');
+        
+ 
+
+        .main-table
+        {
+            background-color:#ffffff;
+        }
+
+        .brand
+        {
+            height: 70px;
+            font-size: 30px;
+            
+        }
+
+        .brand, .order__row--enjoy, .dishes__title
+        {
+            font-family: 'Abril Fatface', cursive;
+            color: #392647;
+        }
+
+        .order
+        {
+            background-color: #e3d0ed;
+            
+        }
+
+        .order__row--orange
+        {
+            padding-top: 5%;
+            color: #f3670b;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .order__row--enjoy
+        {
+            font-size: 50px;
+            padding: 0px;
+        }
+
+        .order__row--image
+        {
+            padding: 50px 0px 25px 0px;
+        }
+
+        .order__row--btn
+        {
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 15px;
+            background-color: #f3670b;
+            color: #ffffff;
+            position: relative;
+            left: -3px;
+        }
+
+        .order__row--promocode
+        {
+            color: #f3670b;
+            font-weight: bolder;
+        }
+
+        .order__row--offer
+        {
+            font-family: 'Playfair Display', serif;
+            padding-bottom: 120px;
+        }
+
+        .dishes__title
+        {
+            font-size: 25px;
+        }
+
+        .dishes__title span, .dishes__description--p, .dishes__description--p2
+        {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+        }
+
+        .dishes__title--block
+        {
+            display: block;
+        }
+
+        .dishes__title
+        {
+            padding-top: 10%;
+            padding-bottom: 8%;
+            font-size: 30px;
+        }
+
+
+        .dishes__items td:first-child 
+        {
+            background-color: #f0ddde;
+            border-radius: 30px;
+            padding: 20px;
+        }
+
+
+
+        .dishes__description, .dishes__description2
+        {
+            text-align: left;
+            width: 70%;
+        }
+
+
+        .dishes__description--p
+        {
+            width: 50%;
+            float: left;
+            text-align: left;
+        }
+        
+        .dishes__description--img
+        {
+            float: right;
+            width: 200px;
+        }
+/*
+        .dishes__description2 h1{
+            text-align: center;
+            position: relative;
+            left: 51px;
+        }
+
+       
+        
+        .dishes__description--img2
+        {
+            float: left;
+            width: 200px;
+           
+        }
+        .dishes__description--p2
+        {
+            width: 60%;
+            float: right;
+            text-align: left;
+        }
+
+        
+
+        .dishes__description2 img
+        {
+            clear: both;
+        }
+*/
+        .dishes__description p{
+            clear: both;
+        }
+
+        .dishes__items--btn
+        {
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 15px;
+            background-color: #f3670b;
+            color: #ffffff;
+        }
+
+        .dishes__items--rate
+        {
+            padding-left: 10px;
+            font-size: 20px;
+        }
+
+        .menu
+        {
+            text-align: center;
+        }
+
+        .menu__full--btn
+        {
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 15px;
+            color: #f3670b;
+            border-color: #f3670b;
+            background-color: #ffffff;
+        }
+
+        .footer{
+            background-color: #d5cddd;
+            padding: 50px;
+        }
