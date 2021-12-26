@@ -120,8 +120,9 @@
         {
             float: right;
             width: 200px;
+            height: 180px;
         }
-/*
+
         .dishes__description2 h1{
             text-align: center;
             position: relative;
@@ -134,6 +135,9 @@
         {
             float: left;
             width: 200px;
+            height: 170px;
+            padding-left: 30px;
+            
            
         }
         .dishes__description--p2
@@ -142,14 +146,15 @@
             float: right;
             text-align: left;
         }
-
         
-
-        .dishes__description2 img
+        .dishes__description--btn
         {
+            width: 60%;
+            float: right;
             clear: both;
         }
-*/
+
+
         .dishes__description p{
             clear: both;
         }
@@ -186,5 +191,50 @@
 
         .footer{
             background-color: #d5cddd;
-            padding: 50px;
+            padding: 150px 50px 0px 50px;
+    
         }
+
+
+        .footer__table--info td:first-child
+        {
+            width: 10%;
+            padding: 30px 0px;
+        }
+
+        .footer__table--info td:nth-child(2)
+        {
+            text-align: left;
+            color: #5f4d6d;
+            width: 30%;
+            padding: 20px;
+        }
+
+        .footer__table--info td:nth-child(2) span, .footer__table--order td span
+        {
+            color: #322c36;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .footer__table--download
+        {
+            border-bottom: 1px solid #696363;
+        }
+
+        .footer__table--download td
+        {
+            padding: 50px;
+            padding-top: 50px;
+        }
+
+        .footer__table--download img
+        {
+            width:200px;
+        }
+
+        .footer__table--copyright
+        {
+            padding: 40px;
+        }
+
