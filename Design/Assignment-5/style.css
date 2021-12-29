@@ -659,7 +659,7 @@
             display: none;
         }
 
-        @media only screen and (max-width: 768px){
+        /* @media only screen and (max-width: 768px){ */
             /* .checkbtn{
                 display: block;
             }
@@ -691,7 +691,7 @@
               }
             } */
 
-            .header{
+            /* .header{
                 margin: 0px;
                 height: 90px;
                 border-bottom: none;
@@ -877,12 +877,12 @@
             .testimonial-statement
             {
                 width: 261px;
-            }
+            } */
 
             /* .client-info{
                 /* width: 300px; */
                
-            } */
+            /* } 
 
             .testimonial-items-desktop{
                 display: none;
@@ -918,10 +918,10 @@
             .clients-logo{
                 margin-top: 40px;
                 /* width: 55.5546666667%;
-                margin: 0 83px; */
+                margin: 0 83px; 
             }
 
-            .clients-logo span{
+            /* .clients-logo span{
                 display: block;
                 margin: 0 auto;
                 margin-top: 32px;
@@ -1024,7 +1024,7 @@
                 width: 274px;
                 color: #c2c2c2;
                 padding: 35px 0px;
-            }
+            } 
     
 
 
@@ -1039,6 +1039,6 @@
             
 
         
-        }
+        }*/
 
        
