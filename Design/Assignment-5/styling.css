@@ -72,50 +72,9 @@
             display: inline-block;
             margin-left: 470px;
         } */
-
-        .navbar, .login{
-            display: none;
-        }
-
-
-        .navbar__list
-        {
-            width: 532px;
-            height: 20px;
-            margin-top: 25px;
-        }
-
-        .navbar__list li
-        {
-            float: left;
-            list-style-type: none;
-            padding-right: 40px;
-            height: 19px;
-        }
-
-
-        .navbar__list li a
-        {
-            text-decoration: none;
-            font-family: 'Lato', sans-serif;
-            font-weight: 300;
-            font-size: 16px;
-            color: #000000;
-         
-        }
-
-        .navbar__list li:first-child a
-        {
-            font-weight: bolder;
-        }
         
 
-        .navbar, .login{
-            display: none;
-        }
-        
-
-        .login
+        /* .login
         {
             float: right;
             clear: both;
@@ -130,6 +89,10 @@
             font-size: 16px;
             color: #000000;
             display: inline-block;
+        } */
+
+        .navbar, .login{
+            display: none;
         }
 
         .introduction
@@ -896,7 +859,7 @@
         } */
 
 
-        @media only screen and (min-width: 769px){
+        @media only screen and (min-width: 768px){
             /* .checkbtn{
                 display: block;
             }
@@ -1631,7 +1594,7 @@
             .footer-section{
                 float: left;
                 margin-right: 100px;
-                padding-left: 0px;
+                padding-left: 10px;
             }
     
             .footer-section i{
@@ -1667,14 +1630,14 @@
             }
 
             .footer-section li{
-                    padding: 10px 5px;
-                    font-size: 16px;
-                }
+                padding: 10px 5px;
+                font-size: 16px;
+            }
                 
-                .footer-section li:first-child{
-                    padding: 25px 0px;
-                    font-size: 20px;
-                }
+            .footer-section li:first-child{
+                padding: 25px 0px;
+                font-size: 20px;
+            }
     
             .footer__link--unique{
                 font-weight: bolder;
@@ -1804,9 +1767,15 @@
                 border-bottom: 1px solid black;
             }
 
+            .header-box{
+                max-width: 1440px;
+                margin: 0 auto;
+            }
+
             .brand{
                 width: 133px;
                 height: 43px;
+                margin: 0;
             }
 
             .brand p{
@@ -1823,14 +1792,72 @@
                 display: none;
             }
 
+            .navbar
+            {   
+                width: 550px;
+                display: inline-block;
+                margin-left: 470px;
+            
+            }
+
+            .navbar__list
+            {
+                width: 532px;
+                height: 20px;
+                margin-top: 25px;
+            }
+
+            .navbar__list li
+            {
+                float: left;
+                list-style-type: none;
+                padding-right: 40px;
+                height: 19px;
+            }
+
+
+            .navbar__list li a
+            {
+                text-decoration: none;
+                font-family: 'Lato', sans-serif;
+                font-weight: 300;
+                font-size: 16px;
+                color: #000000;
+            
+            }
+
+            .navbar__list li:first-child a
+            {
+                font-weight: bolder;
+            }
+
+            .login
+            {
+                float: right;
+                clear: both;
+            }
+
+            .login p
+            {
+                margin-top: 25px;
+                margin-right: 154px;
+                font-family: 'Lato', sans-serif;
+                font-weight: bolder;
+                font-size: 16px;
+                color: #000000;
+                display: inline-block;
+            }
+
 
             /* .navbar, .login{
                 display: none;
             } */
 
             .introduction{
-                height: 600px;
+                /* height: 600px; */
                 padding-top: 80px;
+                max-width: 1200px;
+                margin: 0 auto;
             }
 
             .content-box, .needs
@@ -1838,22 +1865,23 @@
                 max-width: 1200px;
                 margin: 0 auto;
                 height: 437px;
+                width: 1200px;
             }
-
-            /* .introduction__image{
-                width: 100%;
-            } */
 
             .introduction__image img{
                 float: left;
                 position: absolute;
                 width: 614px;
                 height: 461px;
+                margin-left: 20px;
+                
             }
 
             .introduction__description{
                 float: right;
-                margin-top: 0px;
+                width: 82.29166666666667%;
+                margin: 0 auto;
+                margin-top: 30px;
             }
 
             .introduction__description, .introduction__description p{
@@ -1861,7 +1889,8 @@
             }
 
             .introduction__description h1{
-                font-size: 40px;    
+                font-size: 40px;  
+                line-height: 53px;  
             }
 
             .introduction__description p
@@ -1871,13 +1900,14 @@
                 font-family: 'Lato', sans-serif;
                 font-size: 16px;
                 color: #667580;
+                line-height: 110%;
                 font-weight: bold;
         }
 
             .introduction__description button{
                 padding: 5px 20px;
-                width: 170px;
-                height: 48px;
+                /* width: 170px;
+                height: 48px; */
                 margin-right: 20px;
                 font-family: 'Lato', sans-serif;
                 font-size: 16px;
@@ -1911,7 +1941,9 @@
 
             .browse{
                 background: none;
-                margin-top: 0px;
+                max-width: 1200px;
+                margin: 0 auto;
+                margin-top: 158px;
             }
 
             .browse__header h2{
@@ -1935,6 +1967,8 @@
                 line-height: 43px;
                 color: #2C394B;
                 float: left;
+                padding: 0;
+                margin: 0;
             }
     
             .browse__box
@@ -1963,6 +1997,7 @@
                 font-family: 'Lato', sans-serif;
                 font-size: 16px;
                 color: #667580;
+                font-weight: bolder;
             }
 
             .card{
@@ -2001,6 +2036,11 @@
                 margin-top: 150px;
             }
 
+            .needs h2{
+                font-family: 'Lora';
+                font-size: 32px;
+            }
+
             .needs-list{
                 float: left;
                 width: 50%;
@@ -2013,6 +2053,7 @@
                 padding: 0px;
                 /* width: 450px; */
                 width: auto;
+                font-weight: bolder;
             }
 
             /* .browse__header h2{
@@ -2028,7 +2069,7 @@
             }
 
             .needs-list li{
-                padding: 14px 24px;
+                padding: 24px 24px;
                 font-size: 24px;
                 font-weight: bolder;
                 width: 237px;
@@ -2063,36 +2104,47 @@
             } */
 
             .location{
+                max-width: 100%;
                 margin: 0 auto;
-                /* position: relative; */
-                background: #F7F7F7;
-                /* height: 450px; */
-                margin-top: 80px;
                 width: 100%;
-            }
-
-            .location__description{
-                float: left;
-                padding: 45px;
-                padding-left: 0;
+                background: #F7F7F7;
+                margin-top: 80px;
+                height: auto;
+                position: static;
             }
 
             .location-all{
+                width: 92.56594724%;
                 max-width: 1440px;
                 margin: 0 auto;
-                /* position: absolute;
-                top: 93px;
-                left: 51px;  */
-             }
+            }
+
+            .location__description h1{
+                line-height: 41px;
+                font-family: 'Lora';
+                font-size: 32px;
+                font-weight: bold;
+                width: 385.69px;;
+            }
+
+            .location__description p{
+                width: 331.31px;
+            }
+
+            .location__description{
+                float: right;
+                padding: 45px;
+                padding-left: 0;
+                width: 385.69px;
+                /* height: 82px; */
+            }
 
             .location-box img{
-                width: 810px;
-                height: 315px;
-                padding: 0px;
+                max-width: 100%;
+                width: 809.89px;
+                height: 315.01px;
+                padding: 93px 0px;
                 float: left;
-                /* position: absolute;
-                top: 220px;
-                left: 0px; */
             }
 
             /* .location-more a{
@@ -2224,7 +2276,7 @@
                 margin: 0 auto;
                 margin-top: 90px;
                 position: relative;
-                height: 240px;
+                /* height: 240px; */
             }
 
             .clients-showcase{
@@ -2252,23 +2304,25 @@
                 margin-top: 140px;
                 /* width: 55.5546666667%; */
                 text-align: center;
-                /* margin: 0; */
             }
 
             .clients-logo span{
-                width: 206px;
-                height: 40px;
+                /* width: 206px;
+                height: 40px; */
                 /* margin: 0; */
-                margin-left: 80px;
+                margin-left: 40px;
                 display: inline;
-                margin-top: 140px;
-                
+                margin-top: 140px;     
+            }
+
+            .clients-logo span img {
+                height: 40px;
             }
 
             .trends{
                 max-width: 1200px;
                 margin: 0 auto;
-                height: 900px;
+                height: auto;
                 margin-top: 90px;
             }
     
