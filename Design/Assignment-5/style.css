@@ -37,6 +37,11 @@
             border-bottom: 1px solid black;
         }
 
+        .header-box{
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
         .brand
         { 
             width: 133px;
@@ -131,14 +136,11 @@
         .introduction__image img
         {
             float: left;
-        }
-
-        .introduction__image img
-        {
             position: absolute;
             width: 614px;
             height: 461px;
         }
+
 
         .introduction__description
         {
@@ -212,8 +214,7 @@
         .browse__box
         {
             display: inline;
-            float: right;
-            
+            float: right;   
         }
 
         .browse__box p
@@ -328,8 +329,6 @@
             font-size: 24px;
             font-weight: bolder;
             width: 237px;
-           
-            
         }
 
         .needs-list li:hover
@@ -349,17 +348,22 @@
             float: right;
         }
 
-        .location{
+        /* .location{
             margin-top: 80px;
             width: 100%;
             height: 501px;
             background: #F7F7F7;
-        }
-
-        .location
-        {
             position: relative;
         }
+
+        .location-all
+        {
+            max-width: 1440px;
+            margin: 0 auto;
+            /* position: absolute;
+            top: 93px;
+            left: 51px; */
+        /* }
 
         .location-box img{
             width: 810px;
@@ -374,7 +378,41 @@
             position: absolute;
             left: 920px;
             top: 50px;
+        } */ 
+
+        .location{
+            margin-top: 80px;
+            width: 100%;
+            /* height: 501px; */
+            background: #F7F7F7;
+            /* position: relative; */
         }
+
+        .location-all{
+            max-width: 1440px;
+            margin: 0 auto;
+            /* position: absolute;
+            top: 93px;
+            left: 51px;  */
+         }
+
+        .location-box img{
+            width: 810px;
+            height: 315px;
+            padding: 92px 0px;
+            float: left;
+            /* position: absolute;
+            top: 93px;
+            left: 51px; */
+        }
+
+        .location__description{
+            float:left;
+            padding: 45px;
+            /* position: absolute;
+            left: 920px;
+            top: 50px; */
+        } 
 
         .location-more a{
             text-decoration: none;
@@ -391,10 +429,17 @@
 
         .testimonial{
             margin-left: 150px;
-            margin-top: 80px;
+            padding-top: 80px;
             margin-bottom: 50px;
-            height: 434px;
+            /* height: 434px; */
+            max-width: 1200px;
+            margin: 0 auto;
         }
+
+        /* .testimonial-all{
+            max-width: 1200px;
+            margin: 0 auto;
+        } */
 
         .testimonial h2{
             font-size: 32px;
@@ -403,12 +448,16 @@
         .testimonial-items{
             position: relative;
             float: left;
-            margin-right: 24px;
+            margin-right: 20px;
             margin-top: 30px;
         }
 
+        .testimonial-items-right{
+            margin-right: 0;
+        }
+
         .testimonial-box{
-            width: 395px;
+            width: 385px;
             height: 258px;
             background: #334756;
         }
@@ -457,12 +506,16 @@
         }
 
         .client-info{
-            width: 100%;            ;
+            width: 171px           ;
             height: 39px;
             color: #ffffff;
             position: absolute;
             left: 60px;
            
+        }
+
+        .swipe{
+            display: none;
         }
 
         .client-info h3{
@@ -497,28 +550,31 @@
         .clients-showcase p{
             width: 584px;
             /* height: 36px; */
-            text-align: center;
+            /* text-align: center; */
             color: #667580;
             position: absolute;
-            left: 300px;    
+            left: 320px;    
             margin: 0px;
         }
 
         .clients-logo{
             margin-top: 140px;
+            text-align: center;
+            /* margin-left: 50px; */
         }
 
         .clients-logo span{
-            width: 208px;
+            width: 206px;
             height: 40px;
-            margin-right: 80px;
+            margin-left: 80px;
+            
         }
 
         .trends{
             max-width: 1200px;
             margin: 0 auto;
             height: 900px;
-            margin-top: 100px;
+            margin-top: 120px;
         }
 
         .trends h1{
@@ -564,15 +620,15 @@
         }
 
         .footer{
-            height: 400px;
+            /* height: 400px; */
             background: #F7F7F7;
             padding: 80px 117px;
-            margin: 0;
             margin-top: 80px;
         }
 
         .footer-box{
-            height: 400px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .footer-section h1{
@@ -584,7 +640,7 @@
 
         .footer-section{
             float: left;
-            margin-right: 120px ;
+            margin-right: 100px ;
         }
 
         .footer-section i{
@@ -645,7 +701,7 @@
             text-align: center;
         }
 
-        .checkbtn{
+        /* .checkbtn{
             font-size: 30px;
             color: #000000;
             float: right;
@@ -657,9 +713,9 @@
 
         #check{
             display: none;
-        }
+        } */
 
-        /* @media only screen and (max-width: 768px){ */
+        @media only screen and (max-width: 768px){
             /* .checkbtn{
                 display: block;
             }
@@ -673,8 +729,9 @@
                 left: -100%;
                 text-align: center;
                 transition: all .5s;
-              }
-              navbar ul li{
+            }
+
+            navbar ul li{
                 display: block;
                 margin: 50px 0;
                 line-height: 30px;
@@ -688,10 +745,9 @@
               }
               #check:checked ~ ul{
                 left: 0;
-              }
-            } */
+              } */
 
-            /* .header{
+            .header{
                 margin: 0px;
                 height: 90px;
                 border-bottom: none;
@@ -711,10 +767,17 @@
                 
             }
 
-
-            .navbar, .login{
-                display: none;
+            .navbar
+            {   
+                width: 550px;
+                display: inline-block;
+                margin-left: 470px;
             }
+
+
+            /* .navbar, .login{
+                display: none;
+            } */
 
             .introduction{
                 padding: 0px;
@@ -739,7 +802,7 @@
             }
 
             .introduction__description, .introduction__description p{
-                width: 95%;
+                width: 95%;     
             }
 
             .introduction__description h1{
@@ -788,6 +851,8 @@
 
             .needs{
                 padding-top: 40px;
+                width: 335px;
+                margin: 0 auto;
             }
 
             .needs-description{
@@ -805,11 +870,6 @@
             .needs-list ul{
                 padding-left: 0px;
                 padding-bottom: 40px;
-            }
-
-            .needs{
-                width: 335px;
-                margin: 0 auto;
             }
 
             .browse__box--needs p{
@@ -877,12 +937,12 @@
             .testimonial-statement
             {
                 width: 261px;
-            } */
+            }
 
             /* .client-info{
-                /* width: 300px; */
+                 width: 300px; 
                
-            /* } 
+            } */
 
             .testimonial-items-desktop{
                 display: none;
@@ -917,11 +977,11 @@
 
             .clients-logo{
                 margin-top: 40px;
-                /* width: 55.5546666667%;
+                /* width: 55.5546666667%;*/
                 margin: 0 83px; 
             }
 
-            /* .clients-logo span{
+            .clients-logo span{
                 display: block;
                 margin: 0 auto;
                 margin-top: 32px;
@@ -993,7 +1053,7 @@
                 margin-right: 20px;
             }
 
-            .card-hover{
+            /* .card-hover{
                 width: 355px;
                 margin: 0;
                 height: 200px;
@@ -1010,9 +1070,7 @@
                 font-weight: bold;
             }
     
-            .hover-description
-            {
-               
+            .hover-description{
                 height: 52px;
             }
     
@@ -1024,7 +1082,7 @@
                 width: 274px;
                 color: #c2c2c2;
                 padding: 35px 0px;
-            } 
+            }   */
     
 
 
@@ -1034,11 +1092,9 @@
             
 
             
-            
-            
-            
+             
 
         
-        }*/
+        }
 
        
