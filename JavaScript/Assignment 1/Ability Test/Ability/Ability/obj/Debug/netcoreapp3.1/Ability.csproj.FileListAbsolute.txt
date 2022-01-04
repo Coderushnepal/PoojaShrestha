@@ -1,0 +1,13 @@
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\bin\Debug\netcoreapp3.1\Ability.exe
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\bin\Debug\netcoreapp3.1\Ability.deps.json
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\bin\Debug\netcoreapp3.1\Ability.runtimeconfig.json
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\bin\Debug\netcoreapp3.1\Ability.runtimeconfig.dev.json
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\bin\Debug\netcoreapp3.1\Ability.dll
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\bin\Debug\netcoreapp3.1\Ability.pdb
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\obj\Debug\netcoreapp3.1\Ability.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\obj\Debug\netcoreapp3.1\Ability.AssemblyInfoInputs.cache
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\obj\Debug\netcoreapp3.1\Ability.AssemblyInfo.cs
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\obj\Debug\netcoreapp3.1\Ability.csproj.CoreCompileInputs.cache
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\obj\Debug\netcoreapp3.1\Ability.dll
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\obj\Debug\netcoreapp3.1\Ability.pdb
+D:\Code-like-her-assignments\JavaScript\Assignment 1\Ability Test\Ability\Ability\obj\Debug\netcoreapp3.1\Ability.genruntimeconfig.cache

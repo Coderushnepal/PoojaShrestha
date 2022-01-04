@@ -1,0 +1,31 @@
+<!-- Write a function to render the following pattern in the console:
+* * * * *
+* * * *
+* * *
+* *
+*
+
+The function needs to take a number as a parameter which represents how many asterisks are rendered on the first row. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>square pattern - javascript</title>
+</head>
+<body>
+  <h2>Square pattern</h2>
+  <script>
+    var n = 5; // you can take input from prompt
+    var string = "";
+    for (var i = 5; i > 0; i--) {
+      for (var j = i; j > 0; j--) {
+        string += "*";
+      }
+      string += "<br>";
+    }
+    document.write(string);
+  </script>
+</body>
+</html>

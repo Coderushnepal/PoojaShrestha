@@ -1,0 +1,43 @@
+<!-- Filter Repeating Character Strings
+Create a function that keeps only strings with repeating identical characters (in other words, it has a set size of 1).
+
+Examples
+
+identicalFilter(["88", "999", "22", "545", "133"]) ➞ ["88", "999", "22"]
+identicalFilter(["xxxxo", "oxo", "xox", "ooxxoo", "oxo"]) ➞ []
+
+
+Note * A string with a single character is trivially counted as a string with repeating identical characters. * If there are no strings with repeating identical characters, return an empty array (see example #3). -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>4</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function identicalFilter(arr)
+    {
+        var a = 0;
+        var output =[];
+        // console.log(a);
+        for (var i=0; i<arr.length; i++)
+        {
+            var repeat = new Set(arr[i]);
+            if(repeat.size === 1)
+            {
+                output[a] = arr[i];
+                a++;
+            }
+        }
+        
+        console.log(output);
+    }
+        
+    console.log(identicalFilter(["88", "999", "22", "545", "133"]));
+
+  </script>
+</body>
+</html>
