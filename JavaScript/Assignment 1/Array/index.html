@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Array</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		//Question 1
+
+		function arrayValuesTypes(array)
+		{
+		    for(var i=0; i<array.length; i++)
+		    {
+		        array[i] = typeof(array[i]);
+		    }
+		    
+		    return array;
+		}
+		    
+		console.log(arrayValuesTypes([1, 2, "null", []]));
+
+
+		//Question 2
+
+		function filterArray(array)
+		{
+		    var newArray = [];
+		    for(var i=0; i<array.length; i++)
+		    {
+		        if(typeof(array[i]) != 'string')
+		        {
+		            newArray.push(array[i]);
+		        }
+		    }
+		    
+		    return newArray;
+		}
+		    
+		console.log(filterArray([1, 2, "a", "b", "string"]));
+		console.log(filterArray([1, "a", "b", 0, 15]));
+		console.log(filterArray([1, 2, "aasf", "1", "123", 123, false]));
+
+
+	</script>
+
+</body>
+</html>
