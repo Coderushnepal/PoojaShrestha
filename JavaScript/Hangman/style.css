@@ -1,0 +1,70 @@
+.white{
+    color: #ffffff;
+    text-align: center;
+}
+
+.svg-container{
+    text-align: center;
+    margin-top: 50px;
+    float: left;
+}
+
+.figure-container{
+    fill: transparent;
+    stroke: #fff;
+    stroke-width: 4px;
+    stroke-linecap: round;
+}
+
+.figure-part{
+    display: none;
+}
+
+.wrong-letters{
+    margin-top: 50px;
+    float: right;
+}
+
+.figure-wrapper{
+    margin: 50px 250px;
+}
+
+.clear{
+    clear: both;
+}
+
+.entered-words{
+    margin-top: 100px;
+}
+
+.letter{
+    border-bottom: 5px solid #2980b9;
+    /* padding: 5px; */
+    font-size: 20px;
+    width: 40px;
+    margin-left: 10px;
+    display: inline-block;
+    
+}
+
+
+
+
+.duplication {
+    background-color: #3a3939;
+    color: #ffffff;
+    padding: 15px 20px;
+    position: absolute;
+    left: 350px;
+    bottom: -50px;
+    transition: transform 0.3s ease-in-out;
+}
+  
+.duplication p {
+    margin: 0;
+    text-align: center;
+}
+  
+.duplication.visible {
+    transform: translateY(-250px);
+}

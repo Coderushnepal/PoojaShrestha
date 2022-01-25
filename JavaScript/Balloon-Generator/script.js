@@ -55,3 +55,5 @@ btn.addEventListener("click", function(event){
     balloon.style.transitionDuration = ".3s";
 
 });
+
+//box-sizing: border-box
