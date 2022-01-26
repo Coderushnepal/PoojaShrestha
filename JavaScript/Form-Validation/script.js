@@ -1,12 +1,7 @@
-//document.body.style.alignItems = "center";
 document.body.style.backgroundColor = "#f9fafb";
 document.body.style.fontFamily = "'Open Sans', sans-serif";
 
-
 var form = document.createElement("form");
-//Form
-// var form = document.createElement("form");
-// box.appendChild(form);
 
 form.style = `
     border: 1px solid none;
@@ -35,110 +30,96 @@ heading.style = `
 
 form.appendChild(heading);
 
+var formFields = [
+    {
+        label: "Username",
+        type: "text",
+        id: "username",
+        placeholder: "Enter username",
+        message: "Username must be at least 3 characters",
+    },
+    {
+        label: "Email",
+        type: "email",
+        id: "email",
+        placeholder: "Enter email",
+        message: "Email is not valid",
+    },
+    {
+        label: "Password",
+        type: "password",
+        id: "password",
+        placeholder: "Enter password",
+        message: "Password must be at least 6 characters",
+    },
+    {
+        label: "Confirm password",
+        type: "password",
+        id: "password2",
+        placeholder: "Enter password again",
+        message: "Passwords do not match",
+    },
 
+]
 
+formFields.forEach(function (value) {
+    var formField = document.createElement("div");
+    formField.className = "formfield";
 
-//name field
+    var labelField = document.createElement("label");
+    labelField.innerHTML = value.label;
 
-var nameField = document.createElement("div");
-nameField.innerHTML = "Username"
-nameField.className = "inputDemo";
-form.appendChild(nameField);
+    var inputType = document.createElement("input");
+    inputType.type = value.type;
+    inputType.id = value.id;
+    inputType.placeholder = value.placeholder;
 
-var userName = document.createElement("input");
-userName.setAttribute("type", "text");
-userName.placeholder = "Enter username";
-nameField.appendChild(userName);
+    var smallMessage = document.createElement("small");
+    smallMessage.innerHTML = value.message;
+    smallMessage.id = "message-" + value.id;
 
-var smallUser = document.createElement("small");
-smallUser.innerHTML = "Username must be at least 3 characters";
-nameField.appendChild(smallUser);
+    form.appendChild(formField);
+    formField.appendChild(labelField);
+    formField.appendChild(inputType);
+    formField.appendChild(smallMessage);
 
-//email field
+    formField.style = 
+    `
+        margin-bottom: 10px;
+    `;
 
-var emailField = document.createElement("div");
-emailField.innerHTML = "Email"
-emailField.className = "inputDemo";
-form.appendChild(emailField);
+    labelField.style = 
+    `
+        color: #85676e;
+        margin: 20px 0px;
+        font-family: 'Open Sans', sans-serif;
+    `;
 
-var email = document.createElement("input");
-email.setAttribute("type", "email");
-email.placeholder = "Enter email";
-emailField.appendChild(email);
+    inputType.style = 
+    `
+        color: #a18b90;
+        padding: 10px;
+        border-radius: 3px;
+        border: 2px solid #e8e1e1;
+        margin-top: 10px;
+        font-size: 14px;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    `;
 
-var smallEmail = document.createElement("small");
-smallEmail.innerHTML = "Email is not valid";
-emailField.appendChild(smallEmail);
-
-//password field
-
-var passwordField = document.createElement("div");
-passwordField.innerHTML = "Password"
-form.appendChild(passwordField);
-
-var password = document.createElement("input");
-password.setAttribute("type", "password");
-password.placeholder = "Enter password";
-passwordField.appendChild(password);
-
-var smallPW = document.createElement("small");
-smallPW.innerHTML = "Password must be at least 6 characters";
-passwordField.appendChild(smallPW);
-
-//confirm password field
-
-var passwordField2 = document.createElement("div");
-passwordField2.innerHTML = "Confirm Password"
-form.appendChild(passwordField2);
-
-var password2 = document.createElement("input");
-password2.setAttribute("type", "password");
-password2.placeholder = "Enter password again";
-passwordField2.appendChild(password2);
-
-var smallPW2 = document.createElement("small");
-smallPW2.innerHTML = "Password2 is required";
-passwordField2.appendChild(smallPW2);
-
-//field styling
-
-const arrayField = [nameField, emailField, passwordField, passwordField2];
-
-arrayField.forEach(function (item) {
-   item.style.color = "#85676e";
-   item.style.marginBottom = "20px";
-    
-});
-
-const arrayInput = [userName, email, password, password2];
-
-arrayInput.forEach(function (item) {
-   item.style.color = "#a18b90";
-   item.style.padding= "10px";
-   item.style.borderRadius = "3px";
-   item.style.border= "2px solid #e8e1e1";
-   item.style.margin= "10px 0px 5px";
-   item.style.fontSize= "14px";
-   item.style.width= "100%";
-   item.style.padding= "10px";
-   item.style.boxSizing= "border-box";
-    
-});
-
-const arraySmall = [smallUser, smallEmail, smallPW, smallPW2];
-
-arraySmall.forEach(function (item) {
-    item.style.color = "#ff0000";
-    item.style.display = "none";
-});
-
-
-
+    smallMessage.style = 
+    `
+        color: #ff0000;
+        visibility: hidden; //visibility covers the space even if hidden
+    `;   
+})
 
 //submit button 
 
 var submit = document.createElement("button");
 submit.setAttribute('type', 'button');
+submit.className = "submitBtn"
 submit.innerHTML = "Submit";
 
 submit.style = `
@@ -148,122 +129,98 @@ submit.style = `
     box-sizing: border-box;
     color: #ffffff;
     padding: 10px;
-    font-size: 15px;
+    font-size: 17px;
     border-radius: 3px;
 `;
 
 form.appendChild(submit);
 
-
-//submit button ended
-
-
-
 //action upon submitting
 
 function validateForm(){
 
+    var username = document.getElementById('username');
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    var password2 = document.getElementById("password2");
+    var errorUsername = document.getElementById('message-username');
+    var errorEmail = document.getElementById('message-email');
+    var errorPassword = document.getElementById('message-password');
+    var errorPassword2 = document.getElementById('message-password2');
 
-    if(userName.value == "" || userName.value.length < 3)
+    //username validation
+
+    if(username.value == "" || username.value.length < 3)
     {
-        inValidate();
+        username.style.border = '2px solid red';
+        errorUsername.style.visibility = "visible";
     }
 
     else
     {
-        validate();
+        username.style.border = '2px solid #80e0a9';
+        errorUsername.style.visibility = "hidden";
     }
 
-    // if(email.value == "")
-    // {
-    //     inValidate();
-    // }
+    //email validation
 
-    // else
-    // {
-    //     validate();
-    // }
+    if(email.value == "" || emailValidator(email, errorEmail))
+    {
+        email.style.border = '2px solid red';
+        errorEmail.style.visibility = "visible";
+    }
 
-    // if(password.value == "" || password.length < 6)
-    // {
-    //     inValidate();
-    // }
+    else
+    {
+        email.style.border = '2px solid #80e0a9';
+        errorEmail.style.visibility = "hidden";
+    }
 
-    // else
-    // {
-    //     validate();
-    // }
+    //password validation
 
-    // if(password2.value != password.value)
-    // {
-    //     inValidate();
-    // }
+    if(password.value == "" || password.value.length < 6)
+    {
+        password.style.border = '2px solid red';
+        errorPassword.style.visibility = "visible";
+    }
 
-    // else
-    // {
-    //     validate();
-    // }
+    else
+    {
+        password.style.border = '2px solid #80e0a9';
+        errorPassword.style.visibility = "hidden";
+    }
 
+    //confirming password
+
+    if(password.value == "" || password2.value != password.value)
+    {
+        password2.style.border = '2px solid red';
+        errorPassword2.style.visibility = "visible";
+    }
+
+    else
+    {
+        password2.style.border = '2px solid #80e0a9';
+        errorPassword2.style.visibility = "hidden";
+    }
 }
 
 submit.addEventListener('click', function(event)
 {
-    // event.preventDefault();
     validateForm();
 });
 
+//to check email's format
 
+function emailValidator(inputType, errorHolder) {
+    var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-
-
-//validate input
-
-function validate()
-{
-    var inputField = document.querySelector('.inputDemo');
-    inputField.style.border = '2px solid #80e0a9';
-
-
-
-    // document.querySelectorAll('input').forEach(function(element) {
-    //     element.style.border = '2px solid #80e0a9';
-    // });
-
-    // document.querySelectorAll('small').forEach(function(element) {
-    //     element.style.display = 'none';
-    // });
-
-    var smallInput = document.getElementsByTagName('small');
-    smallInput.style.display = "none";
+    if (!mailFormat.test(inputType.value)) {
+        return true;
+    }
 }
 
-// document.querySelectorAll('.example').forEach(function(element) {
-//     element.style.display = 'none';
-//   });
-
-//input not valid
-
-function inValidate()
-{
-    var inputField = document.querySelector('.inputDemo');
-    inputField.style.border = '2px solid #e74c3c';
-
-    var smallInput = document.getElementsByTagName('small');
-    smallInput.style.display = "block";
-
-    // document.querySelectorAll('input').forEach(function(element) {
-    //     element.style.border = '2px solid #e74c3c';
-    // });
-
-    // document.querySelectorAll('small').forEach(function(element) {
-    //     element.style.display = 'block';
-    // });
-
-}
-// function handleForm(event) { event.preventDefault(); } 
-// form.addEventListener('submit', handleForm);
-
-//changing color on input
+//changing color on input of the input box
 
 var inputBox = document.querySelector('input');
 
