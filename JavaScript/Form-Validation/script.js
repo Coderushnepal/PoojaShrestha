@@ -155,7 +155,6 @@ function validateForm(){
         username.style.border = '2px solid red';
         errorUsername.style.visibility = "visible";
     }
-
     else
     {
         username.style.border = '2px solid #80e0a9';
@@ -169,7 +168,6 @@ function validateForm(){
         email.style.border = '2px solid red';
         errorEmail.style.visibility = "visible";
     }
-
     else
     {
         email.style.border = '2px solid #80e0a9';
@@ -183,7 +181,6 @@ function validateForm(){
         password.style.border = '2px solid red';
         errorPassword.style.visibility = "visible";
     }
-
     else
     {
         password.style.border = '2px solid #80e0a9';
@@ -197,7 +194,6 @@ function validateForm(){
         password2.style.border = '2px solid red';
         errorPassword2.style.visibility = "visible";
     }
-
     else
     {
         password2.style.border = '2px solid #80e0a9';
