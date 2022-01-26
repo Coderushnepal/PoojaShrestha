@@ -39,6 +39,13 @@ form.style = `
     padding: 30px 40px;
     background-color: #ffffff;
     width: 25%;
+
+    @media only screen and (max-width: 768px)
+    {
+        form{
+            width: 90%;
+        }
+    }
 `;
 
 document.body.appendChild(form);

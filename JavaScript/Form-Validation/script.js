@@ -11,7 +11,6 @@ form.style = `
     margin-top: 100px;
     padding: 30px 40px;
     background-color: #ffffff;
-    width: 25%;
 `;
 
 document.body.appendChild(form);
