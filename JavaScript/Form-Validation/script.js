@@ -184,7 +184,7 @@ function validateForm(){
     }
 }
 
-//function to validate
+//color green and small invisible on validate
 
 function validate(value, smallvalue)
 {
@@ -192,7 +192,7 @@ function validate(value, smallvalue)
     smallvalue.style.visibility = "hidden";
 }
 
-//function to invalidate
+//color red and small visible on invalidate
 
 function invalidate(value, smallvalue)
 {
