@@ -28,10 +28,10 @@ ball.style = `
 `;
 
 ball.innerHTML = "READY! CLICK!";
-
 wrapper.appendChild(ball);
 
 direction = 1;
+
 ball.addEventListener('click', function(e){
     e.target.innerHTML = "GET SET";
     
@@ -53,7 +53,7 @@ ball.addEventListener('click', function(e){
                 direction = 1;
             }
 
-        }, 1000/60);
+        }, 1000/60); //60fps
     
 });
 
