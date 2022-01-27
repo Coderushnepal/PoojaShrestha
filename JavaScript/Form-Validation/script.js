@@ -149,56 +149,58 @@ function validateForm(){
 
     //username validation
 
-    if(username.value == "" || username.value.length < 3)
-    {
-        username.style.border = '2px solid red';
-        errorUsername.style.visibility = "visible";
+    if(username.value == "" || username.value.length < 3){
+        invalidate(username, errorUsername);
     }
-    else
-    {
-        username.style.border = '2px solid #80e0a9';
-        errorUsername.style.visibility = "hidden";
+    else{
+        validate(username, errorUsername);
     }
 
     //email validation
 
-    if(email.value == "" || emailValidator(email, errorEmail))
-    {
-        email.style.border = '2px solid red';
-        errorEmail.style.visibility = "visible";
+    if(email.value == "" || emailValidator(email, errorEmail)){
+        invalidate(email, errorEmail);
     }
-    else
-    {
-        email.style.border = '2px solid #80e0a9';
-        errorEmail.style.visibility = "hidden";
+    else{
+        validate(email, errorEmail);
     }
 
     //password validation
 
-    if(password.value == "" || password.value.length < 6)
-    {
-        password.style.border = '2px solid red';
-        errorPassword.style.visibility = "visible";
+    if(password.value == "" || password.value.length < 6){
+        invalidate(password, errorPassword);
     }
-    else
-    {
-        password.style.border = '2px solid #80e0a9';
-        errorPassword.style.visibility = "hidden";
+    else{
+        validate(password, errorPassword);
     }
 
     //confirming password
 
-    if(password.value == "" || password2.value != password.value)
-    {
-        password2.style.border = '2px solid red';
-        errorPassword2.style.visibility = "visible";
+    if(password.value == "" || password2.value != password.value){
+        invalidate(password2, errorPassword2);
     }
-    else
-    {
-        password2.style.border = '2px solid #80e0a9';
-        errorPassword2.style.visibility = "hidden";
+    else{
+        validate(password2, errorPassword2);
     }
 }
+
+//function to validate
+
+function validate(value, smallvalue)
+{
+    value.style.border = '2px solid #80e0a9';
+    smallvalue.style.visibility = "hidden";
+}
+
+//function to invalidate
+
+function invalidate(value, smallvalue)
+{
+    value.style.border = '2px solid red';
+    smallvalue.style.visibility = "visible";
+}
+
+//on submit
 
 submit.addEventListener('click', function(event)
 {
