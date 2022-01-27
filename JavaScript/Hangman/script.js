@@ -27,13 +27,10 @@ var numLetters = inputWords.length;
 
 var uniqueLetters = inputWords.split("");
 var letters = new Set(uniqueLetters);
-console.log(letters.size);
 var uniqueSize = letters.size;
 
 //to be used to update figure
 var incorrectCount = 0;
-
-console.log(inputWords);
 
 var correctWords = [];
 var incorrectWords = [];
