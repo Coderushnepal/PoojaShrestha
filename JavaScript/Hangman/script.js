@@ -4,12 +4,10 @@ document.body.style.fontFamily = "Arial, Helvetica, sans-serif";
 //importing the elements
 
 var word = document.getElementById("word");
-// var word =document.querySelector("#word span");
 var figureParts = document.querySelectorAll(".figure-part");
 var incorrect = document.getElementById('wrong-word');
 var incorrectLettersEl = document.querySelector('#wrong-word p');
 var duplication = document.getElementById('duplication');
-
 
 //chosen words
 
@@ -17,10 +15,22 @@ var dictionary = [
     "application", "javascript", "programming", "design", "tuesday", "morning", "oil", "give", "sun", "moon"
 ];
 
+console.log(dictionary);
+
+
 //selects word
 
 var inputWords = dictionary[Math.floor(Math.random() * dictionary.length)];
 var numLetters = inputWords.length;
+
+//splitting to take the total length with unique letters
+
+var uniqueLetters = inputWords.split("");
+var letters = new Set(uniqueLetters);
+console.log(letters.size);
+var uniqueSize = letters.size;
+
+//to be used to update figure
 var incorrectCount = 0;
 
 console.log(inputWords);
@@ -31,7 +41,6 @@ var incorrectWords = [];
 //displays the character is true
 
 function displayWord() {
-    
     word.innerHTML = 
     `
     ${inputWords.split('').map(letter => 
@@ -39,10 +48,11 @@ function displayWord() {
             <span class="letter">
             ${correctWords.includes(letter) ? letter : ''}
             </span>
+
         `
         )
         .join('')}
-    `;
+    `;    
 }
 
 displayWord();
@@ -66,14 +76,13 @@ function displayWrong()
     `;
     updateFigure();
 
-    if (incorrectWords.length >= figureParts.length) {
-        var finish = incorrectWords.innerText = 'Unfortunately you lost.';
-        alert(finish);
+    if (incorrectWords.length === figureParts.length) {
+        result.innerHTML = "You lost";
+        popupDisplay();
+        window.removeEventListener('keydown', check);
       }
 
 }
-
-
 
 //checks duplication
 
@@ -87,24 +96,26 @@ function displayDuplication() {
   
 // function on event call
 
- 
 function check(event)
-{
-    if (event.keyCode >= 65 && event.keyCode <= 90) 
-    {
+{   
+    if (event.keyCode >= 65 && event.keyCode <= 90){
         var character = event.key;
-
-        if (inputWords.includes(character)) 
-        {
-            if (!correctWords.includes(character)) 
-            {
+        
+        if (inputWords.includes(character)) {
+            
+            if (!correctWords.includes(character)){
                 correctWords.push(character);
                 displayWord();
+                
+                if(uniqueSize === correctWords.length){
+                    result.innerHTML = "Congratulations!!";
+                    popupDisplay();
+                }  
             }
-            else
-            {
+            else{
                 displayDuplication();
             }
+            
         }
         else
         {
@@ -113,15 +124,56 @@ function check(event)
             {
                 incorrectWords.push(character);
                 displayWrong();
-
             } 
             else
             {
                 displayDuplication();
             }
         }
-    }
+    }  
 }
 
+//upon keystrokes
 
 window.addEventListener('keydown', check);
+
+
+//popup on success or failure
+
+var popup = document.createElement("div");
+popup.style = `
+    background-color: #8f962a;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    border-radius: 5px;
+    color: #ffffff;
+    margin: 0 auto;
+    transform: translateY(-250px);     
+    visibility: hidden;
+`;
+
+var result = document.createElement("h2");
+result.id = "result";
+
+var button = document.createElement("button");
+button.innerHTML = "Play again";
+button.style = `
+    padding: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 5px;
+`;
+
+button.addEventListener("click", function(){
+    window.location.reload();
+})
+
+popup.appendChild(result);
+popup.appendChild(button);
+document.body.appendChild(popup);
+
+
+function popupDisplay() {
+    popup.style.visibility = "visible";
+}     
