@@ -30,28 +30,35 @@ ball.style = `
 ball.innerHTML = "READY! CLICK!";
 wrapper.appendChild(ball);
 
-direction = 1;
+var directionTop = 1;
+var directionLeft = 1;
 
 ball.addEventListener('click', function(e){
     e.target.innerHTML = "GET SET";
     
         var interval = setInterval(function()
         {
-            var newTop = parseInt(e.target.style.top) + (5*direction) +"px"; 
+            var newTop = parseInt(e.target.style.top) + (5*directionTop) +"px"; 
             e.target.style.top = newTop;
             e.target.innerHTML = "GOOO";
-            // console.log(newTop); 
+            //console.log("Top:" + newTop + " "+ directionTop); 
+            
 
             
-            if(parseInt(newTop) >= (wrapper.clientHeight - ball.clientHeight)){
+            if(parseInt(newTop) <= 0 || parseInt(newTop) >= (wrapper.clientHeight - ball.clientHeight)){
                 e.target.innerHTML = "GO BACK";
-                direction *= -1;
+                directionTop *= -1;
             }
 
-            if(parseInt(newTop) <= 0){
-                e.target.innerHTML = "GO BACK";
-                direction = 1;
+            var newLeft = parseInt(e.target.style.left) + (5 * directionLeft) +"px";
+            e.target.style.left = newLeft;
+            // console.log("Direction:" +  newLeft  + directionTop); 
+            // console.log("Direction new:" +newLeft  + directionLeft); 
+            if(parseInt(newLeft) <= 0 || parseInt(newLeft) >= wrapper.clientWidth - ball.clientWidth) {
+                console.log(wrapper.clientWidth, ball.clientHeight);
+                directionLeft *= -1;
             }
+
 
         }, 1000/60); //60fps
     
