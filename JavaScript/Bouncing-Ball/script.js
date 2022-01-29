@@ -50,6 +50,8 @@ ball.addEventListener('click', function(e){
                 directionTop *= -1;
             }
 
+            //left
+
             var newLeft = parseInt(e.target.style.left) + (5 * directionLeft) +"px";
             e.target.style.left = newLeft;
             // console.log("Direction:" +  newLeft  + directionTop); 

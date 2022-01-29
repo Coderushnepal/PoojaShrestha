@@ -219,9 +219,9 @@ function emailValidator(inputType, errorHolder) {
 
 //changing color on input of the input box
 
-var inputBox = document.querySelector('input');
+// var inputBox = document.querySelector('input');
 
-if (inputBox.addEventListener('click'))
-{
-    inputBox.style.border = "2px solid #6e5e62";  
-};
+// if (inputBox.addEventListener('click'))
+// {
+//     inputBox.style.border = "2px solid #6e5e62";  
+// };

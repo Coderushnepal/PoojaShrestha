@@ -10,7 +10,9 @@ function position(size) {
 }
 
 var container = new Container(containerSize);
-container.create(document.body);
+container.create();
+
+// container.create(argument);
 
 
 for (var i = 0; i < 10; i++) {

@@ -11,7 +11,7 @@ function Ball(size, id) {
       this.element.style.width = this.width + "px";
       this.element.style.height = this.height + "px";
       this.element.style.borderRadius = "50%";
-      this.element.style.background = '#'+Math.floor(16777215*Math.random()).toString(16);
+      this.element.style.background = '#'+ Math.floor(16777215*Math.random()).toString(16);
   
       this.element.style.position = "absolute";
       this.element.style.top = position.top + "px";

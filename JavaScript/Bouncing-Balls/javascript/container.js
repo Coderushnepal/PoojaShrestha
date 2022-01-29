@@ -3,7 +3,7 @@ document.body.style.backgroundColor = "#000000";
 function Container(size) {
     this.size = size;
   
-    this.create = function () {
+    this.create = function (argument) {
       this.element = document.createElement("div");
       this.element.style.width = this.size + "px";
       this.element.style.height = this.size + "px";

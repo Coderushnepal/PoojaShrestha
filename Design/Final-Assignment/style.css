@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper{
+    max-width: 768px;
+}
+
+.header{
+    background-image: url(./images/bg-mobile.png);
+}
+
+.header-center img{
+    font-size: 47px;
+}
