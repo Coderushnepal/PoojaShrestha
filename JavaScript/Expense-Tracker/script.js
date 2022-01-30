@@ -3,7 +3,9 @@ document.body.style.fontFamily = "'Lato', sans-serif";
 document.body.style.margin = "0"; 
 document.body.style.padding = "0"; 
 
+
 var wrapper = document.createElement("div");
+wrapper.className = "wrapper";
 wrapper.style.margin = "0 auto";
 wrapper.style.width = "25%";
 document.body.appendChild(wrapper);
@@ -12,21 +14,23 @@ document.body.appendChild(wrapper);
 
 var heading = document.createElement("h1");
 heading.innerHTML = "Expense Tracker";
-heading.style.color = "#000000";
-heading.style.fontSize = "24px";
-heading.style.fontWeight = "800";
-heading.style.marginTop = "32px";
-heading.style.textAlign = "center";
-
+heading.style = 
+`
+    color: #000000 ;
+    fontSize: 24px ;
+    fontWeight: 800 ;
+    marginTop: 32px ;
+    textAlign: center ;
+`;
 wrapper.appendChild(heading);
 
 income = 0;
 expense = 0;
 
-
 //total balance display
 
 var balance = document.createElement("div");
+wrapper.appendChild(balance);
 
 var yourBalance = document.createElement("p");
 yourBalance.innerHTML = "YOUR BALANCE";
@@ -36,9 +40,6 @@ yourBalance.style.marginBottom = "5px";
 yourBalance.style.marginTop = "50px";
 balance.appendChild(yourBalance);
 
-
-
-
 var amount = income - expense;
 console.log("Here here "+ amount);
 var amountTotal = document.createElement("h2");
@@ -47,8 +48,6 @@ amountTotal.style.fontSize = "32px";
 amountTotal.style.margin = "0";
 balance.appendChild(amountTotal);
 
-
-wrapper.appendChild(balance);
 
 //income and expense display
 
@@ -68,7 +67,7 @@ transaction.style =
 //income block 
 
 var incomeTransaction = document.createElement("div");
-
+transaction.appendChild(incomeTransaction);
 incomeTransaction.style = 
 `
     display: inline-block;
@@ -90,8 +89,6 @@ incomeAmount.innerHTML = "$" + income + ".00";
 incomeAmount.style.fontSize = "18px";
 incomeAmount.style.color = "#38cf8a";
 incomeTransaction.appendChild(incomeAmount);
-
-transaction.appendChild(incomeTransaction);
 
 
 //expense block 
@@ -118,6 +115,7 @@ expenseAmount.style.fontSize = "18px";
 expenseAmount.style.color = "#c23f2b";
 expenseTransaction.appendChild(expenseAmount);
 
+
 //float
 
 var float = document.createElement("div");
@@ -126,27 +124,26 @@ expenseTransaction.appendChild(float);
 
 wrapper.appendChild(transaction);
 
+
 //History
 
 var historyWrapper = document.createElement("div");
 wrapper.appendChild(historyWrapper);
 
-
 var historyTitle = document.createElement("p");
 historyTitle.innerHTML = "History";
 historyWrapper.appendChild(historyTitle);
 
-var historyData = document.createElement("div");
 
-//Adding new tranaction
+//Adding new transaction
 
 var newTransaction = document.createElement("div");
 wrapper.appendChild(newTransaction);
 
-
 var newTransactionTitle = document.createElement("p");
 newTransactionTitle.innerHTML = "Add new transaction";
 newTransaction.appendChild(newTransactionTitle);
+
 
 //common style for history and new transaction title
 
@@ -157,9 +154,12 @@ commonStyle.forEach(function (item) {
     item.style.padding= "20px 0px 10px 0px"; 
     item.style.fontWeight= "bolder";
     item.style.fontSize= "20px";
-     
+    item.style.margin= "0";
+    item.style.marginBottom= "20px";
  });
 
+
+//input form
 var transactionForm = document.createElement("div");
 newTransaction.appendChild(transactionForm);
 
@@ -168,13 +168,15 @@ var formFields = [
         label: "Text",
         type: "text",
         id: "text",
-        placeholder: "Enter text..."
+        placeholder: "Enter text...",
+        message: "Text field looks empty"
     },
     {
         label: "Amount <br/>(negative - expense, positive - income)",
         type: "number",
         id: "amount",
-        placeholder: "Enter amount..."
+        placeholder: "Enter amount...",
+        message: "Amount field looks empty"
     },
 ]
 
@@ -190,9 +192,15 @@ formFields.forEach(function (value) {
     inputType.id = value.id;
     inputType.placeholder = value.placeholder;
 
+    var smallMessage = document.createElement("small");
+    smallMessage.innerHTML = value.message;
+    smallMessage.id = "message-" + value.id;
+    
+
     transactionForm.appendChild(formField);
     formField.appendChild(labelField);
     formField.appendChild(inputType);
+    formField.appendChild(smallMessage);
 
     formField.style = 
     `
@@ -219,13 +227,18 @@ formFields.forEach(function (value) {
         box-sizing: border-box;
     `;
     
+    smallMessage.style = 
+    `
+        color: #ff0000;
+        visibility: hidden; //visibility covers the space even if hidden
+    `;  
 });
+
 
 //submit button 
 
 var submit = document.createElement("button");
 submit.setAttribute('type', 'button');
-submit.className = "submitBtn"
 submit.innerHTML = "Add transaction";
 
 submit.style = `
@@ -241,13 +254,114 @@ submit.style = `
 
 transactionForm.appendChild(submit);
 
+
+//Display 
+
+function display(){
+
+    var historyData = document.createElement("div");
+    historyWrapper.appendChild(historyData);
+    
+    var historyEach = document.createElement("div");
+    historyEach.id = "historyBox";
+    historyData.appendChild(historyEach);
+
+    var button = document.createElement("button");
+    historyData.appendChild(button);
+    button.innerHTML = "X";
+    button.style = 
+    `
+        background-color: red;
+        color: white;
+        border: none;
+        position: relative;
+        top: -30px;
+        left: -22px;
+        padding: 5px;
+        opacity: 0;
+        
+    `;
+
+    button.addEventListener('mouseover', e =>
+    {
+        button.style.opacity = "3";
+        button.style.transition= "opacity 0.3s ease";
+    })
+
+    button.addEventListener('mouseout', e =>
+    {
+        button.style.opacity = "0";
+    })
+
+    historyEach.style =
+    `
+        background-color: #ffffff;
+        border: 1px solid none;
+        padding: 10px 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    `;
+
+    if(amount.value > 0){
+        historyEach.style.borderRight = "5px solid #38cf8a";
+    }
+    else{
+        historyEach.style.borderRight = "5px solid #c23f2b";
+    }
+
+    let transactionData = [];
+    transactionData.push({
+         text: text,
+         amount: amount,
+    });
+
+
+    historyEach.innerHTML = 
+    `
+    ${transactionData.map(letter => 
+        `
+            <span class="left">
+            ${letter.text.value}
+            </span>
+
+            <span class="right">
+            ${letter.amount.value}
+            </span>
+        `
+        )
+    }
+    `;   
+
+    //event on button clicl (removes element)
+    
+    button.addEventListener('click', function(e){
+
+        let value = e.target.parentElement.querySelector('.right').innerHTML;
+            console.log(value);
+            if (value < 0) {
+                expense -= value;
+                expenseAmount.innerHTML = "$" + -expense + ".00";
+            } else {
+                income -= value;
+                incomeAmount.innerHTML = "$" + income + ".00";
+            }
+            amount -= value;
+            amountTotal.innerHTML = "$" + amount + ".00";
+            e.target.parentElement.remove();
+        });
+        text.value = "";
+        amount.value = "";
+}
+
+
 //onclick function
 
 submit.addEventListener('click', function(e)
 {
     text = document.getElementById('text');
-    console.log(text.value);
     amount = document.getElementById('amount');
+    errorText = document.getElementById('message-text');
+    errorAmount = document.getElementById('message-amount');
+    historyColor = document.getElementById('historyEach');
 
     amountValue = amount.value;
     amountValue = parseInt(amountValue);
@@ -256,44 +370,55 @@ submit.addEventListener('click', function(e)
     var amountSplit = amountString.split('');
     var amountSign = amountSplit[0];
 
+
+    if(text.value == ""){
+        invalidate(errorText);
+    }
+    else{
+        validate(errorText);
+    }
+
+    if(amount.value == ""){
+        invalidate(errorAmount);
+    }   
+    else{
+        validate(errorAmount);
+    }
+
+
     if(text.value == "" || amount.value == ""){
-        window.alert("Enter both fields!");
         income = 0;
         expense = 0;
     }
+    
     else{
         
         if(amountSign === '-'){
 
-            expense = amountValue;
+            expense += amountValue;
             console.log("Expense: " + expense);
-            expenseAmount.innerHTML = "$" + expense + ".00";
+            expenseAmount.innerHTML = "$" + -expense + ".00";
+            display();
         }
         else{
-            income = amountValue;
+            income += amountValue;
             incomeAmount.innerHTML = "$" + income + ".00";
             console.log("Income 2 : " + income);
+            display();
     
         }
-    
+
         amount = income + expense;
         amountTotal.innerHTML = "$" + amount + ".00";
     }
-
-
-    
-
 });
 
+function validate(value)
+{
+    value.style.visibility = "hidden";
+}
 
-//changing color on input of the input box
-
-// var inputBox = document.querySelector('input');
-
-// if (inputBox.addEventListener('mouseover', function(e)
-// {
-//     e.target.style.border = "2px solid red";  
-// }));
-
-
-
+function invalidate(value)
+{
+    value.style.visibility = "visible";
+}
