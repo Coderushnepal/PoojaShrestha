@@ -140,6 +140,7 @@ historyWrapper.appendChild(historyTitle);
 var newTransaction = document.createElement("div");
 wrapper.appendChild(newTransaction);
 
+
 var newTransactionTitle = document.createElement("p");
 newTransactionTitle.innerHTML = "Add new transaction";
 newTransaction.appendChild(newTransactionTitle);
@@ -248,6 +249,7 @@ submit.style = `
     box-sizing: border-box;
     color: #ffffff;
     padding: 10px;
+    margin-bottom: 50px;
     font-size: 17px;
     border-radius: 3px;
 `;
