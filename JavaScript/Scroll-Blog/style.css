@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.ball{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    margin: 0 5px;
+    display: inline-block;
+}
+.first{
+    animation: bounce 0.5s ease-in infinite ;
+    animation-delay: 0.1s;
+}
+.second{
+    animation: bounce 0.5s ease-in infinite;
+    animation-delay: 0.2s;
+}
+.third{
+    animation: bounce 0.5s ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+@keyframes bounce{
+    0%, 100% {
+        transform: translateY(0);
+    }
+    
+    50% {
+        transform: translateY(-10px);
+    }
+}
+/* .loading{
+    opacity: 0;
+}
+
+.loading.show{
+    opacity: 0.5;
+} */
