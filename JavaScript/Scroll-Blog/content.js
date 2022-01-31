@@ -2,23 +2,23 @@ const blogs = [
     {
       id: 1,
       title:
-        "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "Lorem ipsum dolor sit amet",
       content:
-        "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+    "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate"    
     },
     {
       id: 2,
       title:
-        "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "d diam maecenas ultricies m",
       content:
-        "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+        "Velit ut tortor pretium viverra suspendisse. Cursus sit amet dictum sit amet justo donec."
     },
     {
       id: 3,
       title:
-        "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "Ac placerat vestibulum",
       content:
-        "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+        "Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Nisi quis eleifend quam adipiscing vitae. Nullam ac tortor vitae purus."
     },
     {
         id: 4,
@@ -85,6 +85,20 @@ const blogs = [
     },
     {
         id: 13,
+      title:
+        "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      content:
+        "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+    },
+    {
+        id: 14,
+      title:
+        "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+      content:
+        "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
+    },
+    {
+        id: 15,
       title:
         "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
       content:

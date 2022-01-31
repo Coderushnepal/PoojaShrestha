@@ -1,12 +1,13 @@
-function loader(){
+// function loader(){
 
 loaderWrapper = document.createElement("div");
-wrapper.appendChild(loaderWrapper);
+// wrapper.appendChild(loaderWrapper);
 loaderWrapper.classList.add('loading');
     loaderWrapper.style = `
         margin: 0 auto;
         margin-bottom: 30px;
         align-items: center;
+        visibility: hidden;
     `;
 
     var firstCircle = document.createElement("div");
@@ -20,4 +21,4 @@ loaderWrapper.classList.add('loading');
 
     loaderWrapper.appendChild(firstCircle);
     loaderWrapper.appendChild(secondCircle);
-    loaderWrapper.appendChild(thirdCircle);}
+    loaderWrapper.appendChild(thirdCircle);
