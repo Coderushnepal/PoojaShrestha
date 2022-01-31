@@ -1,8 +1,10 @@
-document.body.style.backgroundColor ="#f7f7f7";;
-document.body.style.fontFamily = "'Lato', sans-serif";
-document.body.style.margin = "0"; 
-document.body.style.padding = "0"; 
-
+document.body.style = 
+`
+    background-color: #f7f7f7;
+    font-family: 'Lato', sans-serif;
+    margin: 0; 
+    padding: 0; 
+`;
 
 var wrapper = document.createElement("div");
 wrapper.className = "wrapper";
@@ -14,18 +16,17 @@ document.body.appendChild(wrapper);
 
 var heading = document.createElement("h1");
 heading.innerHTML = "Expense Tracker";
-heading.style = 
-`
+heading.style = `
     color: #000000 ;
-    fontSize: 24px ;
-    fontWeight: 800 ;
-    marginTop: 32px ;
-    textAlign: center ;
+    font-size: 24px ;
+    font-weight: 800 ;
+    margin-top: 32px ;
+    text-align: center ;
 `;
 wrapper.appendChild(heading);
 
-income = 0;
-expense = 0;
+var income = 0;
+var expense = 0;
 
 //total balance display
 
@@ -34,28 +35,26 @@ wrapper.appendChild(balance);
 
 var yourBalance = document.createElement("p");
 yourBalance.innerHTML = "YOUR BALANCE";
-yourBalance.style.fontWeight = "bold";
-yourBalance.style.fontSize = "16px";
-yourBalance.style.marginBottom = "5px";
-yourBalance.style.marginTop = "50px";
 balance.appendChild(yourBalance);
+yourBalance.style = `
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+    margin-top: 50px;
+`;
 
 var amount = income - expense;
-console.log("Here here "+ amount);
 var amountTotal = document.createElement("h2");
 amountTotal.innerHTML = "$" + amount + ".00";
 amountTotal.style.fontSize = "32px";
 amountTotal.style.margin = "0";
 balance.appendChild(amountTotal);
 
-
 //income and expense display
 
-
 var transaction = document.createElement("div");
-
-transaction.style =
-`
+wrapper.appendChild(transaction);
+transaction.style =`
     background-color: #ffffff;
     border: 1px solid none;
     margin: 20px 0px;
@@ -63,20 +62,10 @@ transaction.style =
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
 
-
 //income block 
 
 var incomeTransaction = document.createElement("div");
 transaction.appendChild(incomeTransaction);
-incomeTransaction.style = 
-`
-    display: inline-block;
-    border-right: 1px solid rgba(0, 0, 0, 0.12);
-    width: 50%;
-    text-align: center;
-    box-sizing: border-box;
-`;
-
 
 var incomeTitle = document.createElement("p");
 incomeTitle.innerHTML = "INCOME";
@@ -90,17 +79,9 @@ incomeAmount.style.fontSize = "18px";
 incomeAmount.style.color = "#38cf8a";
 incomeTransaction.appendChild(incomeAmount);
 
-
 //expense block 
 
 var expenseTransaction = document.createElement("div");
-expenseTransaction.style = 
-`
-    display: inline-block;
-    width: 50%;
-    text-align: center;
-    box-sizing: border-box;
-`;
 transaction.appendChild(expenseTransaction);
 
 var expenseTitle = document.createElement("p");
@@ -115,15 +96,26 @@ expenseAmount.style.fontSize = "18px";
 expenseAmount.style.color = "#c23f2b";
 expenseTransaction.appendChild(expenseAmount);
 
+//common style for history and new transaction title
+
+var commonBlock = [incomeTransaction, expenseTransaction];
+
+commonBlock.forEach(function (item) {
+    item.style = `
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        box-sizing: border-box;
+    `;
+ });
+
+ incomeTransaction.style.borderRight= "1px solid rgba(0, 0, 0, 0.12)";
 
 //float
 
 var float = document.createElement("div");
 float.style.float = "clear";
 expenseTransaction.appendChild(float);
-
-wrapper.appendChild(transaction);
-
 
 //History
 
@@ -134,17 +126,15 @@ var historyTitle = document.createElement("p");
 historyTitle.innerHTML = "History";
 historyWrapper.appendChild(historyTitle);
 
-
 //Adding new transaction
 
 var newTransaction = document.createElement("div");
 wrapper.appendChild(newTransaction);
 
-
 var newTransactionTitle = document.createElement("p");
 newTransactionTitle.innerHTML = "Add new transaction";
+newTransactionTitle.style.marginBottom = "30px";
 newTransaction.appendChild(newTransactionTitle);
-
 
 //common style for history and new transaction title
 
@@ -152,13 +142,10 @@ var commonStyle = [historyTitle, newTransactionTitle];
 
 commonStyle.forEach(function (item) {
     item.style.borderBottom= "1px solid #c2c2c2";
-    item.style.padding= "20px 0px 10px 0px"; 
+    item.style.padding = "10px 0px"; 
     item.style.fontWeight= "bolder";
     item.style.fontSize= "20px";
-    item.style.margin= "0";
-    item.style.marginBottom= "20px";
  });
-
 
 //input form
 var transactionForm = document.createElement("div");
@@ -203,20 +190,17 @@ formFields.forEach(function (value) {
     formField.appendChild(inputType);
     formField.appendChild(smallMessage);
 
-    formField.style = 
-    `
+    formField.style =  `
         margin-bottom: 10px;
     `;
 
-    labelField.style = 
-    `
+    labelField.style = `
         color: #000000;
         margin: 20px 0px;
         font-size: 16px;
     `;
 
-    inputType.style = 
-    `
+    inputType.style = `
         color: #a18b90;
         padding: 10px;
         border-radius: 3px;
@@ -228,17 +212,17 @@ formFields.forEach(function (value) {
         box-sizing: border-box;
     `;
     
-    smallMessage.style = 
-    `
+    smallMessage.style = `
         color: #ff0000;
         visibility: hidden; //visibility covers the space even if hidden
+        margin-bottom: 10px;
     `;  
 });
-
 
 //submit button 
 
 var submit = document.createElement("button");
+transactionForm.appendChild(submit);
 submit.setAttribute('type', 'button');
 submit.innerHTML = "Add transaction";
 
@@ -253,9 +237,6 @@ submit.style = `
     font-size: 17px;
     border-radius: 3px;
 `;
-
-transactionForm.appendChild(submit);
-
 
 //Display 
 
@@ -316,7 +297,6 @@ function display(){
          amount: amount,
     });
 
-
     historyEach.innerHTML = 
     `
     ${transactionData.map(letter => 
@@ -333,12 +313,13 @@ function display(){
     }
     `;   
 
-    //event on button clicl (removes element)
+    //event on button click (removes element)
     
     button.addEventListener('click', function(e){
 
         let value = e.target.parentElement.querySelector('.right').innerHTML;
-            console.log(value);
+        console.log(value);
+
             if (value < 0) {
                 expense -= value;
                 expenseAmount.innerHTML = "$" + -expense + ".00";
@@ -354,10 +335,9 @@ function display(){
         amount.value = "";
 }
 
-
 //onclick function
 
-submit.addEventListener('click', function(e)
+submit.addEventListener('click', e =>
 {
     text = document.getElementById('text');
     amount = document.getElementById('amount');
@@ -371,7 +351,6 @@ submit.addEventListener('click', function(e)
     var amountString = amountValue.toString();
     var amountSplit = amountString.split('');
     var amountSign = amountSplit[0];
-
 
     if(text.value == ""){
         invalidate(errorText);
@@ -387,14 +366,12 @@ submit.addEventListener('click', function(e)
         validate(errorAmount);
     }
 
-
     if(text.value == "" || amount.value == ""){
         income = 0;
         expense = 0;
     }
     
-    else{
-        
+    else{   
         if(amountSign === '-'){
 
             expense += amountValue;
@@ -407,20 +384,16 @@ submit.addEventListener('click', function(e)
             incomeAmount.innerHTML = "$" + income + ".00";
             console.log("Income 2 : " + income);
             display();
-    
         }
-
         amount = income + expense;
         amountTotal.innerHTML = "$" + amount + ".00";
     }
 });
 
-function validate(value)
-{
+function validate(value){
     value.style.visibility = "hidden";
 }
 
-function invalidate(value)
-{
+function invalidate(value){
     value.style.visibility = "visible";
 }
