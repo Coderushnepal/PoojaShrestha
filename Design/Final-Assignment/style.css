@@ -1,16 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+
+
 *{
     margin: 0;
     padding: 0;
 }
 
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    /* background-color: #5956e9; */
+    border: 1px solid black;
+}
+
 .wrapper{
-    max-width: 768px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .header{
     background-image: url(./images/bg-mobile.png);
+    background-size: cover;
+    padding: 30px 20px;
+
 }
 
 .header-center img{
     font-size: 47px;
 }
+
+.topbar{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header-left{
+    float: left;
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+.header-center{
+    background-color: #ffffff;
+    padding: 20px 15px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.float-right{
+    float: right;
+    text-transform: uppercase;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    padding-top: 18px;
+    padding-right: 10px;
+}
+
+.clear{
+    clear: both;
+}
+
+.i-header, .span-header{
+    color: #ffffff;;
+}
+
+.download{
+    padding-top: 70px;
+    border: 1px solid blue;
+    position: relative;
+}
+
+.rectangle{
+    border: 10px solid #ffffff;
+    width: 81.1333333333%; 
+    height: 78%;
+    opacity: 0.3;
+    position: absolute;
+    left: 15px;
+    padding:20px;
+    z-index: 1;
+}
+
+.download-content{
+    background-color: #ffffff;
+    padding: 25px 18px;
+    margin: 0;
+    width: 86.1333333333%;
+    position: relative;
+    top: 20px;
+    z-index: 3;
+}
+
+.download-content h1{
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #5956e9;
+    font-size: 25px;
+    padding-bottom: 18px;
+    line-height: 37.5px;
+}
+
+/* .download-description{
+    color: #6c6c72;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+} */
+
+.common-grey{
+    color: #6c6c72;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.download-cta{
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.common-black{
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: 600;
+}
+
+.download-image img{
+    width: 110px;
+    height: 35px;
+}
+
+.mobile-ui{
+    padding: 100px 0px 120px 30px;
+} 
+
+.about{
+    margin-top: 60px;
+}
+

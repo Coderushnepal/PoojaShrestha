@@ -7,13 +7,13 @@ wrapper.style.width = "50%";
 wrapper.style.textAlign = "center";
 wrapper.style.margin = "0 auto";
 
-var heading = document.createElement("h1");
+let heading = document.createElement("h1");
 wrapper.appendChild(heading);
 heading.innerHTML = "My Blog";
 heading.style.color = "#ffffff";
 heading.style.margin = "25px";
 
-var search = document.createElement("input");
+let search = document.createElement("input");
 search.setAttribute('type', 'text');
 search.setAttribute('id', 'search');
 search.setAttribute('placeholder', 'Filter posts...');
@@ -25,14 +25,22 @@ search.style.marginBottom = "16px";
 search.style.boxSizing = "border-box";
 wrapper.appendChild(search);
 
-// console.log(loaderWrapper);
+blogs = [];
+
+for(let i = 1; i < 100; i++) {
+  let blog = {
+    id: i,
+    title: "sunt aut facere repellat provident occaecati excepturi optio",
+    content: "ullam et saepe reiciendis voluptatem adipisci sit amet autem assumenda provident rerum culpa quis hic commodi nesciunt rem tenetur doloremque ipsam iure quis sunt voluptatem rerum illo velit",
+  };
+  blogs.push(blog);
+}
 
 const blogContainer = document.createElement("div");
 wrapper.appendChild(blogContainer);
 
-function display(element)
-{
-    var eachBlog = document.createElement("div");
+function display(element){
+    let eachBlog = document.createElement("div");
     blogContainer.appendChild(eachBlog);
     eachBlog.style = `
         width: 100%;
@@ -67,7 +75,7 @@ function display(element)
     blogId.style = `
     position: absolute;
     top: 10px;
-    left: 15px;
+    left: 10px;
     `;
 
     let blogTitle = document.createElement("h2");
@@ -80,7 +88,6 @@ function display(element)
     let blogContent = document.createElement("p");
     blogContent.innerHTML = element.content;
     eachBlog.appendChild(blogContent);  
-
 }
 
 blogList = [];
@@ -93,63 +100,34 @@ blogs.slice(0, initialNumber).forEach(element => {
 });
 
 function scrollWindow(e){
- 
 	const {scrollHeight,scrollTop,clientHeight} = document.documentElement;
 	if(scrollTop + clientHeight > scrollHeight){
         load();
+    
+
+        setTimeout(() => {
+            if (initialNumber >= blogs.length) {
+            loaderWrapper.innerHTML = "No more Blogs";
+            return;
+            }});
     }
 }   
 
 wrapper.appendChild(loaderWrapper);
 
 function load(){
-    //console.log( loaderWrapper.style.visibility);
     loaderWrapper.style.visibility = "visible";
         setTimeout(()=>{
             console.log(initialNumber);
         blogs.slice(initialNumber, initialNumber+5).forEach(element => { 
             blogList.push(element);
             display(element); 
-            
         });
         initialNumber+=5;
 
     },2000);
-    //console.log(initialNumber);
 }
-
-//console.log(titleList);
 
 window.addEventListener('scroll',(e)=>{
     scrollWindow(e);
  }) 
-
-
-
-
-search = document.getElementById("search");
- const results = document.createElement("ul");
- wrapper.appendChild(results);
- let search_term = "";
-
-const filterBlogs = () => {
-    results.innerHTML = "";
-    blogList.filter((item) => {
-        return (
-          item.title.toLowerCase().includes(search_term) ||
-          item.content.toLowerCase().includes(search_term)
-        );
-      })
-      .forEach((e) => {
-        // const li = document.createElement("li");
-        // // li.innerHTML = `${e.title}`;
-        // results.appendChild(li);
-      });
-  };
-  
-  filterBlogs();
-  
-  search.addEventListener("input", (event) => {
-    search_term = event.target.value.toLowerCase();
-    filterBlogs();
-  });
