@@ -845,6 +845,7 @@ body{
     {
         width: 47.96875%;
         float: left;
+        text-align: left;
     }
 
     .ui-modes{
@@ -1059,15 +1060,15 @@ body{
 @media only screen and (min-width: 1440px) {
 
     .wrapper{
-        max-width: 2000;
+        max-width: 2000px;
         margin: 0 auto;
         width: 100%;
     }
 
     .header{
         background-image: url(images/bg-desktop.png);
-        width: 100%;
-        /* padding: 25px 33.5px; */
+        background-size: cover;
+        padding-right: 0;
     }
 
     .header-menu{
@@ -1079,12 +1080,13 @@ body{
     }
 
     .topbar{
-        margin: 0;
-        width: 100%;
+        width: 69.0972222222%;
+        padding-right: 135px;
+        padding-left: 290px;
     }
 
     .float-right{
-        padding-left: 10px;
+        padding-left: 40px;
     }
 
     .header-left{
@@ -1094,7 +1096,254 @@ body{
         padding-right: 10px;
     }
 
+    .contact-info{
+        width: 81.25%;
+    }
+
     .header-center{
         margin: 0;
+    }
+
+    .header-left{
+        padding-right: 40px;
+    }
+
+    .combine-intro{
+        padding-left: 135px;
+    }
+
+    .intro-content{
+        padding: 40px 30px;
+        width: 75%;
+        padding-right: 0;
+    }
+
+    .intro-content h1{
+        font-weight: bolder;
+        font-size: 48.83px;
+        line-height: 63px;  
+    }
+
+    .intro-description::after{
+        content: " Exercitation veniam consequat sunt nostrud amet.";
+    }
+
+    .intro-description{
+        width: 88.4385964912%;
+    }
+
+    .intro-cta{
+        font-size: 25px;
+        line-height: 37px;
+    }
+
+    .intro-image img{
+        width: 151px;
+        height: 45px;
+    }
+
+    .rectangle{
+        width: 72.1333333333%;
+        height: 58%;
+    }
+
+    .mobile-ui{
+        content: url("images/mobile-ui-desktop.png");
+        padding: 0;
+    }
+
+    .about-intro h2{
+        font-size: 31.5px;
+        margin-top: 100px;
+    }
+
+    .about-p::after{
+        content: " Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac nunc libero urna, feugiat.";
+    }
+
+    .about-p{
+        width: 66.7361111111%;
+        margin: 0 auto;
+    }
+
+    .about-description{
+        width: 95.4444444444%;
+        margin: 0 auto;
+    }
+
+    .about-desc-content p:after{
+        content: " Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.";
+    }
+
+    .about-common{
+        width: 70%;
+        margin-right: 0;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        margin-left: 100px;
+    }
+
+    .about-images{
+        padding-left: 80px;
+        margin-right: 50px;
+    }
+
+    .about-images img{
+        content: url(images/smartphone-desktop.png);
+        top: 55px;
+    }
+
+    .about-desc-content h2{
+        padding-bottom: 16px;
+    }
+
+    .about-desc{
+        float: right;
+    }
+
+    .download{
+        width: 80.9722222222%;
+    }
+
+    .download-desc{
+        text-align: left;
+    }
+
+    .download-desc h2{
+        width: 100%;
+        font-size: 31.25px;
+        line-height: 47px;
+    }
+
+    .download-p:after{
+        content: " Faucibus amet etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac nunc libero urna, feugiat.";
+    }
+
+    .download-p{
+        width: 96.9387755102%;
+    }
+
+    .rate-box p{
+        text-transform: uppercase;
+        padding: 10px; 
+    }
+
+    .rate-box p:nth-child(3){
+        font-size: 20px;
+    }
+
+    .rate-box{
+        height: 160px;
+        padding-top: 20px; 
+        width: 30.659%;
+    }
+
+    .use-app{
+        background: url("images/use-app-bg.png");
+        margin-bottom: 300px;
+    }
+
+    .use-app h2{
+        padding-top: 30px;
+    }
+
+    .use-app p:after{
+        content:" Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac nunc libero urna, feugiat.";
+    }
+
+    .use-app p{
+        width: 40%;
+        margin-bottom: 40px;
+    }
+
+    .video-mock img{   
+        content: url("images/video-mock-desk.png");  
+    }
+
+    .circle-video{
+        left: 500px;
+    }
+
+    .common-p:after{
+        content: " Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac nunc libero urna, feugiat.";
+    }
+
+    .common-p{
+        width: 45.7192982456%;
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    .member-description h2{
+        font-size: 31.25px;
+        line-height: 47px;
+    }
+
+    .member-description h3{
+        font-size: 20px;
+    }
+    
+    .member-description p:after{
+        content: " Viverra nunc ante velit vitae. Est tellus vitae.";
+    }
+
+    .member-description p{
+        padding: 14px 22px;
+    }
+
+    .social-media span{
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .blogs{
+        text-align: center;
+    }
+
+    .blog{
+        width: 27.4561403509%;
+        margin-right: 30px;
+    }
+
+    .contact{
+        width: 83.25%;
+    }
+
+    .contact-common span{
+        font-size: 25px;
+        font-weight: bolder;
+        top: 80px;
+    }
+
+    .contact-circle{
+        width: 100px;
+        height: 100px;
+    }
+
+    .contact-circle i{
+        font-size: 30px;
+        top: 35px;
+        left: 30px;
+    }
+
+    .contact{
+        border-radius: 20px;
+    }
+
+    .footer-content{
+        width: 83.25%;
+    }
+
+    .logo-intro p:after{
+        content: " Est tellus vitae, nullam lobortis enim.";
+    }
+
+    .logo-intro{
+        width: 27.47008547%;
+        padding-right: 66px;
+    }
+
+    .footer-links{
+        padding-right: 246px;
     }
 }
