@@ -22,7 +22,10 @@ body{
     background-image: url(./images/bg-mobile.png);
     background-size: cover;
     padding: 30px 20px;
+}
 
+.header-menu{
+    display: none;
 }
 
 .header-center img{
@@ -47,6 +50,13 @@ body{
     text-align: center;
     display: inline-block;
     margin: 0 auto;
+}
+
+
+.contact-info{
+    color: #ffffff;
+    width: 89.1927%;
+    display: none;
 }
 
 .float-right{
@@ -410,6 +420,10 @@ body{
     margin-bottom: 14px;
 }
 
+.member-description p:after{
+    content: " Viverra nunc ante velit vitae. Est tellus vitae.";
+}
+
 .member-description p{
     text-align: center;
     margin: 0 auto;
@@ -464,6 +478,7 @@ body{
     margin-bottom: 30px;
     text-align: left;
 }
+
 
 .blog img{
     margin: 0 auto;
@@ -588,6 +603,10 @@ body{
     margin-bottom: 40px;
 }
 
+.common-footer-para::after{
+    content: " Est tellus vitae, nullam lobortis enim";
+}
+
 .common-footer-heading{
     font-weight: 600;
     font-size: 25px;
@@ -638,11 +657,11 @@ body{
 
 .footer-input{
     padding-bottom: 60px;
-    border-bottom: 2px solid #ffffff;
 }
 
 .copyright{
     padding: 30px 30px;
+    border-top: 1px solid #ffffff;
 }
 
 .copy-detail{
@@ -653,11 +672,17 @@ body{
     font-style: normal;
 }
 
+/*media query*/
+
 @media only screen and (max-width: 370px) {
     img{
         margin: 0;
         padding: 0;
         width: 100%;
+    }
+
+    .header-menu{
+        display: none;
     }
 
     .rectangle{
@@ -666,5 +691,410 @@ body{
 
     .mobile-ui{
         padding-left: 0px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .wrapper{
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .header-menu{
+        display: none;
+    }
+
+    .header{
+        background-image: url(./images/bg-tablet.png);
+        background-size: cover;
+        padding: 25px 33.5px;
+    }
+
+    .contact-info{
+        display: block;
+        padding-bottom: 20px;
+        width: 98.9583333333%;
+        margin: 0 auto;
+        line-height: 24px;
+    }
+
+    .contact-center{
+        text-align: center;
+        /* display: inline-block; */
+        margin: 0 auto;
+        color: #ffffff;
+        font-size: 16px;
+    }
+
+    .header-left{
+        padding-top: 18px;
+        padding-left: 0;
+    }
+
+    .contact-center span{
+        display: inline-block;
+    }
+
+    .contact-head-right{
+        /* display: inline-block; */
+        float: right;
+    }
+
+    .contact-head-right i{
+        color: #ffffff;
+        padding-left: 12.38px;
+    }
+
+    .contact-head-common i{
+        padding-right: 20.25px;
+    }
+
+    .contact-left{
+        padding-right: 50.25px;
+    }
+
+    .topbar{
+        width: 93.75%;
+        margin: 0 auto;
+        padding-top: 30px;
+    }
+
+    .span-header{
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .float-right{
+        padding-right: 0;
+    }
+
+    .header-center{
+        margin-left: 100px;
+    }
+
+    .header-center img{
+        content: url('images/logo-tablet.png');
+    }
+
+    .intro-content{
+        margin-top: 5px;
+    }
+
+    .rectangle{
+        border-width: 15px;
+        height: 51%;
+    }
+
+    .combine-intro{
+        padding-top: 120px;
+    }
+
+    .intro{
+        display: inline-block;
+        width: 55.3541666667%;
+        padding-bottom: 220px;
+    }
+
+    .intro-content h1{
+        font-size: 31.25px;
+        line-height: 47px;
+    }
+
+    .mobile-ui{
+        content: url('images/mobile-ui-tab.png');
+        float: right;
+        padding-bottom: 0;
+    }
+
+    .about{
+        padding: 0px 30px;
+    }
+
+    .about-intro{
+        width: 62.59375%;
+        margin: 0 auto;
+    }
+
+    .about-images{
+        float: left;
+    }
+
+    .about-desc{
+        width: 58.9114583333%;
+        float: right    ;
+    }
+
+    .about-p{
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 60px;
+    }
+
+    .about-p::after{
+        content: " Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus.";
+    }
+
+    .download{
+        margin: 0 auto;
+       text-align: center;
+       padding: 100px 30px;
+    }
+
+    .download-desc
+    {
+        width: 47.96875%;
+        float: left;
+    }
+
+    .ui-modes{
+        width: 100%;
+    }
+
+    .download-link-span img{
+        width: 149px;
+    }
+
+    .download-desc h2{
+        font-weight: bold;
+        font-size: 31.25px;
+        line-height: 47px;
+        width: 58.59375%;
+    }
+ 
+    .download-img{
+        width: 40.6197916667%;
+        float: right;
+    }
+
+    .use-app{
+        margin-bottom: 230px;
+    }
+
+   .use-app h2{
+       width: 50.59375%;
+       margin: 0 auto;   
+       padding-bottom: 20px;
+   }
+
+   .use-app p{
+    width: 58.59375%;
+    margin: 0 auto;
+}
+
+   .use-app p:after{
+       content: " Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus.";
+   }
+
+   .video-mock img{
+       width: 74.21875%;
+       position: relative;
+       top: -90px;
+   }
+
+   .circle-video{
+       position: absolute;
+       left: 180px;
+   }
+   
+   .common-h2{
+       font-size: 31.5px;
+   }
+
+   .common-p{
+        width: 60.59375%;
+   }
+
+   .team-description:after{
+       content: " Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus.";
+    }
+
+    .member{
+        width: 26.734375%;
+        display: inline-block;
+        margin-right: 15px; 
+    }
+
+    .members div:nth-child(3)
+    {
+        margin-right: 0;
+    }
+
+    .member-pic{
+        width: 75.117370892%;
+    }
+
+    .member-description h2{
+        font-size: 18px;
+        line-height: 30px;
+        padding-bottom: 9px;
+    }
+
+    .member-description h3{
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .member-description p::after{
+        content: "";
+    }
+
+    .social-media span{
+        padding: 5px 15px;
+    }
+
+    .social-media span:nth-child(4){
+        padding-left: 15px;
+    }
+
+    .social-media i:hover{
+        color: #5956E9;    
+    }
+
+    .social-media i{
+        color: #000000;
+    }
+
+    .blog-desc::after{
+        content: " Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus.";
+    }
+
+    .blog{
+        width: 30.734375%;
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    .blog-post h3{
+        word-break: break-all;
+    }
+
+    .contact-mail, .contact-phone{
+        display: inline-block;
+    }
+
+    .contact-mail:after{    
+        border-bottom: none;
+        padding: 0;
+    }
+
+    .contact-mail{
+        border-right: 2px solid #6C6C72;
+        width: 48%;
+        padding: 0;
+    }
+
+    .contact span{
+        text-transform: none;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .contact-circle{
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+        margin-bottom: 0;
+        position: relative;
+    }
+
+    .contact-circle i{
+        left: 20px;
+        top: 20px;
+    }
+
+    .contact-common span{
+        position: absolute;
+        top: 60px;
+        padding-left: 20px;
+    }
+
+    .contact{
+        padding-top: 40px;
+        padding-bottom: 40px;
+        top: 80px;
+    }
+
+    .contact-common{
+        text-align: left;
+        padding-left: 18px;
+    }
+
+    .logo-intro{
+        width: 30.6458333333%;
+        display: inline-block;
+    }
+
+    .footer-social i{
+        color: #ffffff;;
+    }
+
+    .common-footer-para::after{
+        content: "";
+    }
+
+    .footer-links{
+        display: inline-block;
+        padding-left: 25px;
+        padding-right: 80px;
+    }
+
+    .newsletter{
+        display: inline-block;
+        width: 30.6458333333%;
+    }
+
+
+    .copyright{
+        text-align: center;
+        border-top: 1px solid #ffffff;
+    }
+
+    .footer-input{
+        padding-top: 10px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+
+    .wrapper{
+        max-width: 2000;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .header{
+        background-image: url(images/bg-desktop.png);
+        width: 100%;
+        /* padding: 25px 33.5px; */
+    }
+
+    .header-menu{
+        display: block;
+    }
+
+    .header-center-tab{
+        display: none;
+    }
+
+    .topbar{
+        margin: 0;
+        width: 100%;
+    }
+
+    .float-right{
+        padding-left: 10px;
+    }
+
+    .header-left{
+        text-transform: uppercase;
+        font-size: 20px;
+        padding-top: 18px;
+        padding-right: 10px;
+    }
+
+    .header-center{
+        margin: 0;
     }
 }
