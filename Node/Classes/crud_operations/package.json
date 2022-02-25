@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "dependencies": {
+    "express": "^4.17.2",
+    "helmet": "^5.0.2",
+    "morgan": "^1.10.0",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.6.0"
+  }
+}
