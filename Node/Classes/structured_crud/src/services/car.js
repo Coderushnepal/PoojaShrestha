@@ -1,13 +1,28 @@
 import Car from '../models/Car.js';
 import logger from '../utils/logger.js';
 
-export function getAllCars() {
+export function getAllCars(query) {
+    
+    console.log("here", query)
+    const manufacturerFilter = query.manufacturer? query.manufacturer.split(',') : [];
+    const modelFilter = query.model? query.model.split(',') : [];
+
     logger.info('Fetching a list of all cars');
     const cars = new Car().getAll();
 
+    let filteredCars = cars;
+
+    if(manufacturerFilter.length) {
+        filteredCars = cars.filter((car) => manufacturerFilter.includes(car.manufacturer) );
+    } 
+
+    if(modelFilter.length) {
+        filteredCars = cars.filter((car) => modelFilter.includes(car.model) );
+    } 
+
     return {
         message: 'List of Cars',
-        data: cars,
+        data: filteredCars,
     };
 }
 

@@ -1,17 +1,31 @@
 import Joi from 'joi';
-import addCarSchema from '../schemas/addCar.js';
 
-function validation(req, res, next) { //always incase of middlewares
+export function validateBody(schema) {
+        return function (req, res, next) { //always incase of middlewares
+        try {
+            Joi.assert(req.body, schema);
+    
+            next();
+        } catch(err) {
+            res.status(400).json({
+                message: 'Validation Error',
+                details: err.details.map((e) => e.message),
+            });
+        }
+    } 
+}
+
+export function validateQueryParams(schema) {
+    return function (req, res, next) { //always incase of middlewares
     try {
-        Joi.assert(req.body, addCarSchema);
+        Joi.assert(req.query, schema);
 
         next();
     } catch(err) {
         res.status(400).json({
-            message: 'Validation Error',
+            message: 'Query param Validation Error',
             details: err.details.map((e) => e.message),
         });
     }
 } 
-
-export default validation;
+}

@@ -4,7 +4,8 @@ import * as carService from '../services/car.js';
 export function getCars(req, res, next) {
 
     try{
-        const data = carService.getAllCars();
+        console.log('query', req.query);
+        const data = carService.getAllCars(req.query);
         res.json(data);
     }
     catch(err) {
