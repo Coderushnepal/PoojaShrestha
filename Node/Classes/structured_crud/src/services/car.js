@@ -30,6 +30,10 @@ export function getCar(id) {
 export function addCar(params) {
     logger.info(`Payload received ${params}`);
 
+    // const onlyRequiredParams = {
+    //     manufacturer: params.manufacturer
+    // };
+
     const existingData = new Car().findByParams(params);
 
     if(existingData){
