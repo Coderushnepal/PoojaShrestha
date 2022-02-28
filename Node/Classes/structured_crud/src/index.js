@@ -21,5 +21,5 @@ server.use(bodyParser.json());
 server.use(routes);
 
 server.listen(process.env.PORT, () => {
-    logger.info(`Listening on 127.0.0.1:${process.env.PORT}\n`);
+	logger.info(`Listening on 127.0.0.1:${process.env.PORT}\n`);
 });

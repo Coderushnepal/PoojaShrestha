@@ -1,8 +1,14 @@
 {
+  "name": "cars-api",
+  "description": "API service for the CRUD operations on cars database",
+  "version": "0.0.1",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "start": "NODE_ENV=development node src/index.js",
-    "start:prod": "NODE_ENV=production node src/index.js"
+    "start:prod": "NODE_ENV=production node src/index.js",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "dependencies": {
     "diskdb": "^0.1.17",
@@ -13,5 +19,8 @@
     "morgan": "^1.10.0",
     "serve-favicon": "^2.5.0",
     "winston": "^3.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0"
   }
 }

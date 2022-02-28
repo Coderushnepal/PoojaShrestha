@@ -2,14 +2,13 @@ import {Router} from 'express';
 
 import addCarSchema from './schemas/addCar.js';
 import * as carController from './controllers/car.js';
+import * as apiController from './controllers/api.js';
 import getCarsQuerySchema from './schemas/getCarsQuery.js';
 import {validateBody, validateQueryParams} from './middlewares/validation.js';
 
 const router = Router();
 
-router.get('/', (req, res, next) => {
-    res.send('This is the response from the index(/) route');
-});
+router.get('/', apiController.getAPIDetails);
 
 router.get('/cars', validateQueryParams(getCarsQuerySchema), carController.getCars);
 
