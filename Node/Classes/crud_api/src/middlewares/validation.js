@@ -7,10 +7,11 @@ export function validateBody(schema) {
     
 			next();
 		} catch(err) {
-			res.status(400).json({
-				message: 'Validation Error',
-				details: err.details.map((e) => e.message),
-			});
+			next(err);
+			// res.status(400).json({
+			// 	message: 'Validation Error',
+			// 	details: err.details.map((e) => e.message),
+			// });
 		}
 	}; 
 }
@@ -22,10 +23,11 @@ export function validateQueryParams(schema) {
 
 			next();
 		} catch(err) {
-			res.status(400).json({
-				message: 'Query param Validation Error',
-				details: err.details.map((e) => e.message),
-			});
+			next(err);
+			// res.status(400).json({
+			// 	message: 'Query param Validation Error',
+			// 	details: err.details.map((e) => e.message),
+			// });
 		}
 	}; 
 }

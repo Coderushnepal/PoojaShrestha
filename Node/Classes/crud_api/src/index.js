@@ -7,6 +7,7 @@ import serveFavicon from 'serve-favicon';
 
 import routes from './routes.js';
 import logger from './utils/logger.js';
+import errorHandler from './middlewares/errorHandler.js';
 
 const server = express(); //server
 
@@ -19,6 +20,8 @@ server.use(helmet());
 server.use(bodyParser.json());
 
 server.use(routes);
+
+server.use(errorHandler);
 
 server.listen(process.env.PORT, () => {
 	logger.info(`Listening on 127.0.0.1:${process.env.PORT}\n`);
