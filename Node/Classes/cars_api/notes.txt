@@ -1,0 +1,97 @@
+DROP TABLE cars;
+DROP TABLE manufacturers;
+
+CREATE TABLE manufacturers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(20) NOT NULL,
+    description VARCHAR(1000)
+);
+
+CREATE TABLE cars (
+    id SERIAL PRIMARY KEY,
+    manufacturer_id INT NOT NULL,
+    model VARCHAR(20) NOT NULL,
+    horsepower INT NOT NULL DEFAULT 1000,
+    CONSTRAINT manufacturer_id_fk FOREIGN KEY (manufacturer_id) REFERENCES manufacturers(id),
+    CONSTRAINT check_horsepower CHECK ( horsepower >= 1000 )
+);
+
+ALTER TABLE cars
+ADD CONSTRAINT check_horsepower CHECK ( horsepower > 1000 );
+
+
+ALTER TABLE cars
+DROP CONSTRAINT check_horsepower;
+
+
+ALTER TABLE cars
+ALTER COLUMN horsepower SET DEFAULT 1000;
+
+SELECT * FROM manufacturers;
+
+SELECT * FROM cars;
+
+TRUNCATE TABLE manufacturers;
+
+INSERT INTO manufacturers (name, description)
+VALUES
+       ('Hyundai', 'This is the Hyundai motor company'),
+       ('Suzuki', 'This is the Suzuki motor company');
+
+INSERT INTO manufacturers (id, name, description) VALUES (2, 'Suzuki', 'This is the Suzuki motor company');
+
+INSERT INTO cars (manufacturer_id, model, horsepower) VALUES (1, 'i10', 1200);
+INSERT INTO cars (manufacturer_id, model) VALUES (1, 'i10');
+
+ALTER TABLE manufacturers ALTER COLUMN id TYPE SERIAL;
+
+ALTER TABLE cars
+    ADD created_at TIMESTAMP DEFAULT now() NOT NULL ;
+
+UPDATE manufacturers SET name='HYUNDAI' WHERE name = 'Hyundai';
+UPDATE manufacturers SET name='SUZUKI' WHERE id=2;
+
+DELETE from manufacturers WHERE id=2;
+
+
+################## Join ######################################
+
+SELECT
+    manufacturers.name,
+    cars.model
+FROM cars
+    INNER JOIN manufacturers ON cars.manufacturer_id = manufacturers.id
+
+-------------- with alias --------------------------
+
+SELECT
+    m.name,
+    c.model
+FROM cars c
+    INNER JOIN manufacturers m ON c.manufacturer_id = m.id
+
+
+
+SELECT
+    c.model,
+    ci.image_url
+FROM cars c
+INNER JOIN car_images ci on ci.car_id = c.id
+
+SELECT
+*
+FROM cars c
+LEFT JOIN car_images ci on ci.car_id = c.id
+
+------------------
+
+
+SELECT
+    m.name,
+    c.model,
+    ARRAY_AGG(ci.image_url)
+FROM cars c
+INNER JOIN manufacturers m on m.id = c.manufacturer_id
+LEFT JOIN car_images ci on c.id = ci.car_id
+GROUP BY m.name, c.model;
+
