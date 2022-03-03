@@ -7,6 +7,7 @@ import connection from "../knexfile.js";
 
 class DBModel {
   constructor(table) {
+    this.connection = connection;
     this.db = connection(table);
   }
 
@@ -19,16 +20,16 @@ class DBModel {
 
   async getById(id) {
     // return this.db[this.filename].findOne({_id: id});
-    const result = await this.db.select('*').where('id', id); //where ({id})
+    const [result] = await this.db.select('*').where('id', id); //where ({id})
 
-	return camelize(result);
+	return result ? camelize(result) : null;
   }
 
   async findByParams(params) {
     // return this.db[this.filename].findOne(params);
-    const result = await this.db.select('*').where(snakeize(params)); //has limitations
+    const [result] = await this.db.select('*').where(snakeize(params)); //has limitations
 
-	return camelize(result);
+	return result ? camelize(result) : null;
   }
 
   async save(data) {
@@ -50,6 +51,12 @@ class DBModel {
     const result = this.db.delete().where({ id });
 
 	return camelize(result);
+  }
+
+  async query(sql, params) {
+    const result = await this.connection.raw(sql, params);
+
+    return camelize(result.rows);
   }
 }
 

@@ -3,19 +3,25 @@ import Boom from '@hapi/boom';
 import Car from '../models/Car.js';
 import logger from '../utils/logger.js';
 
-export function getAllCars(query) {
+export async function getAllCars(query) {
     
 	console.log('here', query);
-	const manufacturerFilter = query.manufacturer? query.manufacturer.split(',') : [];
+	const manufacturerFilter = query.manufacturerId;
 	const modelFilter = query.model? query.model.split(',') : [];
 
 	logger.info('Fetching a list of all cars');
-	const cars = new Car().getAll();
+	const cars = await new Car().getAllCars();
 
-	let filteredCars = cars;
+	const parsedCars = cars.map(car => ({
+		...car,
+		images: car.images ? car.images.split(',') : []
+	}));
 
-	if(manufacturerFilter.length) {
-		filteredCars = cars.filter((car) => manufacturerFilter.includes(car.manufacturer) );
+	let filteredCars = parsedCars;
+
+
+	if(manufacturerFilter) {
+		filteredCars = parsedCars.filter((car) => +manufacturerFilter === car.manufacturerId);
 	} 
 
 	if(modelFilter.length) {
@@ -28,9 +34,9 @@ export function getAllCars(query) {
 	};
 }
 
-export function getCar(id) {
+export async function getCar(id) {
 	logger.info(`Fetching a car with carId ${id}`);
-	const car = new Car().getById(id);
+	const car = await new Car().getCarDetails(id);
 
 	if(!car) {
 		logger.error(`Cannot find car with carId ${id}`);
@@ -38,20 +44,30 @@ export function getCar(id) {
 		throw new Boom.notFound(`Cannot find car with carId ${id}`);
 	}
 
+	const parsedCar = {
+		...car,
+		images: car.images ? car.images.split(',') : []
+	}
+
 	return {
 		message: 'Details of Car:',
-		data: car
+		data: parsedCar
 	};
 }
 
-export function addCar(params) {
-	logger.info(`Payload received ${params}`);
+export async function addCar(params) {
+	logger.info('Payload received', params);
 
-	// const onlyRequiredParams = {
-	//     manufacturer: params.manufacturer
-	// };
+	const carTableInsertParams = {
+		manufacturerId: params.manufacturerId,
+		model: params.model,
+		horsepower: params.horsepower
+	};
 
-	const existingData = new Car().findByParams(params);
+	logger.info('Checking if the data already exists');
+
+	const existingData = await new Car().findByParams(carTableInsertParams);
+	logger.info('Checking if the data already exists... about to....');
 
 	if(existingData){
 		logger.error('Data with same payload already exists');
@@ -61,8 +77,17 @@ export function addCar(params) {
 
 	logger.info('Saving the new car data');
 
-	const data = new Car().save(params);
+	const [data] = await new Car().save(params);
 
+	// if(params.images.length) {
+	// 	const carImagesInsertData = params.images.map(url => ({
+	// 		carId: data.id,
+	// 		imageUrl: url
+	// 	}));
+
+	// 	const [imagesData] = await
+	// }
+	
 	return{
 		data,
 		message: 'Added record successfully',
