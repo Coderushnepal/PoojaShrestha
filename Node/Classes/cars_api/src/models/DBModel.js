@@ -46,11 +46,17 @@ class DBModel {
 	return camelize(result);
   }
 
-  removeById(id) {
+  async removeById(id) {
     // return this.db[this.filename].remove({_id: id});
-    const result = this.db.delete().where({ id });
+    const result = await this.db.delete().where({ id });
 
 	return camelize(result);
+  }
+
+  async removeByParams(params) {
+    const result = await this.db.delete().where(snakeize(params));
+
+    return camelize(result.rows);
   }
 
   async query(sql, params) {

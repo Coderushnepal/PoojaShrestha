@@ -14,9 +14,15 @@ const server = express(); //server
 dotenv.config();
 
 server.use(serveFavicon('./public/favicon.ico'));
-
-server.use(morgan('common'));
 server.use(helmet());
+server.use(morgan('common'));
+
+const middleware = (req, res, next) => {
+	console.log('Body:', req.body);
+
+	next();
+}
+
 server.use(bodyParser.json());
 
 server.use(routes);
