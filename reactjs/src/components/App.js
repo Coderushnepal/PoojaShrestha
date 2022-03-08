@@ -1,31 +1,40 @@
 import React from "react";
 
-class App extends React.Component {
-  constructor() {
-    super();
+// functional component
 
-    this.state = {
-      count: 0,
-    };
-  }
-
-  handleIncrement = () => {
-    this.state.count++;
-  };
-
-  handleDecrement = () => {
-    this.state.count -= 1;
-  };
-
-  render() {
-    const { count } = this.state;
-    return (
-      <div>
-        <button onClick={this.handleIncrement}>+</button> {count}
-        <button onClick={this.handleDecrement}>-</button>
-      </div>
-    );
-  }
+function App(props) {
+  return <h1>Hello, {props.name} </h1>;
 }
+
+// class-based component
+
+// class App extends React.Component {
+//   constructor() {
+//     super();
+
+//     this.state = {
+//       count: 0,
+//     };
+//   }
+
+//   handleIncrement = () => {
+//     this.setState({count: this.state.count + 1});
+//   };
+
+//   handleDecrement = () => {
+//     this.setState({count: this.state.count - 1});
+//   };
+
+//   render() {
+//     console.log(this.props);
+//     const { count } = this.state;
+//     return (
+//       <div>
+//         <button onClick={this.handleIncrement}>+</button> {count} 
+//         <button onClick={this.handleDecrement}>-</button>
+//       </div>
+//     );
+//   }
+// }
 
 export default App;
