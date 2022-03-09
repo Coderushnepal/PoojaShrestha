@@ -2,7 +2,7 @@ import Boom from '@hapi/boom';
 
 import User from '../models/User.js';
 import logger from '../utils/logger.js';
-//import { hash, compare, createToken } from '../utils/crypt.js';
+import { hash, compare, createToken } from '../utils/crypt.js';
 
 /**
  * Create a new user.
@@ -26,7 +26,7 @@ export async function createUser(params) {
   const [insertedData] = await new User().save({ name, email, password: hashedPassword });
 
   return {
-    data: insertedData,
+    insertedData,
     message: 'Added user successfully'
   };
 }
