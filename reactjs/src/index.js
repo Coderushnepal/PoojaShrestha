@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {Welcome} from "./components/App";
-import {App} from "./components/App";
+import App from "./components/App";
 
 // const element = React.createElement('h1', null, "Hello World!");
 
@@ -10,8 +9,7 @@ import {App} from "./components/App";
 
 ReactDOM.render(
     <React.StrictMode>
-        <Welcome name="Pooja" />
-        <App name="Sis"/>
+        <App />
     </React.StrictMode>,
     document.getElementById("root")
 );
