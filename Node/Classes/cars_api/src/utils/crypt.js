@@ -9,7 +9,7 @@ import jwt from 'jsonwebtoken';
  */
 export function hash(password) {
     console.log(process.env.SALT);
-  return bcrypt.hashSync(password, process.env.SALT);
+  return bcrypt.hashSync(password, 10);
 }
 
 

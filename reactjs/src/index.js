@@ -11,7 +11,6 @@ import {App} from "./components/App";
 ReactDOM.render(
     <React.StrictMode>
         <Welcome name="Pooja" />
-        <App name="Joe"/>
         <App name="Sis"/>
     </React.StrictMode>,
     document.getElementById("root")

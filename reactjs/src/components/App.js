@@ -1,4 +1,37 @@
-import React from "react";
+import React from "react"; //{Component}
+
+class MaxSpeedIndicator extends React.Component {
+  componentWillUnmount = () => {
+    console.log('Component will unmount');
+  }
+
+  componentDidUpdate = () => {
+    console.log('Max Component did update');
+  }
+
+  componentDidMount = () => {
+    console.log("Max Component did mount");
+  }
+
+  render() {
+    return <h3>Max limit reached</h3>;
+  }
+}
+
+/*
+class MinSpeedIndicator extends React.Component {
+  render() {
+    return <h3>Min limit reached</h3>;
+  }
+}
+
+class OnRangeSpeedIndicator extends React.Component {
+  render() {
+    return <h3>Speed on range</h3>;
+  }
+}*/
+
+
 
 // functional component
 
@@ -26,15 +59,25 @@ class App extends React.Component {
   };
 
   speedIndicator = () => {
-    if (this.state.count > 10) return <h3>Max limit reached</h3>;
+    if (this.state.count > 10) return <MaxSpeedIndicator />;
 
     if (this.state.count < 0) return <h3>Min limit reached</h3>;
 
     return <h3>Value on range</h3>;
   };
 
+  componentDidMount = () => {
+    console.log("Component did mount");
+  }
+
+  componentDidUpdate = () => {
+    console.log('Component did update');
+  }
+
+
+
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { count } = this.state;
     return (
       <div>

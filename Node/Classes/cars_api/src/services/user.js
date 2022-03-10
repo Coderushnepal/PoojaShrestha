@@ -65,7 +65,7 @@ export async function login(params) {
   const token = createToken(user);
 
   return {
-    data: { token, user },
+    data: { token, user},
     message: 'Logged in succesfully'
   };
 }

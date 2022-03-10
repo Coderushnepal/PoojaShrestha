@@ -1,5 +1,6 @@
 import Joi from "joi";
 import HttpStatusCodes from "http-status-codes";
+import { unauthorized } from "@hapi/boom";
 
 export default function (err, req, res, next) {
   const error = buildError(err);
@@ -39,6 +40,14 @@ function buildError(err) {
       code: err.output.statusCode,
       message: err.output.payload.message,
     };
+  }
+
+  if(err.name === 'UnauthorizedError') {
+    return {
+      code: HttpStatusCodes.UNAUTHORIZED,
+      message: err.message,
+      details: HttpStatusCodes.getStatusText(HttpStatusCodes.UNAUTHORIZED),
+    }
   }
 
   //Any other error types will be treated as an internal server error
