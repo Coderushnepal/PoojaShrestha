@@ -93,7 +93,7 @@ class SpeedIndicator extends React.Component {
     // }
   
     shouldComponentUpdate = (preProps, prevState) => {
-      console.log(this.state.count); //state will increase but won't be reflected on UI
+      //console.log(this.state.count); //state will increase but won't be reflected on UI
   
       if(this.state.count > 10) {
         return false;
