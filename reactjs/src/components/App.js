@@ -1,9 +1,10 @@
 import React from "react"; //{Component}
 import List from "./List";
-import SpeedIndicator from "./SpeedIndicator";
-import Welcome from "./Welcome";
 import Click from "./Click";
 import Hover from "./Hover";
+import Welcome from "./Welcome";
+import SpeedIndicator from "./SpeedIndicator";
+import Calculator from "./Calculator";
 
 
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
 
     this.state = {
       list: ['Apple', 'Mango', 'Banana', 'Grapes'],
+      favorite: "Apple",
     };
 
     //this.handleListAdd = this.handleListAdd.bind.apply(this); //applicable when not using fat arrow function
@@ -39,6 +41,7 @@ class App extends React.Component {
         <List list = {this.state.list} onAdd={this.handleListAdd}/>
         <Click />
         <Hover />
+        <Calculator />
       </React.Fragment>
     );
   }
