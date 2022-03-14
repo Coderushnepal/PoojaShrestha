@@ -1,11 +1,16 @@
 import React from "react"; //{Component}
+
 import List from "./List";
 import Click from "./Click";
 import Hover from "./Hover";
 import Welcome from "./Welcome";
-import SpeedIndicator from "./SpeedIndicator";
+import Heading from "./Heading";
 import Calculator from "./Calculator";
+import SpeedIndicator from "./SpeedIndicator";
 
+export const listContext = React.createContext('list');
+
+//const listProvider = <listContext.Provider value/>
 
 class App extends React.Component {
 
@@ -37,8 +42,15 @@ class App extends React.Component {
       <React.Fragment>
         <Welcome name="World" />
         <SpeedIndicator />
-        <h1>Number of fruits = {this.state.list.length}</h1>
-        <List list = {this.state.list} onAdd={this.handleListAdd}/>
+        {/* <h1>Number of fruits = {this.state.list.length}</h1> */}
+        
+        <listContext.Provider value={[this.state.list, this.handleListAdd]}> 
+
+          {/* <Heading number={this.state.list.length} /> */}
+          <Heading />
+          {/* <List list = {this.state.list} onAdd={this.handleListAdd} /> */}
+          <List />
+        </listContext.Provider>
         <Click />
         <Hover />
         <Calculator />

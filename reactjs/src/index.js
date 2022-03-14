@@ -1,24 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import {Provider} from "react-redux";
-// import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {createStore, combineReducers} from "redux";
 
 import App from "./components/App";
-// import listReducer from "./reducers/list";
-// import speedReducer from "./reducers/speed";
+import list from "./reducers/list";
+import speed from "./reducers/speed";
+
+const rootReducer = combineReducers({speed, list});
 
 
 // const element = React.createElement('h1', null, "Hello World!");
 
 // ReactDOM.render(element, document.getElementById("root"));
 
-// const store = createStore(listReducer, +  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
     <React.StrictMode>
-        {/* <Provider store={store}> */}
+        <Provider store={store}>
         <App />
-        {/* </Provider> */}
+        </Provider>
     </React.StrictMode>,
     document.getElementById("root")
 );
