@@ -1,6 +1,6 @@
 import axios from "axios";
 import config from "../config";
-import pinterpolate from 'pinterpolate';
+import {interpolate} from "../utils/string";
 
 export const fetchBeers = async () => {
   const url = `${config.apiUrl}${config.endpoints.beers}`;
@@ -15,7 +15,7 @@ export const fetchBeersById = async (id) => {
   const url = `${config.apiUrl}${config.endpoints.beer}`;
   console.log(url);
 
-  const {data} = await axios.get(pinterpolate(url, {id}));
+  const {data} = await axios.get(interpolate(url, {id}));
   
 
   return data[0];

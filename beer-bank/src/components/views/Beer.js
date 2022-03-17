@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import * as beerService from '../../services/beer';
+import React, { useEffect, useState } from "react";
+
+import * as beerService from "../../services/beer";
 
 function Beer(props) {
-  const {params} = props.match;
+  const [beer, setBeer] = useState({});
+  const { id } = props.match.params;
 
-    const[beer, setBeer] = useState({});
+  useEffect(() => {
+    const fetchBeers = async () => {
+      const beer = await beerService.fetchBeersById(id);
 
-    const {id} = props.match.params;
-
-    useEffect(() => {
-      const fetchBeers = async() => {
-        const beer = await beerService.fetchBeersById(id);
-
-        setBeer(beer);
-      };
-      fetchBeers();
-    }, []);
+      setBeer(beer);
+    };
+    fetchBeers();
+  }, []);
 
   return (
     <div>
@@ -31,6 +28,5 @@ function Beer(props) {
     </div>
   );
 }
-
 
 export default Beer;
