@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import * as beerService from '../../services/beer';
 
+// import history from '../../utils/history'
+import * as beerService from "../../services/beer";
+import { Link } from "react-router-dom";
 
 function BeerInfiniteList() {
   const [beers, setBeers] = useState([]);
@@ -8,46 +10,48 @@ function BeerInfiniteList() {
 
   useEffect(() => {
     async function fetchBeers() {
-        try {
-            setIsLoading(true);
-            const data = await beerService.fetchBeers();
-            setBeers(data);
-        }
-        catch (err) {
-            console.log(err);
-        }
-        finally {
-            setIsLoading(false);
-        }
+      try {
+        setIsLoading(true);
+        const data = await beerService.fetchBeers();
+        setBeers(data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setIsLoading(false);
+      }
     }
 
     fetchBeers();
   }, []);
+  
 
   return (
     <div>
-      <div>
-        <h3>The Beer Bank</h3>
-        <p>Find your favorite beer here</p>
-        <input type="search" />
+      <div className="header">
+        <h3 className="header__heading">The Beer Bank</h3>
+        <p className="header__description">Find your favorite beer here</p>
+        <input className="header__input" type="search" />
       </div>
 
-      {
-          isLoading ?
-          <h1>Loading...</h1>
-          :
-      
-      <div>
-        {beers.map((beer) => (
-        <div key={beer.id}>
-          <h1>{beer.name}</h1>
-          <p>{beer.tagline}</p>
-          <img src={beer.image_url} alt={beer.name}/>
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div className="container">
+          {beers.map((beer) => (
+            <div key={beer.id} className="card">
+              <Link to={`/beers/${beer.id}`}>
+              <h1 className="card__heading">{beer.name}</h1>
+              </Link>
+              <div
+                className="card__img-container"
+                style={{ backgroundImage: `url(${beer.image_url})` }}
+                // onClick={() => history.push(`/beers/${beer.id}`)}    
+              />
+              <p>{beer.tagline}</p>
+            </div>
+          ))}
         </div>
-        ))}
-        
-      </div>
-    }
+      )}
     </div>
   );
 }
