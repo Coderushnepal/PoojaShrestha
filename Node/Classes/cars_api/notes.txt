@@ -95,3 +95,40 @@ INNER JOIN manufacturers m on m.id = c.manufacturer_id
 LEFT JOIN car_images ci on c.id = ci.car_id
 GROUP BY m.name, c.model;
 
+
+----------------
+
+
+CREATE DATABASE assignment;
+
+CREATE TABLE employee (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50),
+);
+
+SELECT * FROM employee;
+
+INSERT INTO employee (name, department) VALUES ('Ramesh', 'HR');
+
+
+CREATE TABLE department (
+    id SERIAL PRIMARY KEY,
+    e_id INT NOT NULL,
+    department VARCHAR(50),
+    CONSTRAINT e_id_fk FOREIGN KEY (e_id) REFERENCES employee(id)
+);
+
+INSERT INTO department (e_id, department) VALUES (4, 'Development');
+
+SELECT * FROM department;
+
+SELECT
+    e.id,
+    e.name,
+    array_agg(d.department)
+FROM department d
+INNER JOIN employee e on  e.id = d.e_id
+GROUP BY e.id, e.name;
+
+
+
