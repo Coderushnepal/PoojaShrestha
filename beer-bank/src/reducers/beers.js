@@ -20,10 +20,6 @@ export default function fetchBeers(state = INITIAL_STATE, action) {
     case FETCH_BEERS_REJECTED:
       return { ...state, isLoading: false };
 
-    case "Anything":
-      console.log(action.payload);
-      return state;
-
     default:
       return state;
   }

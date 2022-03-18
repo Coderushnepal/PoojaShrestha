@@ -2,8 +2,8 @@ import axios from "axios";
 import config from "../config";
 import {interpolate} from "../utils/string";
 
-export const fetchBeers = async () => {
-  const url = `${config.apiUrl}${config.endpoints.beers}`;
+export const fetchBeers = async (query) => {
+  const url = `${config.apiUrl}${config.endpoints.beers}${unParseQuery}`;
   console.log(url);
   const { data } = await axios.get(url); 
   // accesssing the api

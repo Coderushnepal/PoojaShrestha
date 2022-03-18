@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 import fetchBeers from "../../actions/beers";
+import Loading from "../common/Loading";
 
 // --> action
 //        --->  action
@@ -13,19 +14,23 @@ function BeerInfiniteList() {
 
   const beers = useSelector((store) => store.beers);
   const isLoading = useSelector((store) => store.isLoading);
-
-  dispatch({ type: "Anything", payload: "Nothing" });
+  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
-    dispatch(fetchBeers);
-  }, [dispatch]);
+    dispatch(fetchBeers({pageNumber}));
+  }, [dispatch, pageNumber]);
 
   return (
     <div>
+      {/* <div className="header">
+
+      <Loading />
+      </div> */}
       <div className="header">
         <h3 className="header__heading">The Beer Bank</h3>
         <p className="header__description">Find Your favorite beer here</p>
         <input className="header__input" type="search" />
+        <button onClick={() => setPageNumber((pageNumber) => pageNumber+1)}>Search</button>
       </div>
 
       {isLoading ? (

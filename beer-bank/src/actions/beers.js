@@ -7,16 +7,21 @@ export const FETCH_BEERS_FULFILLED = "FETCH_BEERS_FULFILLED";
 
 // pending , rejected , fulfilled
 
-export default async function fetchBeers(dispatch) {
-  dispatch(fetchBeersPending());
+export default async function fetchBeers(params) {
+
+  const {pageNumber: page} = params
+  return async function(dispatch) {
+    dispatch(fetchBeersPending());
 
   try {
-    const data = await beerService.fetchBeers();
+    const data = await beerService.fetchBeers(page);
 
     dispatch(fetchBeersFulfilled(data));
   } catch (err) {
     dispatch(fetchBeersRejected(err));
   }
+  }
+  
 }
 
 function fetchBeersFulfilled(beers) {
