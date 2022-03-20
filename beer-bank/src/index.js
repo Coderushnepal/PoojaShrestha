@@ -1,30 +1,27 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import fetchBeers from "./reducers/beers";
-
+import thunk from "redux-thunk";
 import App from "./components/App";
-import './public';
+import { createStore, applyMiddleware } from "redux";
+
+import ReactDOM from "react-dom";
+
+import "./public";
 import { Provider } from "react-redux";
 
-// const store = createStore( fetchBeers, applyMiddleware(thunk));
-// // [window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), 
+import reducers from "./reducers";
 
 const store = createStore(
-    fetchBeers,
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-    })(applyMiddleware(thunk))
-  );
+  reducers,
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+  })(applyMiddleware(thunk))
+);
 
 ReactDOM.render(
-    <React.StrictMode>
-
-        <Provider store={store}>
-        <App />
-        </Provider>
-
-    </React.StrictMode>,
-    document.getElementById("root")
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );

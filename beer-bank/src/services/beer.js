@@ -1,9 +1,10 @@
 import axios from "axios";
 import config from "../config";
-import {interpolate} from "../utils/string";
+import {interpolate, unParseQuery} from "../utils/string";
 
 export const fetchBeers = async (query) => {
-  const url = `${config.apiUrl}${config.endpoints.beers}${unParseQuery}`;
+  console.log(query);
+  const url = `${config.apiUrl}${config.endpoints.beers}${unParseQuery(query)}`;
   console.log(url);
   const { data } = await axios.get(url); 
   // accesssing the api
