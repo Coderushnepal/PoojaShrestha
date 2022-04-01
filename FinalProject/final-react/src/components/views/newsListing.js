@@ -1,14 +1,15 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import NewsComponent from "./newsComponent";
 
 
 const NewsListing =  () => {
-    const dispatch = useDispatch();
-    console.log(dispatch);
-    console.log('here');
+    const news = useSelector((store) => store.news.list);
+ 
+
     return (
         <div>
-            <h1>NewsListing</h1>
+            <NewsComponent />
         </div>
     )
 }
