@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+}
+
+.header{
+    padding: 20px;
+    height: 20px;
+    border-bottom: 1px solid rgb(199, 198, 198); 
+    box-shadow: 2px 3px whitesmoke;
+    width: 100%;
+    /* position: fixed; */
+}
+
+.header__hamburger {
+    float: left;
+    color: gray;
+}
+
+
+.header__user {
+    float: right;
+    color: gray;
+    text-decoration: none;
+}
+
+.secondHeader{
+    padding: 15px;
+    text-align: center;
+}
+
+.secondHeader h1{
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.header__date{
+    color: gray;
+    font-weight: bold;
+    font-size: 20px;
+}
