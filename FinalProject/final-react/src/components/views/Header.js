@@ -8,9 +8,9 @@ const Header = () => {
     return (
         <div>
         <div className="header">
-            <a href="#" className='header__hamburger'><i className="fa fa-bars fa-2x"></i></a>
+            <a href="#" className='header__hamburger'><i className="fa fa-bars fa-lg"></i></a>
             {/* <a href='#' className='header__center'><img src="images/logo.png" className='header__image'/></a> */}
-		    <a href="#" className='header__user'><i className="fa fa-user fa-2x"></i></a>
+		    <a href="#" className='header__user'><i className="fa fa-user fa-lg"></i></a>
         </div>
 
         <div className='secondHeader'>

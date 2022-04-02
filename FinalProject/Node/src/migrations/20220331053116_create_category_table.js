@@ -8,6 +8,7 @@
   return knex.schema.createTable('category', (table) => {
   table.increments('id').primary().unsigned();
   table.string('name', 50).notNull();
+  table.string('description', 100);
   });
 }
 

@@ -4,17 +4,19 @@
  * @param   {object} knex
  * @returns {Promise}
  */
- export function seed(knex) {
-  return knex('category')
+export function seed(knex) {
+  return knex("category")
     .del()
     .then(() => {
-      return knex('category').insert([
+      return knex("category").insert([
         {
-          name: 'Entertainment',
+          name: "Entertainment",
+          description: "This is entertainment section"
         },
         {
-          name: 'Sports',
-        }
+          name: "Sports",
+          description: "This is sports section"
+        },
       ]);
     });
 }

@@ -5,12 +5,23 @@ import {
 const INITIAL_STATE = {
     list: [{
         
-            category_id: 1,
+            category_name: "Entertainment",
             title: 'RRR joins 1 crore box office',
-            description: "Alia Bhatt, NTR, Ajay Devgan, Ram Charan",
+            description: "Alia Bhatt, NTR, Ajay Devgan, Ram Charan Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
             is_exclusive: false,
-            user_id: 1
+            published_date: "11/1/2022",
+            user_name: "Pooja"
           
+    },
+    {
+        
+            category_name: "Entertainment",
+            title: 'RRR joins 1 crore box office',
+            description: "Alia Bhatt, NTR, Ajay Devgan, Ram Charan Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+            is_exclusive: false,
+            published_date: "11/1/2022",
+            user_name: "Pooja"
+    
     }, ],
 };
 
