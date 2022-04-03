@@ -5,6 +5,7 @@ import * as beerService from "../../services/beer";
 function Beer(props) {
   const [beer, setBeer] = useState({});
   const { id } = props.match.params;
+  console.log('beer',beer);
 
   useEffect(() => {
     const fetchBeers = async () => {

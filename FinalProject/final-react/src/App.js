@@ -5,10 +5,8 @@ import NewsDetails from "./components/views/newsDetails";
 import NewsListing from "./components/views/newsListing";
 
 import {
-  Routes,
   BrowserRouter as Router,
   Switch,
-  Redirect,
   Route,
 } from "react-router-dom";
 

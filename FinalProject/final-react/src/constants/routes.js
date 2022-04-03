@@ -1,2 +1,2 @@
 export const NEWS = '/';
-export const NEWSDETAIL = '/news/:id';
+export const NEWSDETAIL = '/:id';

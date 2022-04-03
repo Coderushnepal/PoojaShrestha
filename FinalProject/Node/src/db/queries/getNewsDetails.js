@@ -10,5 +10,6 @@ SELECT
 FROM news n
 INNER JOIN category c on n.category_id = c.id
 LEFT JOIN users u on n.user_id = u.id
+WHERE n.id = :newsId
 GROUP BY n.id, c.name, n.title, n.description, n.is_exclusive, n.published_date, u.name;
 `;

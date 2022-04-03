@@ -1,24 +1,34 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import * as newsService from "../../services/news";
+// import { Link } from "react-router-dom";
 
-const NewsComponent = () => {
+const NewsComponent = ({eachNews}) => {
   const news = useSelector((store) => store.news.list);
-  const { category_name, title, description, published_date, is_exclusive, user_name } =
-    news[0];
-  console.log(news);
 
+  // const news_peek = news.description;
+  // const peek = news_peek || '';
+  // const news_teaser = peek ?. slice(0, 20);
+  
+  // .toString().slice(0,20);
+  // console.log('here', news_teaser);
+
+  console.log("Each news:", eachNews.title);
   return (
     <div>
       <div className="eachNews">
-        <a href="#" className="eachNews__category eachNews--common">{category_name}</a>
-        <h1 className="eachNews__title">{title}</h1>
+        <a href="#" className="eachNews__category eachNews--common">
+          {eachNews.category_name}
+        </a>
+        <h1 className="eachNews__title">{eachNews.title}</h1>
         <p className="eachNews__info eachNews--common">
-          <span>{published_date}</span><br/>
-          <span>Author: {user_name}</span><br/>
-          <span>{is_exclusive}</span>
+          <span>{eachNews.published_date}</span>
+          <br />
+          <span>Author: {eachNews.user_name}</span>
+          <br />
+          <span>{eachNews.is_exclusive}</span>
         </p>
-        <p className="eachNews__description">{description}</p>
+        <p className="eachNews__description">{eachNews.description}</p>
       </div>
     </div>
   );

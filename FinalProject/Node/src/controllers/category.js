@@ -1,7 +1,7 @@
 import * as categoryService from "../services/category.js";
 
 export function getCategory(req, res, next) {
-  console.log("query", req.query);
+  console.log("getting category", req.query);
   categoryService
     .getAllCategory(req.query)
     .then((data) => res.json(data))

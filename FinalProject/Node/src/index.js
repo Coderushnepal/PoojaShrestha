@@ -4,12 +4,14 @@ import morgan from 'morgan';
 import express from 'express';
 import bodyParser from 'body-parser';
 import serveFavicon from 'serve-favicon';
+import cors from 'cors';
 
 import router from './routes.js';
 import logger from './utils/logger.js';
 
 
 const server = express(); //server
+server.use(cors());
 
 dotenv.config();
 

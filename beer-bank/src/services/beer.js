@@ -14,10 +14,10 @@ export const fetchBeers = async (query) => {
 
 export const fetchBeersById = async (id) => {
   const url = `${config.apiUrl}${config.endpoints.beer}`;
-  console.log(url);
+  console.log('url',url);
 
   const {data} = await axios.get(interpolate(url, {id}));
   
-
+  console.log(data[0]);
   return data[0];
 }

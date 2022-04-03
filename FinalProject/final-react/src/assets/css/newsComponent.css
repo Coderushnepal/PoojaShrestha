@@ -6,6 +6,8 @@
     box-shadow: 2px 3px whitesmoke;
     text-align: left;
     padding: 20px;
+    float: left;
+    margin: 20px;
 }
 
 .eachNews--common {
