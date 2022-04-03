@@ -38,8 +38,42 @@ export async function createUser(params) {
       insertedData,
       message: 'Added user successfully'
     };
+}
+
+export async function login(params) {
+  const { email, password } = params;
+
+  const existingUser = await new User().findByParams({ email });
+
+  if (!existingUser) {
+    logger.error('Invalid credentials: Could not find the associated email');
+
+    throw new Boom.badRequest('Invalid credentials');
   }
 
+  const doesPasswordMatch = compare(password, existingUser.password);
+
+  if (!doesPasswordMatch) {
+    logger.error('Invalid credentials: Password does not match');
+
+    throw new Boom.badRequest('Invalid credentials');
+  }
+
+  const user = {
+    id: existingUser.id,
+    name: existingUser.name,
+    email: existingUser.email
+  };
+
+  const token = createToken(user);
+
+  return {
+    data: { token, user},
+    message: 'Logged in succesfully'
+  };
+}
+
+  
 
 
 

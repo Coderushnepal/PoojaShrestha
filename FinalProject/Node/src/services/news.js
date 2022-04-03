@@ -32,7 +32,7 @@ export async function getEachNews(id) {
 	}
 
 	return {
-		message: 'Details of Car:',
+		message: 'Details of News:',
 		data: news
 	};	
 }
@@ -71,3 +71,54 @@ export async function addNews(params) {
 		message: 'Added record successfully',
 	};
 }
+
+export async function updateNews(id, params) {
+
+	logger.info(`Checking the existence of news with id ${id}`);
+
+	const news = await new News().getById(id);
+
+	if(!news){
+		logger.error(`Cannot find news with id ${id}`);
+
+		throw new Boom.notFound(`Cannot find news with id ${id}`);
+	}
+
+	logger.info(`Updating the news for news id ${id}`);
+
+	await new News().updateById(id, {
+		category_id: params.category_id,
+		title: params.title,
+		description: params.description,
+		is_exclusive: params.is_exclusive,
+		published_date: params.published_date,
+		user_id: params.user_id
+	});
+
+  logger.info(`Fetching the updated data for news id ${id}`);
+
+  const updatedData = await new News().getNewsDetails(id);
+
+	return{
+		data: updatedData,
+		message: 'Record updated successfully',
+	};
+}
+
+export async function removeNews(id) {
+	logger.info(`Checking if news with id ${id} exists`);
+  
+	const news = await new News().getById(id);
+  
+	if (!news) {
+	  logger.error(`Cannot delete news with id ${id} because it doesn't exist`);
+  
+	  throw new Boom.notFound(`Cannot delete news with id ${id} because it doesn't exist`);
+	}
+  
+	await new News().removeById(id);
+  
+	return {
+	  message: 'Record removed successfully'
+	};
+  }

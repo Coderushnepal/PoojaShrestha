@@ -14,3 +14,10 @@ export function addUser(req, res, next) {
       .then((data) => res.json(data))
       .catch((err) => next(err));
 }
+
+export function login(req, res, next) {
+  userService
+    .login(req.body)
+    .then((data) => res.json(data))
+    .catch((err) => next(err));
+}
