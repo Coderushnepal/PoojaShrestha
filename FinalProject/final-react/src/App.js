@@ -14,15 +14,21 @@ import {
 } from "react-router-dom";
 
 import * as routes from "./constants/routes";
+import CategoryListing from "./components/views/CategoryListing";
 
 function App() {
+
+  // const existingUser = localStorage.getItem('Email');
+
   return (
     <Router>
       <Header />
       <Switch>
+        
         <Route exact path={routes.USERS} component={Users} />
         <Route exact path={routes.NEWS} component={NewsListing} />
         <Route exact path={routes.NEWSDETAIL} component={NewsDetails} />
+        <Route exact path={routes.CATEGORY} component={CategoryListing} />
         {/* <Route exact path={routes.EXCLUSIVE} component={ExclusiveNews} /> */}
         
       </Switch>

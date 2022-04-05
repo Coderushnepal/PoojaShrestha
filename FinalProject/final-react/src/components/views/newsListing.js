@@ -1,105 +1,99 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, {useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Loading from "../common/Loading";
-import { fetchNews } from "../../actions/news";
+import Loading from "../common/isLoading";
+import {fetchNews} from "../../actions/news"
 import NewsComponent from "./newsComponent";
-import * as newsService from "../../services/news";
+import * as newsService from '../../services/news'
 import Pagination from "./Pagination";
 
-const NewsListing = () => {
-  const dispatch = useDispatch();
-  const news = useSelector((state) => state.news.list);
-  console.log('news', news);
 
-  const isLoading = useSelector((state) => state.news.isLoading);
-  const isNoMore = useSelector((state) => state.news.isNoMore);
+const NewsListing =  () => {
+    
+    const dispatch = useDispatch();
+    const news = useSelector((state) => state.news.list);
 
-  const [pageNumber, setPageNumber] = useState(1);
-  const [newsPerPage, setnewsPerPage] = useState(100);
+    const isLoading = useSelector((state) => state.news.isLoading);
+    const isNoMore = useSelector((state) => state.news.isNoMore);
 
-//   const lastElementRef = useCallback(
-//       (node) => {
-//         const observer = new IntersectionObserver(([lastElement]) => {
-//           if (lastElement.isIntersecting && !isLoading && !isNoMore) {
-//             setPageNumber((pageNumber) => pageNumber + 1);
-//           }
-//         });
+    // const inputRef = useRef();
+    const [pageNumber, setPageNumber] = useState(1);
+    const [newsPerPage, setnewsPerPage] = useState(5);
 
-//         console.log('node inside', node);
-//         console.log('nomore', isNoMore);
+    const totalPages = Math.ceil(news.length/newsPerPage);
+    console.log(news.length);
 
-//         if (isNoMore) {
-//           observer.disconnect();
-//         }
 
-//         if (node) {
-//           observer.observe(node);
-//         }
-//       },
-//       [isLoading, isNoMore]
-//     );
+    useEffect(() => {
+        const fetchAllNews = async () => {
+            const eachNews = await newsService.fetchNews();
+            // console.log('news here:', eachNews);
+            dispatch(fetchNews(eachNews));
+        };
+        fetchAllNews();
+    }, []);
+    // console.log('dispatching', news);
 
-  useEffect(() => {
-    const fetchAllNews = async () => {
-      const eachNews = await newsService.fetchNews();
-      // console.log('news here:', eachNews);
-      dispatch(fetchNews({ eachNews, pageNumber }));
-    };
-    fetchAllNews();
-  }, [dispatch, pageNumber]);
+    const indexOfLastNews = pageNumber * newsPerPage;
+    const indexOfFirstNews = indexOfLastNews - newsPerPage;
+    const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
 
-  const indexOfLastNews = pageNumber * newsPerPage;
-  const indexOfFirstNews = indexOfLastNews - newsPerPage;
-  const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
+    const existingUser = localStorage.getItem('Email');
 
-  const lastElementRef = useCallback(
-    (node) => {
-      const observer = new IntersectionObserver((lastElement) => {
-        console.log("element", lastElement);
-      });
+    return (
 
-      observer.observe(node);
-      console.log("node", node);
-    },
-    [isLoading]
-  );
+        <div className="newsSection">
+            <div>
 
-  console.log("last element ref", lastElementRef);
+            {console.log('news', news)}
 
-  function handleSearch() {
-    console.log(lastElementRef);
-  }
-
-  return (
-    <div className="newsSection">
-      <div className="demo">
-        <button onClick={handleSearch}>Look</button>
-        
-
-        {currentNews.map((eachNews, index) =>{
-           return(
             
-            index === currentNews.length - 1 ? (
+            <button onClick={() => (pageNumber <= totalPages) ?
+                 ( setPageNumber((pageNUmber) =>pageNumber+1)) 
+                 : 
+                 ( setPageNumber((pageNUmber) =>pageNumber == 1)) 
+                 
+                 }>Look</button>
+            {currentNews.map((eachNews, index) =>
+
+            
+
+                {if(!existingUser) {
+                    if(!eachNews.isExclusive) {
+                        return(
+                            <div key={eachNews.id}>
+                                
+                            <NewsComponent eachNews={eachNews} />
+                            {/* <Pagination newsPerPage={newsPerPage} /> */}
+                            {console.log('index', eachNews.isExclusive)}
+                            </div> 
+                        )
+                    }
+                    else {
+                        index++
+                    }
+                }
+                else { return(
+                    <div key={eachNews.id}>
+                                
+                            <NewsComponent eachNews={eachNews} />
+                            {/* <Pagination newsPerPage={newsPerPage} /> */}
+                            {console.log('index', eachNews.isExclusive)}
+                            </div> )
+                }
+                }
+            
                 
-                <div ref={lastElementRef} key={eachNews.id}>
-                    {console.log('current news', currentNews)}
-                <NewsComponent eachNews={eachNews} />
-                </div>
-            ) : (
-                <div key={eachNews.id}>
-                <NewsComponent eachNews={eachNews} />
-                </div>
-            ))}
         )}
         {isLoading && (
           <div className="p-relative">
             <Loading />
           </div>
         )}
-      </div>
-    </div>
-  );
-};
+        </div>
+        </div>
+    )
+}
 
 export default NewsListing;
+

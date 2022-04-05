@@ -37,6 +37,7 @@ const Users = () => {
       });
   }
 
+ 
   function onLogUsers(e) {
     e.preventDefault();
     const logData = {
@@ -51,10 +52,17 @@ const Users = () => {
         console.log(data.message);
 
         if (data.message == "Logged in succesfully") {
+          localStorage.setItem("Email", JSON.stringify(userEmailLog));
+          // localStorage.setItem("Password", JSON.stringify(userPasswordLog));
+          console.log("Saved in Local Storage");
           history.push("/");
+
         }
-      }
-      )};
+      })
+
+      
+    
+    };
 
   return (
     <>

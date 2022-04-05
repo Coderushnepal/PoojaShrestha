@@ -17,6 +17,8 @@ const NewsComponent = ({ eachNews}, {index }) => {
 
 
   // if(!eachNews.isExclusive) {
+
+    const existingUser = localStorage.getItem('Email');
   return (
     <div>
       {/* {console.log("Each news inside:", eachNews)} */}
@@ -32,7 +34,11 @@ const NewsComponent = ({ eachNews}, {index }) => {
           <br />
           <span>Author: {eachNews.user}</span>
           <br />
-          <span>{eachNews.isExclusive}</span>
+          {(eachNews.isExclusive) ? 
+          (<span>Exclusive</span>) :
+          (<span>Not Exclusive</span>)
+          } 
+          {console.log('ex', eachNews.isExclusive)}
         </p>
         <p className="eachNews__description">{eachNews.description?. slice(0, 100)}<Link to={`/${eachNews.id}`}> ...See more</Link></p>
       </div>

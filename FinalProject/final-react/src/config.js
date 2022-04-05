@@ -4,6 +4,7 @@ const config = {
         news: '',
         eachNews: '/:id',
         users: '/users',
+        category: '/category'
     },
 }
 
