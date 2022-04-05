@@ -4,6 +4,8 @@ import {
 
 const INITIAL_STATE = {
     list: [],
+    isLoading: false,
+    isNoMore: false,
 };
 
 export default function fetchNews(state = INITIAL_STATE, action) {
@@ -13,10 +15,13 @@ export default function fetchNews(state = INITIAL_STATE, action) {
         return action.payload.length === 0
           ? {
               ...state,
+              isNoMore: true,
+              isLoading: false,
             }
           : {
               ...state,
-              list: [...state.list, ...action.payload.data],
+              list: [...action.payload.data],
+              isLoading: false,
             };
 
         default:

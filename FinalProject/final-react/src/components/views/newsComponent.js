@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as newsService from "../../services/news";
+import NewsListing from "./newsListing";
 // import { Link } from "react-router-dom";
 
 const NewsComponent = ({ eachNews}, {index }) => {
@@ -9,14 +10,13 @@ const NewsComponent = ({ eachNews}, {index }) => {
 
   // const news_peek = news.description;
   // const peek = news_peek || '';
-  // const news_teaser = peek ?. slice(0, 20);
+  // const news_teaser = peek ?. slice(0, 20);console
   
   // .toString().slice(0,20);
-  // console.log('here', news_teaser);
-  // console.log(id);
 
 
-  console.log("Each news:", eachNews);
+
+  // if(!eachNews.isExclusive) {
   return (
     <div>
       {/* {console.log("Each news inside:", eachNews)} */}
@@ -37,7 +37,12 @@ const NewsComponent = ({ eachNews}, {index }) => {
         <p className="eachNews__description">{eachNews.description?. slice(0, 100)}<Link to={`/${eachNews.id}`}> ...See more</Link></p>
       </div>
     </div>
-  );
+  ); 
+  // } 
+  // else {
+  //   <NewsListing />
+  // }
 };
+
 
 export default NewsComponent;

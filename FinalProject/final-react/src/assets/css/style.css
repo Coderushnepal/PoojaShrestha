@@ -5,6 +5,7 @@
 @import "./newsComponent.css";
 @import "./newsListing.css";
 @import "./login.css";
+@import "./loading.css";
 
 body{
     background-color: #f7f8f9;

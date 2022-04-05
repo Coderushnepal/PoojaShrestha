@@ -3,7 +3,7 @@ const config = {
     endpoints: {
         news: '',
         eachNews: '/:id',
-        users: '/users'
+        users: '/users',
     },
 }
 
