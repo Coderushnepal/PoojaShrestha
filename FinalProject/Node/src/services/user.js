@@ -16,7 +16,6 @@ export async function getAllUser() {
         data
     };
 }
-
 // Creating new user
 
 export async function createUser(params) {
@@ -41,7 +40,7 @@ export async function createUser(params) {
 }
 
 export async function login(params) {
-  const { email, password } = params;
+  const { name, email, password, is_admin } = params;
 
   const existingUser = await new User().findByParams({ email });
 

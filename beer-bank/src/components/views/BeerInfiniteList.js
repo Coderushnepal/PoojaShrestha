@@ -64,6 +64,8 @@ function BeerInfiniteList() {
       </div>
 
       <div className="container">
+        
+        {console.log('beers', beers)}
         {beers.map((beer, index) =>
           index === beers.length - 1 ? (
             <div ref={lastElementRef} key={beer.id} className="card">

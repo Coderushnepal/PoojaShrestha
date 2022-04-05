@@ -8,19 +8,21 @@ import * as categoryController from './controllers/category.js';
 
 const router = Router();
 
+router.get('/users', cors(), userController.getUser);
+
 router.get('/', cors(), newsController.getNews);
 
 router.get('/category', cors(), categoryController.getCategory);
 
 router.get('/:newsIdentifier', cors(), newsController.getEachNews);
 
-router.get('/users', cors(), userController.getUser);
-
 router.post('/category', cors(), categoryController.addCategory);
+
 
 router.post('/', cors(), newsController.addNews);
 
-router.post('/signin', cors(), userController.addUser);
+
+router.post('/users', cors(), userController.addUser);
 
 router.put('/:newsIdentifier', cors(), newsController.updateNews);
 

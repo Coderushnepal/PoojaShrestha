@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { USERS, NEWS } from '../../constants/routes';
 
 
 const Header = () => {
@@ -10,11 +12,11 @@ const Header = () => {
         <div className="header">
             <a href="#" className='header__hamburger'><i className="fa fa-bars fa-lg"></i></a>
             {/* <a href='#' className='header__center'><img src="images/logo.png" className='header__image'/></a> */}
-		    <a href="#" className='header__user'><i className="fa fa-user fa-lg"></i></a>
+		    <Link to={USERS} className='header__user'><i className="fa fa-user fa-lg"></i></Link>
         </div>
 
         <div className='secondHeader'>
-            <h1>Exclusive Khabar</h1>
+            <Link to={NEWS}><h1>Exclusive Khabar</h1></Link>
             <p className='header__date'>{date}</p> 
         </div>
         
