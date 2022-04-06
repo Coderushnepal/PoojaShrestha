@@ -20,6 +20,23 @@ export async function getAllCategory() {
 }
 
 
+export async function getEachCategory(id) {
+	logger.info(`Fetching a category with categoryId ${id}`);
+	const category = await new Category().getById(id);
+
+	if(!category) {
+		logger.error(`Cannot find category with categoryId ${id}`);
+
+		throw new Boom.notFound(`Cannot find category with categoryId ${id}`);
+	}
+
+	return {
+		message: 'Details of Category:',
+		data: category
+	};
+}
+
+
 export async function createCategory(params) {
     const { name, description } = params;
   

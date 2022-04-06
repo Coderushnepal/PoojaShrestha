@@ -29,8 +29,7 @@ function App() {
         <Route exact path={routes.NEWS} component={NewsListing} />
         <Route exact path={routes.NEWSDETAIL} component={NewsDetails} />
         <Route exact path={routes.CATEGORY} component={CategoryListing} />
-        {/* <Route exact path={routes.EXCLUSIVE} component={ExclusiveNews} /> */}
-        
+                
       </Switch>
     </Router>
   );

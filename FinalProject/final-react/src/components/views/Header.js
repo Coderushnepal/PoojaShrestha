@@ -6,7 +6,13 @@ import { USERS, NEWS } from '../../constants/routes';
 const Header = () => {
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-    const existingUser = localStorage.getItem('Email');
+    const existingUser = localStorage.getItem('Token');
+
+    // const handleLogout=  (e) => {
+    //     e.prevent
+    //     localStorage.removeItem("Token");
+    //     <Link to={USERS}></Link>
+    // }
 
     return (
         <div>
@@ -15,7 +21,7 @@ const Header = () => {
             {/* <a href='#' className='header__center'><img src="images/logo.png" className='header__image'/></a> */}
             {(!existingUser) ? (
 		    <Link to={USERS} className='header__user'><i className="fa fa-user fa-lg"></i></Link> ) :(
-            <span className='header__user'>HI!</span>)
+            <button className='header__user'>HI!</button>)
             }
         </div>
 

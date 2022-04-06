@@ -7,7 +7,6 @@ const Users = () => {
   const [userNameSign, setuserNameSign] = useState("");
   const [userEmailSign, setuserEmailSign] = useState("");
   const [userPasswordSign, setuserPasswordSign] = useState("");
-  const [userAdminSign, setuserAdminSign] = useState(false);
 
   const [userEmailLog, setuserEmailLog] = useState("");
   const [userPasswordLog, setuserPasswordLog] = useState("");
@@ -20,7 +19,6 @@ const Users = () => {
       name: userNameSign,
       email: userEmailSign,
       password: userPasswordSign,
-      isAdmin: userAdminSign,
     };
 
     axios
@@ -30,6 +28,7 @@ const Users = () => {
         console.log(data.message);
 
         if (data.message == "Added user successfully") {
+          localStorage.setItem("Token", "Bearer" + data.data.token);
           history.push("/");
         }
 
@@ -52,9 +51,7 @@ const Users = () => {
         console.log(data.message);
 
         if (data.message == "Logged in succesfully") {
-          localStorage.setItem("Email", JSON.stringify(userEmailLog));
-          // localStorage.setItem("Password", JSON.stringify(userPasswordLog));
-          console.log("Saved in Local Storage");
+          localStorage.setItem("Token", data.data.token);
           history.push("/");
 
         }
@@ -68,7 +65,7 @@ const Users = () => {
     <>
       <form onSubmit={onAddUsers}>
         <div className="formElements">
-          <h2>Signin to Exclusive Khabar!</h2>
+          <h2>Signup to Exclusive Khabar!</h2>
           <label>Name: </label>
           <br />
           <input
@@ -106,17 +103,7 @@ const Users = () => {
             required
           />
           <br />
-          <label>Admin:</label>
-          <input
-            type="checkbox"
-            onChange={(e) => {
-              setuserAdminSign(e.target.value);
-            }}
-            value={userAdminSign}
-            placeholder="isAdmin"
-          />{" "}
-          <br />
-          <button>Sign in</button>
+          <button>Sign up</button>
         </div>
       </form>
 

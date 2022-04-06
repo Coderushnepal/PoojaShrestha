@@ -5,16 +5,20 @@ import {interpolate, unParseQuery} from "../utils/string";
 export const fetchCategory = async () => {
 
     const url = `${config.apiUrl}${config.endpoints.category}`;
-    const { data } = await axios.get(url); 
+    const { data } = await axios.get(url, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('Token')}`
+        }
+    }); 
   
     return data;
 };
 
-// export const fetchCategoryById = async (id) => {
+export const fetchCategoryById = async (id) => {
 
-//     const url = `${config.apiUrl}${config.endpoints.eachCafetchCategory}`;
-//     const {data} = await axios.get(interpolate(url, {id}));
-//     console.log('data: ',data);
+    const url = `${config.apiUrl}${config.endpoints.eachCategory}`;
+    const {data} = await axios.get(interpolate(url, {id}));
+    console.log('data: ',data);
   
-//     return data;
-// }
+    return data;
+}

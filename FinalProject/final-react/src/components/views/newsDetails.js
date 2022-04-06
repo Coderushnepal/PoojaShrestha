@@ -4,6 +4,8 @@ import * as newsService from "../../services/news"
 function NewsDetails (props) {
     const [eachNews, setEachNews] = useState({});
     const { id } = props.match.params;
+
+    console.log(props);
    
     console.log('eachnews =', eachNews);
   

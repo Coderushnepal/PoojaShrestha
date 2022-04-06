@@ -41,12 +41,12 @@ export async function getEachNews(id) {
 export async function addNews(params) {
 
 	const newsTableInsertParams = {
-		category_id: params.category_id,
+		category_id: params.categoryId,
 		title: params.title,
 		description: params.description,
-		is_exclusive: params.is_exclusive,
-		published_date: params.published_date,
-		user_id: params.user_id
+		is_exclusive: params.isExclusive,
+		published_date: params.publishedDate,
+		user_id: params.userId
 	};
 	logger.info('Payload received', newsTableInsertParams);
 

@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import * as categoryService from "../../services/category"
+import { useDispatch, useSelector } from "react-redux";
+import {fetchCategory} from "../../actions/category";
+import * as categoryService from "../../services/category";
+import CategoryComponent from "./CategoryComponent";
+import { Link } from "react-router-dom";
 
 function CategoryListing () {
-    // const category = useSelector((state) => state.category.list);
+    const dispatch = useDispatch();
+    const category = useSelector((state) => state.category.list);
+    console.log('category', category);
 
-    // const { id } = props.match.params;
-   
-    // console.log('eachcategory =', eachNews);
+    
   
         useEffect(() => {
-        const fetchCategory = async () => {
+        const fetchAllCategory = async () => {
             const category = await categoryService.fetchCategory();
-            console.log(category.data);
+            dispatch(fetchCategory(category));
         };
-        fetchCategory();
+        fetchAllCategory();
         }, []);
 
         
@@ -22,18 +25,18 @@ function CategoryListing () {
 
     return (
         <div>
-            <div className="eachNews">
-                {/* <h1 className="eachNews__title">{name}</h1>
-                <p className="eachNews__info eachNews--common">
-                <span>{eachNews.publishedDate?.slice(0,10)}</span><br/>
-                {/* .slice(0,10) */}
-                {/*<span>Author: {eachNews.user}</span><br/>
-                <span>{eachNews.isExclusive}</span>
-                </p>
-                <p className="eachNews__description">{eachNews.description}</p> */}
 
-                Hi
+            {category.map((eachCategory, index) => (
+
+            <div key={category.id} className="eachNews">
+                {/* <Link to= {<CategoryComponent eachCategory={eachCategory} />}> */}
+                <h1 className="eachNews__title">{eachCategory.name}</h1> 
+                <p className="eachNews__description">{eachCategory.description}</p>
+                {/* </Link> */}
+                <CategoryComponent eachCategory={eachCategory} />
             </div>
+            
+            ))}
 
         </div>
     )

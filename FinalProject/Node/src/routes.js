@@ -4,31 +4,45 @@ import cors from 'cors';
 import * as newsController from './controllers/news.js';
 import * as userController from './controllers/user.js'
 import * as categoryController from './controllers/category.js';
+import authenticate from "./middlewares/authenticate.js";
+import { validateBody, validateQueryParams } from "./middlewares/validation.js";
+import addUserSchema from "./schema/addUser.js";
+import getUsersQuerySchema from "./schema/getNewsQuery.js";
+import addCategorySchema from "./schema/addCategory.js";
+import addPostSchema from "./schema/addNews.js";
+import updateUserSchema from "./schema/updateUser.js";
+import updateNewsSchema from './schema/updateNews.js';
+import loginSchema from "./schema/login.js"
 
 
 const router = Router();
 
-router.get('/users', cors(), userController.getUser);
 
-router.get('/', cors(), newsController.getNews);
+router.get('/users', userController.getUser);
 
-router.get('/category', cors(), categoryController.getCategory);
+router.get('/', validateQueryParams(getUsersQuerySchema), newsController.getNews);
 
-router.get('/:newsIdentifier', cors(), newsController.getEachNews);
+router.get('/category', categoryController.getCategory);
 
-router.post('/category', cors(), categoryController.addCategory);
+router.get('/category/:categoryIdentifier', categoryController.getEachCategory);
 
+router.get('/:newsIdentifier', newsController.getEachNews);
 
-router.post('/', cors(), newsController.addNews);
+router.get('/users/:userIdentifier', userController.getEachUser);
 
+router.post('/category', validateBody(addCategorySchema), categoryController.addCategory);
 
-router.post('/users', cors(), userController.addUser);
+router.post('/', validateBody(addPostSchema), newsController.addNews);
 
-router.put('/:newsIdentifier', cors(), newsController.updateNews);
+router.post('/users', validateBody(addUserSchema), userController.addUser);
 
-router.delete('/:newsIdentifier', cors(), newsController.removeNews);
+router.put('/users/:userIdentifier', validateBody(updateUserSchema), userController.updateUser);
 
-router.post('/login', cors(), userController.login);
+router.put('/:newsIdentifier', validateBody(updateNewsSchema), newsController.updateNews);
+
+router.delete('/:newsIdentifier', newsController.removeNews);
+
+router.post('/login', validateBody(loginSchema), userController.login);
 
 
 
@@ -41,3 +55,4 @@ router.post('/login', cors(), userController.login);
 
 
 export default router;
+

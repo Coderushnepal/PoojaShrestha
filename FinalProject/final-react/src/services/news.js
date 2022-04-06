@@ -5,7 +5,11 @@ import {interpolate, unParseQuery} from "../utils/string";
 export const fetchNews = async () => {
 
     const url = `${config.apiUrl}`;
-    const { data } = await axios.get(url); 
+    const { data } = await axios.get(url, {
+        headers: {
+            "x-access-token": localStorage.getItem("token")
+        }
+    }); 
   
     return data;
 };
@@ -14,7 +18,6 @@ export const fetchNewsById = async (id) => {
 
     const url = `${config.apiUrl}${config.endpoints.eachNews}`;
     const {data} = await axios.get(interpolate(url, {id}));
-    console.log('data: ',data);
   
     return data;
 }

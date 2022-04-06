@@ -10,7 +10,7 @@
     table.string('name', 50).notNull();
     table.string('password', 200).notNull();
     table.string('email', 100).unique().notNull();
-    table.boolean('is_admin').default(false).notNull();
+    table.boolean('is_admin').default(false);
   });
 }
 

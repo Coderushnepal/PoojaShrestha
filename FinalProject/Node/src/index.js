@@ -8,6 +8,7 @@ import cors from 'cors';
 
 import router from './routes.js';
 import logger from './utils/logger.js';
+import errorHandler from "./middlewares/errorHandler.js";
 
 
 const server = express(); //server
@@ -26,9 +27,10 @@ server.use(morgan('common'));
 // }
 
 
-
+server.use(cors());
 server.use(bodyParser.json());
 server.use(router);
+server.use(errorHandler);
 
 server.listen(process.env.PORT, () => {
 	logger.info(`Listening on 127.0.0.1:${process.env.PORT}\n`);
