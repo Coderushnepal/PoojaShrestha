@@ -22,7 +22,7 @@ export async function getAllCategory() {
 
 export async function getEachCategory(id) {
 	logger.info(`Fetching a category with categoryId ${id}`);
-	const category = await new Category().getById(id);
+	const category = await new Category().getCategoryDetails(id);
 
 	if(!category) {
 		logger.error(`Cannot find category with categoryId ${id}`);

@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import * as newsService from "../../services/news";
 import NewsListing from "./newsListing";
 // import { Link } from "react-router-dom";
+import Posts from "./EditPosts";
+import { EDITNEWS } from "../../constants/routes";
 
 const NewsComponent = (props) => {
-  console.log('dfd',props);
+
   const eachNews = props.eachNews; 
   const index = props.index;
   // const news = useSelector((store) => store.news.list);
@@ -22,6 +24,8 @@ const NewsComponent = (props) => {
   // if(!eachNews.isExclusive) {
 
     const existingUser = localStorage.getItem('Token');
+    const path = eachNews.id;
+    console.log(path);
 
   return (
     <div>
@@ -43,9 +47,11 @@ const NewsComponent = (props) => {
           (<span>Exclusive</span>) :
           (<span>Not Exclusive</span>)
           } 
-          {console.log('ex', eachNews.isExclusive)}
         </p>
         <p className="eachNews__description">{eachNews.description?. slice(0, 100)}<Link to={`/news/${eachNews.id}`}> ...See more</Link></p>
+        <i className="fa fa-pencil"><Link to={`/edit/${eachNews.id}`}></Link></i>
+        <button><Link to={`delete/${eachNews.id}`}>Delete</Link></button>
+
       </div>
     </div>
   ); 

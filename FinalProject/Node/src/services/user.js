@@ -50,9 +50,16 @@ export async function createUser(params) {
   
     const [insertedData] = await new User().save({ name, email, password: hashedPassword, is_admin });
     console.log(insertedData);
+
+    const user = {
+      name: name,
+      email: email
+    };
+  
+    const token = createToken(user);
   
     return {
-      insertedData,
+      data: { token, user},
       message: 'Added user successfully'
     };
 }

@@ -25,10 +25,10 @@ const Users = () => {
       .post("http://127.0.01:1234/users", postData)
       .then((response) => {
         const {data} = response;
-        console.log(data.message);
+        console.log(data);
 
-        if (data.message == "Added user successfully") {
-          localStorage.setItem("Token", "Bearer" + data.data.token);
+        if (data.message === "Added user successfully") {
+          localStorage.setItem("Token", data.data.token);
           history.push("/");
         }
 
@@ -50,7 +50,7 @@ const Users = () => {
         const {data} = response;
         console.log(data.message);
 
-        if (data.message == "Logged in succesfully") {
+        if (data.message === "Logged in succesfully") {
           localStorage.setItem("Token", data.data.token);
           history.push("/");
 
@@ -108,7 +108,7 @@ const Users = () => {
       </form>
 
       <form onSubmit={onLogUsers}>
-        <div className="formElements">
+        <div className="formElements">  
           <h2>Login to Exclusive Khabar!</h2>
           <label>Email: </label> <br />
           <input

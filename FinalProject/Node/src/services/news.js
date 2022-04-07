@@ -87,12 +87,12 @@ export async function updateNews(id, params) {
 	logger.info(`Updating the news for news id ${id}`);
 
 	await new News().updateById(id, {
-		category_id: params.category_id,
+		// category_id: params.category_id,
 		title: params.title,
 		description: params.description,
 		is_exclusive: params.is_exclusive,
-		published_date: params.published_date,
-		user_id: params.user_id
+		// published_date: params.published_date,
+		// user_id: params.user_id
 	});
 
   logger.info(`Fetching the updated data for news id ${id}`);
