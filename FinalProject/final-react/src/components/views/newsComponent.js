@@ -16,6 +16,8 @@ const NewsComponent = (props) => {
   const index = props.index;
   const dispatch = useDispatch();
 
+  console.log('eachNews', eachNews);
+
   // useEffect(() => {
   //   const fetchAllNews = async () => {
   //     const eachNews = await newsService.fetchNews();
@@ -49,8 +51,20 @@ const NewsComponent = (props) => {
 
   // if(!eachNews.isExclusive) {
 
-    const existingUser = localStorage.getItem('Token');
-    const admin = localStorage.getItem('Admin');
+    // const existingUser = localStorage.getItem('Token');
+    // const admin = localStorage.getItem('Admin');
+
+    const [admin, setAdmin] = useState({});
+
+
+    useEffect(() => {
+
+        setInterval(() => {
+            const existingUser = localStorage.getItem("Admin");
+            const user = existingUser;
+            setAdmin(user);
+            }, [])
+    }, 5000);
     
 
     const path = eachNews.id;
@@ -64,6 +78,7 @@ const NewsComponent = (props) => {
       
         <a href="#" className="eachNews__category eachNews--common">
           {eachNews.category}
+          {console.log('category', eachNews.category)}
         </a>
         
         <h1 className="eachNews__title">{eachNews.title}</h1>

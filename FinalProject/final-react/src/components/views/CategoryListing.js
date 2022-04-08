@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 
 function CategoryListing () {
     const dispatch = useDispatch();
-    const category = useSelector((state) => state.category.list);
+    const category = useSelector((store) => store.category.list);
+    
     console.log('category', category);
 
     

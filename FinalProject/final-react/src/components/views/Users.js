@@ -53,7 +53,7 @@ const Users = () => {
         if (data.message === "Logged in succesfully") {
           localStorage.setItem("Token", data.data.token);
           localStorage.setItem("Admin", data.data.user.is_admin);
-          console.log('status', data.data.user.is_admin)
+
           history.push("/");
 
         }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch, useSelector } from "react-redux";
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,7 +15,7 @@ function Posts() {
     const [isExclusive, setIsExclusive] = useState(false);
     const [userId, setUserId] = useState("");
 
-    const [status, setStatus] = useState(false);
+    // const [status, setStatus] = useState(false);
 
     const history = useHistory()
 
@@ -52,6 +53,8 @@ function Posts() {
       });
   }
 
+  const category = useSelector((store) => store.category.list);
+  console.log('category is:', category)
 
   
 

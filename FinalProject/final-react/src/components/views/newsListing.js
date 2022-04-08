@@ -9,12 +9,14 @@ import Pagination from "./Pagination";
 
 const NewsListing = () => {
   const dispatch = useDispatch();
-  const news = useSelector((state) => state.news.list);
+  const news = useSelector((store) => store.news.list);
 
-  const isLoading = useSelector((state) => state.news.isLoading);
-  const isNoMore = useSelector((state) => state.news.isNoMore);
+  const isLoading = useSelector((store) => store.news.isLoading);
+  const isNoMore = useSelector((store) => store.news.isNoMore);
 
   // const inputRef = useRef();
+
+
   const [pageNumber, setPageNumber] = useState(1);
   const [newsPerPage, setnewsPerPage] = useState(50);
 
@@ -22,13 +24,8 @@ const NewsListing = () => {
   console.log(news.length);
 
   useEffect(() => {
-    const fetchAllNews = async () => {
-      const eachNews = await newsService.fetchNews();
-
-      dispatch(fetchNews(eachNews));
-    };
-    fetchAllNews();
-  }, []);
+      dispatch(fetchNews(news));
+  }, [dispatch]);
 
   const indexOfLastNews = pageNumber * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
@@ -44,8 +41,8 @@ const NewsListing = () => {
         <button
           onClick={() =>
             pageNumber <= totalPages
-              ? setPageNumber((pageNUmber) => pageNumber + 1)
-              : setPageNumber((pageNUmber) => pageNumber == 1)
+              ? setPageNumber((pageNumber) => pageNumber + 1)
+              : setPageNumber((pageNumber) => pageNumber == 1)
           }
         >
           Look
