@@ -14,3 +14,14 @@ body{
 input{
     color: Black;
 }
+
+.updateDelete :first-child {
+    float: left;
+}
+
+.updateDelete :nth-child(2) {
+    float: right;
+}
+
+
+

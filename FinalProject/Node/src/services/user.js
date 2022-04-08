@@ -36,7 +36,8 @@ export async function getEachUser(id) {
 // Creating new user
 
 export async function createUser(params) {
-    const { name, email, password, is_admin } = params;
+    const { name, email, password, isAdmin } = params;
+    console.log('params', params);
   
     const existingUser = await new User().findByParams({ email });
   
@@ -48,12 +49,13 @@ export async function createUser(params) {
   
     const hashedPassword = hash(password);
   
-    const [insertedData] = await new User().save({ name, email, password: hashedPassword, is_admin });
-    console.log(insertedData);
+    const [insertedData] = await new User().save({ name, email, password: hashedPassword, isAdmin });
+    console.log('insertedData', insertedData);
 
     const user = {
       name: name,
-      email: email
+      email: email,
+      is_admin: isAdmin
     };
   
     const token = createToken(user);
@@ -115,7 +117,7 @@ export async function removeUser(id) {
 
 
 export async function login(params) {
-  const {email, password } = params;
+  const {email, password} = params;
 
   const existingUser = await new User().findByParams({ email });
 
@@ -124,6 +126,7 @@ export async function login(params) {
 
     throw new Boom.badRequest('Invalid credentials');
   }
+  console.log(existingUser);
 
   const doesPasswordMatch = compare(password, existingUser.password);
 
@@ -135,8 +138,10 @@ export async function login(params) {
 
   const user = {
     id: existingUser.id,
-    email: existingUser.email
+    email: existingUser.email,
+    is_admin: existingUser.isAdmin 
   };
+  console.log('user', user);
 
   const token = createToken(user);
 

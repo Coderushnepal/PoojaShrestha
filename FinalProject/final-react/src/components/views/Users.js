@@ -48,10 +48,12 @@ const Users = () => {
       .post("http://127.0.01:1234/login", logData)
       .then((response) => {
         const {data} = response;
-        console.log(data.message);
+        console.log(data);
 
         if (data.message === "Logged in succesfully") {
           localStorage.setItem("Token", data.data.token);
+          localStorage.setItem("Admin", data.data.user.is_admin);
+          console.log('status', data.data.user.is_admin)
           history.push("/");
 
         }

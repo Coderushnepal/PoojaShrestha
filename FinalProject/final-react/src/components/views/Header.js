@@ -19,9 +19,9 @@ const Header = () => {
         <div className="header">
             <a href="#" className='header__hamburger'><i className="fa fa-bars fa-lg"></i></a>
             {/* <a href='#' className='header__center'><img src="images/logo.png" className='header__image'/></a> */}
-            {(!existingUser) ? (
-		    <Link to={USERS} className='header__user'><i className="fa fa-user fa-lg"></i></Link> ) :(
-            <button className='header__user'>HI!</button>)
+            {(existingUser) ? (<button className='header__user'>HI!</button>) :(
+		    <Link to={USERS} className='header__user'><i className="fa fa-user fa-lg"></i></Link> )
+            
             }
         </div>
 

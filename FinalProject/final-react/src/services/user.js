@@ -1,18 +1,18 @@
-// import axios from "axios";
-// import config from "../config";
-// import {interpolate, unParseQuery} from "../utils/string";
+import axios from "axios";
+import config from "../config";
+import {interpolate, unParseQuery} from "../utils/string";
 
 
-// export const saveUser = async () => {
+export const getUser = async () => {
     
-//     const url = `${config.apiUrl}${config.endpoints.users}`;
-//     console.log('url', url);
-//     const { data } = await axios.post(url); 
-//     // console.log(data);
-//     // accesssing the api
+    const url = `${config.apiUrl}${config.endpoints.users}`;
+    console.log('url', url);
+    const { data } = await axios.get(url); 
+    // console.log(data);
+    // accesssing the api
   
-//     return data;
-// };
+    return data;
+};
 
 // export const fetchNewsById = async (id) => {
 //     console.log(id);

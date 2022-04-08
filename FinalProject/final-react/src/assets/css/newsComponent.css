@@ -36,3 +36,11 @@
 .eachNews__description a {
     color: blue;
 }
+
+.updateDelete :first-child {
+    float: left;
+}
+
+.updateDelete :nth-child(2) {
+    float: right;
+}
