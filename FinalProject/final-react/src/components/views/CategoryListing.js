@@ -34,6 +34,7 @@ function CategoryListing () {
                 <h1 className="eachNews__title">{eachCategory.name}</h1> 
                 <p className="eachNews__description">{eachCategory.description}</p>
                 {/* </Link> */}
+                {console.log('each', eachCategory)}
                 <CategoryComponent eachCategory={eachCategory} />
             </div>
             

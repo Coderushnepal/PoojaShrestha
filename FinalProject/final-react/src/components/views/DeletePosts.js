@@ -31,10 +31,13 @@ function DeletePosts(props) {
             }, 1000);
           } else {
             toast.error(response);
+            console.log('toat', response);
           }
         })
         .catch((err) => {
+          console.log('err', err);
           toast.error("Something is wrong!");
+          
         });
     };
 

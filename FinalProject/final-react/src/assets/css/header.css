@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Lalezar&family=Skranji:wght@700&display=swap');
 body{
     margin: 0;
 }
@@ -12,30 +13,36 @@ body{
 
 .header__hamburger {
     float: left;
-    color: gray;
+    color: #000000;
 }
 
 
 .header__user {
     float: right;
-    color: gray;
-    text-decoration: none;
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .secondHeader{
     padding: 15px;
     text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(23, 23, 23, 0.7)), url(../images/bg.jpg), rgba(0, 0, 0, 0.551);
+    /* background-color: ; */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+
 .secondHeader h1{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Bowlby One SC', cursive;
+    font-size: 50px;
     font-weight: 600;
-    font-style: italic;
-    color: rgb(21, 109, 193);
+    color: #efc942;
 }
 
 .header__date{
-    color: gray;
+    color: #efc942;
     font-weight: bold;
     font-size: 20px;
 }
@@ -43,3 +50,24 @@ body{
 a {
     text-decoration: none;
 }
+
+.createPosts {
+    
+    padding: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    background-color: #000000;
+    border-radius: 5px;
+    margin: 20px 0px;
+    margin-left: 45%;
+}
+
+.createPosts a{
+    color: #efc942;
+}
+
+
+/* @media only screen and (min-width: 1440px) { */

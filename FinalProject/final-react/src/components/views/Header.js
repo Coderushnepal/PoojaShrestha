@@ -16,8 +16,9 @@ const Header = () => {
             const existingUser = localStorage.getItem("Token");
             const user = existingUser;
             setLoggedIn(user);
-            }, [])
-    }, 5000);
+            
+    }, 100)
+}, []);
 
     const logout = () => {
 
@@ -30,18 +31,19 @@ const Header = () => {
         <div className="header">
             <a href="#" className='header__hamburger'><i className="fa fa-bars fa-lg"></i></a>
             {/* <a href='#' className='header__center'><img src="images/logo.png" className='header__image'/></a> */}
-            {(loggedIn) ? (<button className='header__user' onClick={logout}>HI!</button>) :(
+            {(loggedIn) ? (<Link className='header__user' onClick={logout}>Logout</Link>) :(
 		    <Link to={USERS} className='header__user'><i className="fa fa-user fa-lg"></i></Link> )
             }
         </div>
 
         <div className='secondHeader'>
+            
             <Link to={NEWS}><h1>Exclusive Khabar</h1></Link>
             <p className='header__date'>{date}</p> 
         </div>
 
         <div>
-        {(loggedIn) ? (<button> <Link to={CREATENEWS}>Create Posts</Link> </button>) : ('')}
+        {(loggedIn) ? (<button className='createPosts'> <Link to={CREATENEWS}>Create Posts</Link> </button>) : ('')}
         </div>
         
         </div>

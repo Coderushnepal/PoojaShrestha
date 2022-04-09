@@ -26,7 +26,7 @@ router.get('/category', categoryController.getCategory);
 
 router.get('/category/:categoryIdentifier', categoryController.getEachCategory);
 
-router.get('/:newsIdentifier', newsController.getEachNews);
+router.get('/news/:newsIdentifier', newsController.getEachNews);
 
 router.get('/users/:userIdentifier', userController.getEachUser);
 
@@ -38,9 +38,9 @@ router.post('/users', validateBody(addUserSchema), userController.addUser);
 
 router.put('/users/:userIdentifier', validateBody(updateUserSchema), userController.updateUser);
 
-router.put('/:newsIdentifier', validateBody(updateNewsSchema), newsController.updateNews);
+router.put('/news/:newsIdentifier', validateBody(updateNewsSchema), newsController.updateNews);
 
-router.delete('/:newsIdentifier', newsController.removeNews);
+router.delete('/news/:newsIdentifier', newsController.removeNews);
 
 router.post('/login', validateBody(loginSchema), userController.login);
 

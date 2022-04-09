@@ -2,14 +2,21 @@
 
 .eachNews {
     width:40%;
-    border: 1px solid rgb(199, 198, 198); 
-    box-shadow: 2px 3px whitesmoke;
+    /* border: 1px solid rgb(199, 198, 198);  */
+    /* box-shadow: 2px 3px whitesmoke; */
     text-align: left;
     padding: 20px;
     float: left;
     margin: 20px;
-    background-color: white
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0 , 0.3);
+    transition: 0.3s; 
 }
+
+.eachNews:hover {
+    box-shadow: 0 8px 16px 0 rgba(	239, 201, 66 ,0.5);
+  }
+  
 
 .eachNews--common {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -43,4 +50,21 @@
 
 .updateDelete :nth-child(2) {
     float: right;
+}
+
+.edit {
+    color: rgb(60, 210, 130);
+}
+
+.delete {
+    color: rgb(240, 74, 74);
+}
+
+.newsDetails {
+    width:60%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0 , 0.3);
 }

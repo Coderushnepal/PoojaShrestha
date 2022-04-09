@@ -21,7 +21,7 @@ function NewsDetails (props) {
 
     return (
         <div>
-            <div className="eachNews">
+            <div className="newsDetails">
                 <a href="#" className="eachNews__category eachNews--common">{eachNews.category}</a>
                 <h1 className="eachNews__title">{eachNews.title}</h1>
                 <p className="eachNews__info eachNews--common">

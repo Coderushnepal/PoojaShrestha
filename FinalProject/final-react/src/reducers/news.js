@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 
 
 export default function fetchNews(state = INITIAL_STATE, action) {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case FETCH_NEWS_PENDING:
       return { ...state, isLoading: true };

@@ -105,7 +105,7 @@ const Users = () => {
             required
           />
           <br />
-          <button>Sign up</button>
+          <button className="userButton">Sign up</button>
         </div>
       </form>
 
@@ -136,7 +136,7 @@ const Users = () => {
             required
           />
           <br />
-          <button type="submit">Login</button>
+          <button type="submit" className="userButton">Login</button>
         </div>
       </form>
     </>
