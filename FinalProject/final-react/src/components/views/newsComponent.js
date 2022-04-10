@@ -16,7 +16,7 @@ const NewsComponent = (props) => {
   const index = props.index;
   const dispatch = useDispatch();
 
-  console.log('eachNews', eachNews);
+  // console.log('eachNews', eachNews);
 
   // useEffect(() => {
   //   const fetchAllNews = async () => {
@@ -63,23 +63,20 @@ const NewsComponent = (props) => {
             const existingUser = localStorage.getItem("Admin");
             const user = existingUser;
             setAdmin(user);
-            }, [])
-    }, 5000);
+            }, 100)
+    }, []);
     
 
     const path = eachNews.id;
-    console.log(admin);
+    // console.log(admin);
 
   return (
-    <div>
 
+      <>
       
-      <div className="eachNews">
-      
-        <a href="#" className="eachNews__category eachNews--common">
+        {/* <a href="#" className="eachNews__category eachNews--common"> */}
           {eachNews.category}
-          {console.log('category', eachNews.category)}
-        </a>
+        {/* </a> */}
         
         <h1 className="eachNews__title">{eachNews.title}</h1>
         <p className="eachNews__info eachNews--common">
@@ -93,14 +90,14 @@ const NewsComponent = (props) => {
           } 
         </p>
         <p className="eachNews__description">{eachNews.description?. slice(0, 100)}<Link to={`/news/${eachNews.id}`}> ...See more</Link></p>
-          {console.log(typeof(admin))}
+
         {(admin === "true") ? (
         <span className="updateDelete">
         <Link to={`/edit/${eachNews.id}`}><i className="fa fa-pencil edit"></i></Link>
         <Link to={`delete/${eachNews.id}`}><i className="fa fa-trash delete"></i></Link>
           </span>): (' ') }
-      </div>
-    </div>
+      </>
+   
   ); 
 };
 

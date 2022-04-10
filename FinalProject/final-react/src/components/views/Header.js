@@ -31,7 +31,7 @@ const Header = () => {
         <div className="header">
             <a href="#" className='header__hamburger'><i className="fa fa-bars fa-lg"></i></a>
             {/* <a href='#' className='header__center'><img src="images/logo.png" className='header__image'/></a> */}
-            {(loggedIn) ? (<Link className='header__user' onClick={logout}>Logout</Link>) :(
+            {(loggedIn) ? (<span className='header__user' onClick={logout}>Logout</span>) :(
 		    <Link to={USERS} className='header__user'><i className="fa fa-user fa-lg"></i></Link> )
             }
         </div>

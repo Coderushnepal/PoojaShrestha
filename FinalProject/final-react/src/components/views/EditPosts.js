@@ -43,7 +43,7 @@ function Posts(props) {
     // const [user, setUser] = useState('');
 
 
-  function onPost(e) {
+  async function onPost(e) {
     e.preventDefault();
     const postData = {
     //   categoryId: categoryId,
@@ -53,13 +53,9 @@ function Posts(props) {
     //   userId: userId
     };
 
-    const url = `${config.apiUrl}${config.endpoints.eachNews}`;
 
+    const data = await newsService.editNews(postData, id);
 
-    axios
-      .put((interpolate(url, {id})), postData)
-      .then((response) => {
-        const {data} = response;
 
 
         if (data.message === "Record updated successfully") {
@@ -68,15 +64,15 @@ function Posts(props) {
             setTimeout(() => {  history.push("/"); }, 2000);
         }
         else {
-            toast.error(response);
+            toast.error('oops!');
         }
 
 
-      })
-      .catch((err)=> {
+      
+      // .catch((err)=> {
 
-        toast.error('Something is wrong!');
-      });
+      //   toast.error('Something is wrong!');
+      // });
   }
 
 

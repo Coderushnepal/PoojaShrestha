@@ -18,6 +18,14 @@ export const fetchNewsById = async (id) => {
     return data;
 }
 
+export const editNews = async (postData, id) => {
+
+    const url = `${config.apiUrl}${config.endpoints.eachNews}`;
+    const {data} = await axios.put((interpolate(url, {id})), postData);
+  
+    return data;
+}
+
 export const deleteNewsById = async (id) => {
 
     const url = `${config.apiUrl}${config.endpoints.eachNews}`;

@@ -1,42 +1,44 @@
-// import React, { useEffect, useState } from "react";
-// import { useSelector } from "react-redux";
-// import * as categoryService from "../../services/category"
-// import NewsComponent from "./newsComponent";
-// import NewsListing from "./newsListing";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import * as categoryService from "../../services/category"
+import NewsComponent from "./newsComponent";
+import NewsListing from "./newsListing";
 
-// function CategoryComponent (props) {
-//     const id=props.match.params.id;
-//     // const categoryId = eachCategory;
-//     const [eachCategoryHere, setEachCategoryHere] = useState({});
+function CategoryComponent (props) {
+    const category = props.eachCategory;
+    console.log(category);
+    const id=category.id;
+    // const categoryId = eachCategory;
+    const [eachCategoryHere, setEachCategoryHere] = useState({});
 
-//     useEffect(() => {
-//         const fetchCategory = async () => {
-//             const eachCategoryHere = await categoryService.fetchCategoryById(eachCategory);
-//             console.log('each category data:',eachCategoryHere;
-//             // setEachCategoryHere('data', eachCategory.data);
-//         };
-//         fetchCategory();
-//         }, []);
+    useEffect(() => {
+        const fetchCategory = async () => {
+            const eachCategoryHere = await categoryService.fetchCategoryById(id);
+            console.log('each category data:',eachCategoryHere);
+            // setEachCategoryHere('data', eachCategory.data);
+        };
+        fetchCategory();
+        }, []);
 
-//     const news = useSelector((state) => state.news.list);
-//     console.log(news);
+    const news = useSelector((state) => state.news.list);
+    console.log(news);
 
 
 
-//     return (
-//         <div>
-//         {/* <NewsListing /> */}
-//         hi
-//         </div>
+    return (
+        <div>
+        {/* <NewsListing /> */}
+        hi
+        </div>
             
 
       
-//     )
+    )
 
     
-// }
+}
 
-// export default CategoryComponent;
+export default CategoryComponent;
 // {/* 
 // {news.map((eachNews, index) => {
 //                 {console.log(eachNews)}
