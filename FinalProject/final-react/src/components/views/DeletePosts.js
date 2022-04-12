@@ -28,10 +28,10 @@ function DeletePosts(props) {
             toast.success("Deleted!");
             setTimeout(() => {
               history.push("/");
-            }, 1000);
+            }, 2000);
           } else {
             toast.error(response);
-            console.log('toat', response);
+            console.log('oops', response);
           }
         })
         .catch((err) => {

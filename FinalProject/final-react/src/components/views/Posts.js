@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from "react-redux";
-
+import * as newsService from "../../services/news";
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -15,11 +15,9 @@ function Posts() {
     const [isExclusive, setIsExclusive] = useState(false);
     const [userId, setUserId] = useState("");
 
-    // const [status, setStatus] = useState(false);
-
     const history = useHistory()
 
-  function onPost(e) {
+  async function onPost(e) {
     e.preventDefault();
     const postData = {
       categoryId: categoryId,
@@ -29,28 +27,16 @@ function Posts() {
       userId: userId
     };
 
-    axios
-      .post("http://127.0.01:1234/", postData)
-      .then((response) => {
-        const {data} = response;
-        console.log(data);
+    const data = await newsService.postNews(postData);
 
-        if (data.message === "Added record successfully") {
-            console.log("data.message")
-            toast.success("Did it !");
-            setTimeout(() => {  history.push("/"); }, 2000);
-        }
-        else {
-            toast.error('response');
-            console.log(response);  
-        }
-
-
-      })
-      .catch((err)=> {
-          console.log(err);
-        toast.error('Something is wrong!');
-      });
+   
+    if (data.message === "Added record successfully") {
+          toast.success("Posted !");
+          setTimeout(() => {  history.push("/"); }, 2000);
+    }
+    else {
+      toast.error(data);
+    }
   }
 
   const category = useSelector((store) => store.category.list);
@@ -59,9 +45,9 @@ function Posts() {
   
 
   return (
-    <div>
+    <div className='creating'>
       
-        <form onSubmit={onPost}>
+        <form className='create-post-form' onSubmit={onPost} >
         <div className="formElements">
           <h2>Post to Exclusive Khabar!</h2>
           <label>Category Id: </label> <br />
@@ -89,7 +75,7 @@ function Posts() {
           />
           <br />
           <label>Description : </label> <br />
-          <input
+          <textarea maxLength={1000} rows={10}
             type="text"
             onChange={(e) => {
               setDescription(e.target.value);
@@ -98,7 +84,7 @@ function Posts() {
             value={description}
             name="description"
             required
-          />
+          ></textarea>
           <br/>
           <label>Exclusive: </label>
           <input
@@ -137,7 +123,7 @@ function Posts() {
           />
           
           <br />
-          <button type="submit">Post</button>
+          <button className='button' type="submit">Post</button>
           <ToastContainer
             position="top-center"
             autoClose={2000}
@@ -156,7 +142,7 @@ function Posts() {
   )
 }
 
-export default Posts
+export default Posts;
 
 // import React from 'react';
 

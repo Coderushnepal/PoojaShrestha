@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 
-import 'react-toastify/dist/ReactToastify.css';
 import * as newsService from "../../services/news";
-import { useSelector } from 'react-redux';
-import config from '../../config';
-import {interpolate} from "../../utils/string";
 
 
 function Posts(props) {
@@ -23,9 +19,9 @@ function Posts(props) {
             setEachNews(eachNews.data);
             setTitle(eachNews.data.title);
             setDescription(eachNews.data.description);
-            // setIsExclusive(eachNews.data.isExclusive);
-            // setUser(eachNews.data.user);
+            setIsExclusive(eachNews.data.isExclusive);
             setCategory(eachNews.data.category);
+            console.log('fetched', eachNews)
         };
 
         fetchNews();
@@ -35,67 +31,43 @@ function Posts(props) {
     const newtitle = eachNews.title;
     
     const [category, setCategory] = useState('');
-    // const [categoryId, setCategoryId] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [isExclusive, setIsExclusive] = useState(false);
-    // const [userId, setUserId] = useState('');
-    // const [user, setUser] = useState('');
+    const [isExclusive, setIsExclusive] = useState();
 
-
-  async function onPost(e) {
+  async function onEdit(e) {
     e.preventDefault();
     const postData = {
-    //   categoryId: categoryId,
       title: title,
       description: description,
       isExclusive: isExclusive,
-    //   userId: userId
     };
 
 
     const data = await newsService.editNews(postData, id);
-
-
-
-        if (data.message === "Record updated successfully") {
+    
+    if (data.message === "Record updated successfully") {
  
-            toast.success("Did it !");
+            toast.success("Edited!");
             setTimeout(() => {  history.push("/"); }, 2000);
         }
         else {
-            toast.error('oops!');
+          console.log(data)
+            toast.error(data);
         }
-
-
-      
-      // .catch((err)=> {
-
-      //   toast.error('Something is wrong!');
-      // });
   }
 
 
   
 
   return (
-    <div>
+    <div className='editing'>
       
-        <form onSubmit={onPost}>
+        <form className='edit-post-form' onSubmit={onEdit}>
         <div className="formElements">
           <h2>Post to Exclusive Khabar!</h2>
           <label>Category: {category}</label> <br /><br/>
-          {/* <input
-            type="number"
-            onChange={(e) => {
-              setCategoryId(e.target.value);
-            }}
-           placeholder="Enter CategoryId"
-            value={categoryId}
-            name="categoryId"
-            optional
-          />
-          <br /> */}
+ 
           <label>Title : </label> <br />
           <input
             type="text"
@@ -127,6 +99,7 @@ function Posts(props) {
             onChange={(e) => {
               setIsExclusive(e.target.value);
             }}
+            
             placeholder="Enter Exclusive"
             value={true}
             name="isExclusive"
@@ -144,21 +117,9 @@ function Posts(props) {
             name="isExclusive"
             required
           />
-          <br/>
-          {/*<label>User : {user}</label> <br />
-          <input
-            type="text"
-            onChange={(e) => {
-              setUserId(e.target.value);
-            }}
-            placeholder="Enter UserId"
-            value={userId}
-            name="userId"
-            required
-          /> */}
           
           <br />
-          <button type="submit">Update</button>
+          <button className='button' type="submit">Update</button>
           <ToastContainer
             position="top-center"
             autoClose={2000}

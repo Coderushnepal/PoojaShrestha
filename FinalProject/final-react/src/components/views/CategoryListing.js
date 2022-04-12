@@ -25,7 +25,7 @@ function CategoryListing () {
 
 
     return (
-        <div>
+        <div className="category-container">
 
             {category.map((eachCategory, index) => (
 

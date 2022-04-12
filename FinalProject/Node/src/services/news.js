@@ -1,25 +1,44 @@
 import Boom from '@hapi/boom';
+import { request, response } from 'express';
 
 import News from '../models/News.js';
 import logger from '../utils/logger.js';
 
 
 export async function getAllNews(query) {
-    
-	// console.log('here', query);
-	// const categoryFilter = query.categoryId;
+	
+	const pageFilter = query.page;
+	const limitFilter = query.limit;
 
 	logger.info('Fetching a list of all news');
+
     
 	const news = await new News().getAllNews();
+	// console.log('qudfdsfery', request.query);4
+	let {page, size} = query;
+	if(!page) {
+		page = 1
+	}
+	if(!size) {
+		size=4
+	}
 
-	let filteredNews = news;
+
+	const limit = parseInt(size);
+	// const offset  = page-1 * size;
+
+	if(pageFilter) {
+		const filteredNews = news.filter((news) => +pageFilter);
+	} 
+
+
 
 	return {
 		message: 'List of News',
-		data: filteredNews,
+		data: news,
 	};
 }
+
 
 export async function getEachNews(id) {
 	logger.info(`Fetching news with id ${id}`);
@@ -75,6 +94,7 @@ export async function addNews(params) {
 export async function updateNews(id, params) {
 
 	logger.info(`Checking the existence of news with id ${id}`);
+	console.log(params);
 
 	const news = await new News().getById(id);
 
@@ -87,17 +107,15 @@ export async function updateNews(id, params) {
 	logger.info(`Updating the news for news id ${id}`);
 
 	await new News().updateById(id, {
-		// category_id: params.category_id,
 		title: params.title,
 		description: params.description,
-		is_exclusive: params.is_exclusive,
-		// published_date: params.published_date,
-		// user_id: params.user_id
+		is_exclusive: params.isExclusive,
 	});
 
   logger.info(`Fetching the updated data for news id ${id}`);
 
   const updatedData = await new News().getNewsDetails(id);
+
 
 	return{
 		data: updatedData,

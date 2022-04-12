@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { USERS, NEWS, CREATENEWS } from '../../constants/routes';
-import Posts from './Posts';
+// import Posts from '../../assets/images/logo.png';
 
 
 const Header = () => {
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
     const [loggedIn, setLoggedIn] = useState({});
+    const [admin, setAdmin] = useState({});
 
 
     useEffect(() => {
 
         setInterval(() => {
             const existingUser = localStorage.getItem("Token");
+            const admin = localStorage.getItem("Admin");
             const user = existingUser;
             setLoggedIn(user);
-            
-    }, 100)
-}, []);
+            setAdmin(admin)    
+        }, 100)
+    }, []);
 
     const logout = () => {
 
@@ -27,11 +29,11 @@ const Header = () => {
     }
 
     return (
-        <div>
+        <div className='header--container'>
         <div className="header">
-            <a href="#" className='header__hamburger'><i className="fa fa-bars fa-lg"></i></a>
+            <Link to={NEWS} className='header__hamburger'><i className="fa fa-home fa-lg"></i></Link>
             {/* <a href='#' className='header__center'><img src="images/logo.png" className='header__image'/></a> */}
-            {(loggedIn) ? (<span className='header__user' onClick={logout}>Logout</span>) :(
+            {(loggedIn) ? (<Link to={NEWS} className='header__user' onClick={logout}>Logout</Link>) :(
 		    <Link to={USERS} className='header__user'><i className="fa fa-user fa-lg"></i></Link> )
             }
         </div>
@@ -42,8 +44,8 @@ const Header = () => {
             <p className='header__date'>{date}</p> 
         </div>
 
-        <div>
-        {(loggedIn) ? (<button className='createPosts'> <Link to={CREATENEWS}>Create Posts</Link> </button>) : ('')}
+        <div className='create-post-container'>
+        {(admin === "true") ? (<button className='createPosts'> <Link to={CREATENEWS}>Create Posts</Link> </button>) : ('')}
         </div>
         
         </div>

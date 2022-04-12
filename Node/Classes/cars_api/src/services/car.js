@@ -6,7 +6,7 @@ import CarImage from '../models/CarImage.js';
 
 export async function getAllCars(query) {
     
-	console.log('here', query);
+	console.log('here', query.manufacturerId);
 	const manufacturerFilter = query.manufacturerId;
 	const modelFilter = query.model? query.model.split(',') : [];
 

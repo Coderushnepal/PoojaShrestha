@@ -2,12 +2,18 @@ form {
     border: 1px solid none;
     border-radius: 4px;
     box-shadow: 0px 3px 8px 5px #d9dadb;
-    /* margin: 0 auto; */
+    margin: 0 auto;
     padding: 30px 40px;
     background-color: #ffffff;
-    width: 40%; 
+    margin-bottom: 30px;
     float: left;
-    margin-left: 50px;
+    margin-top: 20px;
+
+}
+
+.creating, .editing, .user-entry{
+    width: 90%;
+    margin: 0 auto;
 }
 
 label {
@@ -17,7 +23,7 @@ label {
 
 
 
-input {
+input, textarea {
     color: #000000;
     padding: 10px;
     border-radius: 3px;
@@ -28,19 +34,6 @@ input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-}
-
-.userButton {
-    background-color: #3498db;
-    border: none;
-    width: 40%;
-    box-sizing: border-box;
-    color: #ffffff;
-    padding: 10px;
-    font-size: 17px;
-    border-radius: 3px;
-    margin-right: 20px;
-    /* float: left; */
 }
 
 .formElements h2{
@@ -55,8 +48,54 @@ input {
 .formElements {
     font-family: 'Lora', serif;
     margin: 0 auto;
-    width: 80%;
+    width: 95%;
 }
 
+.button {
+    padding: 15px;
+    width: 130px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #000000;
+    color: #efc942;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 10px;
+    /* margin-left: 20%; */
+}
+
+.button:active {
+    background-color: #efc942;
+    color: #000000;
+}
+
+@media only screen and (min-width: 768px) {
+    .creating, .editing, .user-entry{
+        max-width: 1440px;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .create-post-form, .edit-post-form {
+        float: none;
+    }
+
+    .user-entry {
+        max-width: 1440px;
+        width: 90%;
+        margin-top: 15px;
+    }
+
+    .signup-form {
+        width: 40%;
+    }
+
+    .login-form {
+        width: 40%;
+        float: right;
+    } 
+}
 
 

@@ -7,20 +7,38 @@ export const getUser = async () => {
     
     const url = `${config.apiUrl}${config.endpoints.users}`;
     console.log('url', url);
-    const { data } = await axios.get(url); 
-    // console.log(data);
-    // accesssing the api
-  
+    const { data } = await axios.get(url);
     return data;
 };
 
-// export const fetchNewsById = async (id) => {
-//     console.log(id);
-//     const url = `${config.apiUrl}${config.endpoints.eachNews}`;
-//     // console.log('url', url);
+export const signupUser = async (postData) => {
+
+    try{
+
+    const url = `${config.apiUrl}${config.endpoints.users}`;
+    const {data} = await axios.post((url), postData);
+
+    console.log(data);
   
-//     const {data} = await axios.get(interpolate(url, {id}));
-//     console.log('data: ',data);
+    return data;
+    }
+    catch(err) {
+        console.log(err.response);
+        return (err.response.data.message);
+    }
+}
+
+export const logUser = async (logData) => {
+
+    try{
+
+    const url = `${config.apiUrl}${config.endpoints.login}`;
+    const {data} = await axios.post((url), logData);
   
-//     return data;
-// }
+    return data;
+    }
+    catch(err) {
+        console.log(err.response);
+        return (err.response.data.message);
+    }
+}

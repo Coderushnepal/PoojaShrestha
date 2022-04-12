@@ -1,11 +1,12 @@
 const config = {
     apiUrl: process.env.REACT_APP_API_URL,
     endpoints: {
-        news: '',
+        news: '/news',
         eachNews: '/news/:id',
         users: '/users',
         category: '/category',
-        eachCategory: '/category/:id'
+        eachCategory: '/category/:id',
+        login: '/login'
     },
 }
 

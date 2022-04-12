@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import { useHistory } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import * as userService from "../../services/user";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Users = () => {
   const [userNameSign, setuserNameSign] = useState("");
@@ -13,7 +16,7 @@ const Users = () => {
 
   const history = useHistory()
 
-  function onAddUsers(e) {
+  async function onAddUsers(e) {
     e.preventDefault();
     const postData = {
       name: userNameSign,
@@ -21,51 +24,43 @@ const Users = () => {
       password: userPasswordSign,
     };
 
-    axios
-      .post("http://127.0.01:1234/users", postData)
-      .then((response) => {
-        const {data} = response;
-        console.log(data);
+    const data = await userService.signupUser(postData);
 
         if (data.message === "Added user successfully") {
           localStorage.setItem("Token", data.data.token);
-          history.push("/");
+          toast.success('Signed in!')
+          setTimeout(() => {  history.push("/"); }, 2000);
+        }
+        else {
+          toast.error(data);
         }
 
-
-      });
   }
 
  
-  function onLogUsers(e) {
+  async function onLogUsers(e) {
     e.preventDefault();
     const logData = {
       email: userEmailLog,
       password: userPasswordLog,
     };
 
-    axios
-      .post("http://127.0.01:1234/login", logData)
-      .then((response) => {
-        const {data} = response;
-        console.log(data);
-
+    const data = await userService.logUser(logData);
         if (data.message === "Logged in succesfully") {
           localStorage.setItem("Token", data.data.token);
           localStorage.setItem("Admin", data.data.user.is_admin);
-
-          history.push("/");
-
+          toast.success('Logged in!')
+          setTimeout(() => {  history.push("/"); }, 2000);
         }
-      })
-
-      
+        else {
+          toast.error(data);
+        }  
     
-    };
+    }
 
   return (
-    <>
-      <form onSubmit={onAddUsers}>
+    <div className="user-entry">
+      <form className="signup-form" onSubmit={onAddUsers}>
         <div className="formElements">
           <h2>Signup to Exclusive Khabar!</h2>
           <label>Name: </label>
@@ -105,11 +100,11 @@ const Users = () => {
             required
           />
           <br />
-          <button className="userButton">Sign up</button>
+          <button className="button">Sign up</button>
         </div>
       </form>
 
-      <form onSubmit={onLogUsers}>
+      <form className="login-form" onSubmit={onLogUsers}>
         <div className="formElements">  
           <h2>Login to Exclusive Khabar!</h2>
           <label>Email: </label> <br />
@@ -136,10 +131,24 @@ const Users = () => {
             required
           />
           <br />
-          <button type="submit" className="userButton">Login</button>
+          <button type="submit" className="button">Login</button>
+          
         </div>
+        
       </form>
-    </>
+      <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover
+            />
+      
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ class News extends DBModel {
   }
 
   getAllNews() {
-    //   console.log(this);
+    
     return this.query(getAllNewsQuery);
   }
 

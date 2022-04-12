@@ -1,126 +1,56 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
-import Loading from "../common/isLoading";
-import { fetchNews } from "../../actions/news";
-import NewsComponent from "./newsComponent";
+import "react-toastify/dist/ReactToastify.css";
 import * as newsService from "../../services/news";
-import Pagination from "./Pagination";
+import { useSelector } from "react-redux";
+import config from "../../config";
+import { interpolate } from "../../utils/string";
+import NewsListing from "./newsListing";
 
-const NewsListing = () => {
-  const dispatch = useDispatch();
-  const news = useSelector((store) => store.news.list);
+function DeletePosts(props) {
+  const history = useHistory();
 
-  const isLoading = useSelector((store) => store.news.isLoading);
-  const isNoMore = useSelector((store) => store.news.isNoMore);
+  const { id } = props.match.params;
 
-  // const inputRef = useRef();
-
-
-  const [pageNumber, setPageNumber] = useState(1);
-  const [newsPerPage, setnewsPerPage] = useState(50);
-
-  const totalPages = Math.ceil(news.length / newsPerPage);
-
-  // const observer = new IntersectionObserver((entries) => {
-
-  //   console.log(entries);
-  // });
-
-  const lastElementRef = useCallback((node) => {
-    console.log(node);
-    // observer.observe(node);
-  }, [])
-
-
-
-  // const lastElementRef = useCallback(
-  //   (node) => {
-    
-  //     const observer = new IntersectionObserver(([lastElement]) => {
-  //       if (lastElement.isIntersecting && !isLoading && !isNoMore) {
-  //         setPageNumber((pageNumber) => pageNumber + 1);
-  //       }
-  //     });
-
-  //     if (isNoMore) {
-  //       observer.disconnect();
-  //     }
-
-  //     if (node) {
-  //       observer.observe(node);
-  //     }
-  //   },
-  //   [isLoading, isNoMore]
-  // );
+  const url = `${config.apiUrl}${config.endpoints.eachNews}`;
 
   useEffect(() => {
-      dispatch(fetchNews(news));
-  }, [dispatch]);
+    const deleteNews = async () => {
+      axios
+        .delete(interpolate(url, { id }))
+        .then((response) => {
+          const { data } = response;
 
-  const indexOfLastNews = pageNumber * newsPerPage;
-  const indexOfFirstNews = indexOfLastNews - newsPerPage;
-  const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
+          if (data.message === "Record removed successfully") {
+            toast.success("Deleted!");
+            setTimeout(() => {
+              history.push("/");
+            }, 2000);
+          } else {
+            toast.error(response);
+            console.log('oops', response);
+          }
+        })
+        .catch((err) => {
+          console.log('err', err);
+          toast.error("Something is wrong!");
+          history.push("/news");
+          
+        });
+    };
 
-  const existingUser = localStorage.getItem("Token");
+    deleteNews();
+  }, []);
 
   return (
-    <div className="newsSection">
-        <button
-          onClick={() =>
-            pageNumber <= totalPages
-              ? setPageNumber((pageNumber) => pageNumber + 1)
-              : setPageNumber((pageNumber) => pageNumber == 1)
-          }
-        >
-          Look
-        </button>
-        <div className="container">
-          {currentNews.map((eachNews, index) =>
-
-          index === news.length -1 ? (
-
-          (!existingUser) ?
-                  (
-                    (!eachNews.isExclusive) ?
-                    (
-                      <div ref={lastElementRef} key={eachNews.id} className="eachNews">
-                        <NewsComponent eachNews={eachNews} />
-                      </div>
-                    ) : (
-                    index++)
-                  )
-
-                  :(
-                    
-                <div ref={lastElementRef} key={eachNews.id} className="eachNews">
-                  <NewsComponent eachNews={eachNews} />
-                </div>
-              )) : (
-                (!existingUser) ?
-              ((!eachNews.isExclusive) ?
-                (
-                  <div key={eachNews.id} className="eachNews">
-                    <NewsComponent eachNews={eachNews} />
-                  </div>
-                )
-              : (index++))
-            :(
-                <div key={eachNews.id} className="eachNews">
-                  <NewsComponent eachNews={eachNews} />
-                </div>
-              )
-
-              )
-          )}
-          {isLoading && (
-            <div className="p-relative">
-              <Loading />
-            </div>
-          )}
-        </div>
-      </div>
+    <>
+      <NewsListing />
+      <ToastContainer limit={1} />
+    </>
   );
 }
 
-export default NewsListing;
+export default DeletePosts;

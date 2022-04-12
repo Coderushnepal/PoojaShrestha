@@ -20,92 +20,106 @@ const NewsListing = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [newsPerPage, setnewsPerPage] = useState(5);
 
+  const perPage = 5;
+
   
 
-  // const observer = new IntersectionObserver(([lastElement]) => {
-  //   if (lastElement && lastElement.isIntersecting) {
-  //             setPageNumber((pageNumber) => pageNumber + 1);
-  //           }
+  const observer = new IntersectionObserver(([lastElement]) => {
+    if (lastElement.isIntersecting) {
+              // setPageNumber((pageNumber) => pageNumber + 1);
+            }
 
-  //           console.log(lastElement);
+            console.log(lastElement);
  
-  // });
+  });
 
-  // const lastElementRef = useCallback((node) => {
-  //   if(node){
-  //   observer.observe(node);}
-  // }, [])
+  const lastElementRef = useCallback((node) => {
+    if(node){
+    observer.observe(node);}
+  }, [])
 
   
-
-  const lastElementRef = useCallback(
-    (node) => {
-    
-      const observer = new IntersectionObserver(([lastElement]) => {
-        if (lastElement.isIntersecting && !isLoading && !isNoMore) {
-          setPageNumber((pageNumber) => pageNumber + 1);
-        }
-      });
-
-      if (isNoMore) {
-        observer.disconnect();
-      }
-
-      if (node) {
-        observer.observe(node);
-      }
-    },
-    [isLoading, isNoMore]
-  );
 
   useEffect(() => {
       dispatch(fetchNews(news));
   }, [dispatch]);
 
-  const indexOfLastNews = pageNumber * newsPerPage;
-  const indexOfFirstNews = indexOfLastNews - newsPerPage;
-  const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
+  // const indexOfLastNews = pageNumber * newsPerPage;
+  // const indexOfFirstNews = indexOfLastNews - newsPerPage;
+  // const news = news.slice(indexOfFirstNews, indexOfLastNews);
 
-  const totalPages = Math.ceil(news.length / newsPerPage);
-  console.log('pages', totalPages);
-  console.log('length', news.length);
-  console.log('peages', totalPages);
+  // const totalPages = Math.ceil(news.length / newsPerPage);
+  // console.log('total pages', totalPages);
+  // console.log('length', news.length);
+  // console.log('pages', totalPages);
 
 
 
   const [loggedIn, setLoggedIn] = useState({});
 
 
-//   useEffect(() => {
+  useEffect(() => {
 
-//       setInterval(() => {
-//           const existingUser = localStorage.getItem("Token");
-//           const user = existingUser;
-//           setLoggedIn(user);
+      setInterval(() => {
+          const existingUser = localStorage.getItem("Token");
+          const user = existingUser;
+          setLoggedIn(user);
           
-//   }, 100)
-// }, []);
+  }, 100)
+}, []);
+
+
+// const lastElementRef = useEffect(
+//   (node) => {
+  
+//     const observer = new IntersectionObserver(([lastElement]) => {
+      
+//       if (lastElement.isIntersecting && !isLoading && !isNoMore) 
+//       console.log('page', pageNumber);
+//       console.log('total', totalPages);{
+//         setInterval(() => {
+          
+//           pageNumber < totalPages
+//             ? setPageNumber((pageNumber) => pageNumber = pageNumber+1)
+//             : setPageNumber((pageNumber) => pageNumber = 1)
+//         }, 5000)
+        
+//       }
+//     });
+
+//     if (isNoMore) {
+//       observer.disconnect();
+//     }
+
+//     if (node) {
+//       observer.observe(node);
+//     }
+//   },
+//   [dispatch, isLoading, isNoMore]
+// );
+
 
 
 
   return (
     <div className="newsSection">
-      <div>
+      
 
-        <button
+        {/* <button
           onClick={() => 
               pageNumber < totalPages
               ? setPageNumber((pageNumber) => pageNumber + 1)
-              : setPageNumber((pageNumber) => pageNumber == 1)
+              : setPageNumber((pageNumber) => pageNumber = 1)
           }
         >
           {console.log('no',pageNumber)}
           Look
-        </button>
-        {currentNews.map((eachNews, index) => {
+        </button> */}
+        
+        {news.map((eachNews, index) => {
 
           
-      if(index === currentNews.length -1) { 
+      if(index === news.length -1) { 
           if (loggedIn){
             return(
               <div ref={lastElementRef} key={eachNews.id} className="eachNews">
@@ -149,7 +163,7 @@ const NewsListing = () => {
             <Loading />
           </div>
         )}
-      </div>
+    
     </div>
   );
 };

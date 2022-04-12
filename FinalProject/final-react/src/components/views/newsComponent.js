@@ -16,59 +16,20 @@ const NewsComponent = (props) => {
   const index = props.index;
   const dispatch = useDispatch();
 
-  // console.log('eachNews', eachNews);
-
-  // useEffect(() => {
-  //   const fetchAllNews = async () => {
-  //     const eachNews = await newsService.fetchNews();
-
-  //     dispatch(fetchNews(eachNews));
-  //   };
-  //   fetchAllNews();
-  // }, []);
-  // const[user, setUser] = useState(false);
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const user = await userService.getUser();
-  //     setUser(user.data);
-  //     console.log('index',user.data[index]);
-  //   };
-  //   fetchUser();
-  // }, []);
-  // console.log('user', user);
-
-
-  // const news = useSelector((store) => store.news.list);
-
-  // const news_peek = news.description;
-  // const peek = news_peek || '';
-  // const news_teaser = peek ?. slice(0, 20);console
-  
-  // .toString().slice(0,20);
-
-
-
-  // if(!eachNews.isExclusive) {
-
-    // const existingUser = localStorage.getItem('Token');
-    // const admin = localStorage.getItem('Admin');
-
-    const [admin, setAdmin] = useState({});
+  const [admin, setAdmin] = useState({});
 
 
     useEffect(() => {
 
         setInterval(() => {
             const existingUser = localStorage.getItem("Admin");
-            const user = existingUser;
-            setAdmin(user);
+            const admin = existingUser;
+            setAdmin(admin);
             }, 100)
     }, []);
     
 
     const path = eachNews.id;
-    // console.log(admin);
 
   return (
 
@@ -95,7 +56,7 @@ const NewsComponent = (props) => {
         <span className="updateDelete">
         <Link to={`/edit/${eachNews.id}`}><i className="fa fa-pencil edit"></i></Link>
         <Link to={`delete/${eachNews.id}`}><i className="fa fa-trash delete"></i></Link>
-          </span>): (' ') }
+          </span>): ('') }
       </>
    
   ); 

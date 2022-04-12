@@ -7,7 +7,7 @@ import * as categoryController from './controllers/category.js';
 import authenticate from "./middlewares/authenticate.js";
 import { validateBody, validateQueryParams } from "./middlewares/validation.js";
 import addUserSchema from "./schema/addUser.js";
-import getUsersQuerySchema from "./schema/getNewsQuery.js";
+import getNewsQuerySchema from "./schema/getNewsQuery.js";
 import addCategorySchema from "./schema/addCategory.js";
 import addPostSchema from "./schema/addNews.js";
 import updateUserSchema from "./schema/updateUser.js";
@@ -20,7 +20,7 @@ const router = Router();
 
 router.get('/users', userController.getUser);
 
-router.get('/', validateQueryParams(getUsersQuerySchema), newsController.getNews);
+router.get('/news', validateQueryParams(getNewsQuerySchema), newsController.getNews);
 
 router.get('/category', categoryController.getCategory);
 
@@ -32,7 +32,7 @@ router.get('/users/:userIdentifier', userController.getEachUser);
 
 router.post('/category', validateBody(addCategorySchema), categoryController.addCategory);
 
-router.post('/', validateBody(addPostSchema), newsController.addNews);
+router.post('/news', validateBody(addPostSchema), newsController.addNews);
 
 router.post('/users', validateBody(addUserSchema), userController.addUser);
 
