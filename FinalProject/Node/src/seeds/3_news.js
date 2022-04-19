@@ -4,7 +4,7 @@
  * @param   {object} knex
  * @returns {Promise}
  */
- export function seed(knex) {
+export function seed(knex) {
   return knex('news')
     .del()
     .then(() => {
@@ -12,10 +12,10 @@
         {
           category_id: 1,
           title: 'RRR joins 1 crore box office',
-          description: "Alia Bhatt, NTR, Ajay Devgan, Ram Charan",
+          description: 'Alia Bhatt, NTR, Ajay Devgan, Ram Charan',
           is_exclusive: false,
-          user_id: 1
-        }
+          user_id: 1,
+        },
       ]);
     });
 }

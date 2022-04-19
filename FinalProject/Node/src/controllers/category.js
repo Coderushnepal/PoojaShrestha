@@ -1,7 +1,7 @@
-import * as categoryService from "../services/category.js";
+import * as categoryService from '../services/category.js';
 
 export function getCategory(req, res, next) {
-console.log(req.query); 
+  console.log(req.query);
   categoryService
     .getAllCategory(req.query)
     .then((data) => res.json(data))
@@ -15,11 +15,9 @@ export function getEachCategory(req, res, next) {
     .catch((err) => next(err));
 }
 
-
 export function addCategory(req, res, next) {
-
-    categoryService
-      .createCategory(req.body)
-      .then((data) => res.json(data))
-      .catch((err) => next(err));
+  categoryService
+    .createCategory(req.body)
+    .then((data) => res.json(data))
+    .catch((err) => next(err));
 }

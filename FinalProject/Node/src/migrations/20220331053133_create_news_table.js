@@ -4,15 +4,15 @@
  * @param { Knex } knex
  * @returns { Promise<void> }
  */
- export function up(knex) {
+export function up(knex) {
   return knex.schema.createTable('news', (table) => {
-  table.increments('id').primary().unsigned();
-  table.integer('category_id').references('id').inTable('category').notNull();
-  table.string('title', 500).notNull();
-  table.string('description', 1000).notNull();
-  table.boolean('is_exclusive').default(true);
-  table.timestamp('published_date').default(knex.fn.now());
-  table.integer('user_id').references('id').inTable('users').notNull();
+    table.increments('id').primary().unsigned();
+    table.integer('category_id').references('id').inTable('category').notNull();
+    table.string('title', 500).notNull();
+    table.string('description', 1000).notNull();
+    table.boolean('is_exclusive').default(true);
+    table.timestamp('published_date').default(knex.fn.now());
+    table.integer('user_id').references('id').inTable('users').notNull();
   });
 }
 

@@ -5,7 +5,6 @@
 // import NewsComponent from "./newsComponent";
 // import * as newsService from '../../services/news'
 
-
 // const ExclusiveNews =  () => {
 //     const news = useSelector((state) => state.news.list);
 
@@ -20,8 +19,6 @@
 //         fetchAllNews();
 //     }, []);
 
-
-
 //     return (
 
 //         <div className="newsSection">
@@ -30,11 +27,10 @@
 //             {console.log('Ex news', news)}
 //             {news.map((eachNews, index) =>
 
-
 //                 <div key={eachNews.id}>
 //                 <NewsComponent eachNews={eachNews} />
 //                 {console.log('index', eachNews.isExclusive)}
-//                 </div> 
+//                 </div>
 //             )}
 //         </div>
 //         </div>
@@ -42,4 +38,3 @@
 // }
 
 // export default ExclusiveNews;
-

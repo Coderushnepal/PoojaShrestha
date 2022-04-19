@@ -1,13 +1,13 @@
-import App from "./App"
-import React from "react";
-import ReactDOM from "react-dom";
-import { createStore, applyMiddleware, compose } from "redux";
-import { Provider } from "react-redux";
+import App from './App';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
 
-import thunk from "redux-thunk";
+import thunk from 'redux-thunk';
 
-import "./public";
-import reducers from "./reducers/index";
+import './public';
+import reducers from './reducers/index';
 
 // const store = createStore(
 //   reducers,
@@ -28,5 +28,5 @@ ReactDOM.render(
       <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

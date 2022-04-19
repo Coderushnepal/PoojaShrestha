@@ -7,117 +7,116 @@ import { hash, compare, createToken } from '../utils/crypt.js';
 // get user
 
 export async function getAllUser() {
-    logger.info("Fetching list of users");
+  logger.info('Fetching list of users');
 
-    const data = await new User().getAll();
+  const data = await new User().getAll();
 
-    return {
-        message: 'List of users:',
-        data
-    };
+  return {
+    message: 'List of users:',
+    data,
+  };
 }
 
 export async function getEachUser(id) {
-	logger.info(`Fetching user with id ${id}`);
-	const user = await new User().getById(id);
+  logger.info(`Fetching user with id ${id}`);
+  const user = await new User().getById(id);
 
-	if(!user) {
-		logger.error(`Cannot find user with userId ${id}`);
+  if (!user) {
+    logger.error(`Cannot find user with userId ${id}`);
 
-		throw new Boom.notFound(`Cannot find user with userId ${id}`);
-	}
+    throw new Boom.notFound(`Cannot find user with userId ${id}`);
+  }
 
-	return {
-		message: 'Details of User:',
-		data: user
-	};	
+  return {
+    message: 'Details of User:',
+    data: user,
+  };
 }
 
 // Creating new user
 
 export async function createUser(params) {
-    const { name, email, password, isAdmin } = params;
-    console.log('params', params);
-  
-    const existingUser = await new User().findByParams({ email });
-  
-    if (existingUser) {
-      logger.error('The email address is already taken');
-  
-      throw new Boom.badRequest('The email address is already taken');
-    }
-  
-    const hashedPassword = hash(password);
-  
-    const [insertedData] = await new User().save({ name, email, password: hashedPassword, isAdmin });
-    console.log('insertedData', insertedData);
+  const { id, name, email, password, isAdmin } = params;
+  console.log('params', params);
 
-    const user = {
-      name: name,
-      email: email,
-      is_admin: isAdmin
-    };
-  
-    const token = createToken(user);
-  
-    return {
-      data: { token, user},
-      message: 'Added user successfully'
-    };
+  const existingUser = await new User().findByParams({ email });
+
+  if (existingUser) {
+    logger.error('The email address is already taken');
+
+    throw new Boom.badRequest('The email address is already taken');
+  }
+
+  const hashedPassword = hash(password);
+
+  const [insertedData] = await new User().save({ name, email, password: hashedPassword, isAdmin });
+  console.log('insertedData', insertedData);
+
+  const user = {
+    id: id,
+    email: email,
+    is_admin: isAdmin,
+  };
+
+  const token = createToken(user);
+
+  return {
+    data: { token, user },
+    message: 'Added user successfully',
+  };
 }
 
-
 export async function updateUser(id, params) {
+  logger.info(`Checking the existence of user with id ${id}`);
 
-	logger.info(`Checking the existence of user with id ${id}`);
+  const user = await new User().getById(id);
 
-	const user = await new User().getById(id);
+  if (!user) {
+    logger.error(`Cannot find user with id ${id}`);
 
-	if(!user){
-		logger.error(`Cannot find user with id ${id}`);
+    throw new Boom.notFound(`Cannot find user with id ${id}`);
+  }
 
-		throw new Boom.notFound(`Cannot find user with id ${id}`);
-	}
+  logger.info(`Updating the user for user id ${id}`);
 
-	logger.info(`Updating the user for user id ${id}`);
+  const hashedPassword = hash(params.password);
 
-	await new User().updateById(id, {
-		name: params.name,
-		email: params.email,
-		password: params.password,
-	});
+  await new User().updateById(id, {
+    name: params.name,
+    email: params.email,
+    password: hashedPassword,
+  });
 
   logger.info(`Fetching the updated data for user id ${id}`);
 
   const updatedData = await new User().getById(id);
 
-	return{
-		data: updatedData,
-		message: 'Record updated successfully',
-	};
+  return {
+    data: updatedData,
+    message: 'Record updated successfully',
+  };
 }
 
 export async function removeUser(id) {
-	logger.info(`Checking if user with id ${id} exists`);
-  
-	const user = await new User().getById(id);
-  
-	if (!user) {
-	  logger.error(`Cannot delete user with id ${id} because it doesn't exist`);
-  
-	  throw new Boom.notFound(`Cannot delete user with id ${id} because it doesn't exist`);
-	}
-  
-	await new User().removeById(id);
-  
-	return {
-	  message: 'Record removed successfully'
-	};
+  logger.info(`Checking if user with id ${id} exists`);
+
+  const user = await new User().getById(id);
+
+  if (!user) {
+    logger.error(`Cannot delete user with id ${id} because it doesn't exist`);
+
+    throw new Boom.notFound(`Cannot delete user with id ${id} because it doesn't exist`);
   }
 
+  await new User().removeById(id);
+
+  return {
+    message: 'Record removed successfully',
+  };
+}
 
 export async function login(params) {
-  const {email, password} = params;
+  const { email, password } = params;
 
   const existingUser = await new User().findByParams({ email });
 
@@ -139,20 +138,14 @@ export async function login(params) {
   const user = {
     id: existingUser.id,
     email: existingUser.email,
-    is_admin: existingUser.isAdmin 
+    is_admin: existingUser.isAdmin,
   };
   console.log('user', user);
 
   const token = createToken(user);
 
   return {
-    data: { token, user},
-    message: 'Logged in succesfully'
+    data: { token, user },
+    message: 'Logged in succesfully',
   };
 }
-
-  
-
-
-
-

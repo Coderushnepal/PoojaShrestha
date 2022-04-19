@@ -1,9 +1,6 @@
-import { query } from "express";
-import * as userService from "../services/user.js";
-import logger from "../utils/logger.js";
+import * as userService from '../services/user.js';
 
 export function getUser(req, res, next) {
-
   userService
     .getAllUser(req.query)
     .then((data) => res.json(data))
@@ -19,10 +16,10 @@ export function getEachUser(req, res, next) {
 }
 
 export function addUser(req, res, next) {
-    userService
-      .createUser(req.body)
-      .then((data) => res.json(data))
-      .catch((err) => next(err));
+  userService
+    .createUser(req.body)
+    .then((data) => res.json(data))
+    .catch((err) => next(err));
 }
 
 export function updateUser(req, res, next) {

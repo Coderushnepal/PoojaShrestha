@@ -5,17 +5,17 @@
  * @returns {Promise}
  */
 export function seed(knex) {
-  return knex("category")
+  return knex('category')
     .del()
     .then(() => {
-      return knex("category").insert([
+      return knex('category').insert([
         {
-          name: "Entertainment",
-          description: "This is entertainment section"
+          name: 'Entertainment',
+          description: 'This is entertainment section',
         },
         {
-          name: "Sports",
-          description: "This is sports section"
+          name: 'Sports',
+          description: 'This is sports section',
         },
       ]);
     });

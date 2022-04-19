@@ -1,22 +1,19 @@
-import { Router } from "express";
-import cors from 'cors';
+import { Router } from 'express';
 
-import * as newsController from './controllers/news.js';
-import * as userController from './controllers/user.js'
-import * as categoryController from './controllers/category.js';
-import authenticate from "./middlewares/authenticate.js";
-import { validateBody, validateQueryParams } from "./middlewares/validation.js";
-import addUserSchema from "./schema/addUser.js";
-import getNewsQuerySchema from "./schema/getNewsQuery.js";
-import addCategorySchema from "./schema/addCategory.js";
-import addPostSchema from "./schema/addNews.js";
-import updateUserSchema from "./schema/updateUser.js";
+import loginSchema from './schema/login.js';
+import addPostSchema from './schema/addNews.js';
+import addUserSchema from './schema/addUser.js';
+import updateUserSchema from './schema/updateUser.js';
 import updateNewsSchema from './schema/updateNews.js';
-import loginSchema from "./schema/login.js"
-
+import * as userController from './controllers/user.js';
+import addCategorySchema from './schema/addCategory.js';
+import * as newsController from './controllers/news.js';
+import authenticate from './middlewares/authenticate.js';
+import getNewsQuerySchema from './schema/getNewsQuery.js';
+import * as categoryController from './controllers/category.js';
+import { validateBody, validateQueryParams } from './middlewares/validation.js';
 
 const router = Router();
-
 
 router.get('/users', userController.getUser);
 
@@ -44,15 +41,4 @@ router.delete('/news/:newsIdentifier', newsController.removeNews);
 
 router.post('/login', validateBody(loginSchema), userController.login);
 
-
-
-
-
-
-
-
-
-
-
 export default router;
-

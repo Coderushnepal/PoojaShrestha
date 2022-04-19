@@ -1,8 +1,7 @@
-import * as newsService from "../services/news.js";
+import * as newsService from '../services/news.js';
 
 export function getNews(req, res, next) {
-  
-  console.log("query", req.query);
+  console.log('query', req.query);
   newsService
     .getAllNews(req.query)
     .then((data) => res.json(data))
@@ -10,7 +9,7 @@ export function getNews(req, res, next) {
 }
 
 export function getEachNews(req, res, next) {
-  console.log("query", req.query);
+  console.log('query', req.query);
   newsService
     .getEachNews(+req.params.newsIdentifier)
     .then((data) => res.json(data))
@@ -18,7 +17,7 @@ export function getEachNews(req, res, next) {
 }
 
 export function addNews(req, res, next) {
-  console.log("posting:", req.body);
+  console.log('posting:', req.body);
   newsService
     .addNews(req.body)
     .then((data) => res.json(data))

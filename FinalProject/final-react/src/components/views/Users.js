@@ -1,20 +1,18 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
 
-import { useHistory } from "react-router-dom"
-import { ToastContainer, toast } from 'react-toastify';
-import * as userService from "../../services/user";
+import { useHistory } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import * as userService from '../../services/user';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Users = () => {
-  const [userNameSign, setuserNameSign] = useState("");
-  const [userEmailSign, setuserEmailSign] = useState("");
-  const [userPasswordSign, setuserPasswordSign] = useState("");
+  const [userNameSign, setuserNameSign] = useState('');
+  const [userEmailSign, setuserEmailSign] = useState('');
+  const [userPasswordSign, setuserPasswordSign] = useState('');
+  const [userEmailLog, setuserEmailLog] = useState('');
+  const [userPasswordLog, setuserPasswordLog] = useState('');
 
-  const [userEmailLog, setuserEmailLog] = useState("");
-  const [userPasswordLog, setuserPasswordLog] = useState("");
-
-  const history = useHistory()
+  const history = useHistory();
 
   async function onAddUsers(e) {
     e.preventDefault();
@@ -25,19 +23,22 @@ const Users = () => {
     };
 
     const data = await userService.signupUser(postData);
+    console.log(data);
 
-        if (data.message === "Added user successfully") {
-          localStorage.setItem("Token", data.data.token);
-          toast.success('Signed in!')
-          setTimeout(() => {  history.push("/"); }, 2000);
-        }
-        else {
-          toast.error(data);
-        }
+    if (data.message === 'Added user successfully') {
+      localStorage.setItem('Token', data.data.token);
 
+      toast.success('Signed in!');
+      setTimeout(() => {
+        history.push('/');
+        localStorage.setItem('User', data.data.user.id);
+        localStorage.setItem('Admin', data.data.user.is_admin);
+      }, 2000);
+    } else {
+      toast.error(data);
+    }
   }
 
- 
   async function onLogUsers(e) {
     e.preventDefault();
     const logData = {
@@ -46,17 +47,18 @@ const Users = () => {
     };
 
     const data = await userService.logUser(logData);
-        if (data.message === "Logged in succesfully") {
-          localStorage.setItem("Token", data.data.token);
-          localStorage.setItem("Admin", data.data.user.is_admin);
-          toast.success('Logged in!')
-          setTimeout(() => {  history.push("/"); }, 2000);
-        }
-        else {
-          toast.error(data);
-        }  
-    
+    if (data.message === 'Logged in succesfully') {
+      localStorage.setItem('Token', data.data.token);
+      localStorage.setItem('User', data.data.user.id);
+      localStorage.setItem('Admin', data.data.user.is_admin);
+      toast.success('Logged in!');
+      setTimeout(() => {
+        history.push('/');
+      }, 2000);
+    } else {
+      toast.error(data);
     }
+  }
 
   return (
     <div className="user-entry">
@@ -74,7 +76,7 @@ const Users = () => {
             value={userNameSign}
             name="username"
             required
-          />{" "}
+          />{' '}
           <br />
           <label>Email: </label> <br />
           <input
@@ -86,7 +88,7 @@ const Users = () => {
             value={userEmailSign}
             name="email"
             required
-          />{" "}
+          />{' '}
           <br />
           <label>Password : </label> <br />
           <input
@@ -105,7 +107,7 @@ const Users = () => {
       </form>
 
       <form className="login-form" onSubmit={onLogUsers}>
-        <div className="formElements">  
+        <div className="formElements">
           <h2>Login to Exclusive Khabar!</h2>
           <label>Email: </label> <br />
           <input
@@ -117,7 +119,7 @@ const Users = () => {
             value={userEmailLog}
             name="email"
             required
-          />{" "}
+          />{' '}
           <br />
           <label>Password : </label> <br />
           <input
@@ -131,23 +133,22 @@ const Users = () => {
             required
           />
           <br />
-          <button type="submit" className="button">Login</button>
-          
+          <button type="submit" className="button">
+            Login
+          </button>
         </div>
-        
       </form>
       <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable
-            pauseOnHover
-            />
-      
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

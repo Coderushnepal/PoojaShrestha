@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
-import "react-toastify/dist/ReactToastify.css";
-import * as newsService from "../../services/news";
-import { useSelector } from "react-redux";
-import config from "../../config";
-import { interpolate } from "../../utils/string";
-import NewsListing from "./newsListing";
+import 'react-toastify/dist/ReactToastify.css';
+import * as newsService from '../../services/news';
+import { useSelector } from 'react-redux';
+import config from '../../config';
+import { interpolate } from '../../utils/string';
+import NewsListing from './newsListing';
 
 function DeletePosts(props) {
   const history = useHistory();
@@ -24,10 +24,10 @@ function DeletePosts(props) {
         .then((response) => {
           const { data } = response;
 
-          if (data.message === "Record removed successfully") {
-            toast.success("Deleted!");
+          if (data.message === 'Record removed successfully') {
+            toast.success('Deleted!');
             setTimeout(() => {
-              history.push("/");
+              history.push('/');
             }, 2000);
           } else {
             toast.error(response);
@@ -36,9 +36,8 @@ function DeletePosts(props) {
         })
         .catch((err) => {
           console.log('err', err);
-          toast.error("Something is wrong!");
-          history.push("/news");
-          
+          toast.error('Something is wrong!');
+          history.push('/news');
         });
     };
 

@@ -1,58 +1,55 @@
-import axios from "axios";
-import config from "../config";
-import {interpolate, unParseQuery} from "../utils/string";
+import axios from 'axios';
+import config from '../config';
+import { interpolate, unParseQuery } from '../utils/string';
+
+const token = localStorage.getItem('Token');
+console.log('token insirde', token);
 
 export const fetchNews = async () => {
+  const url = `${config.apiUrl}${config.endpoints.news}`;
+  const { data } = await axios.get(url);
 
-    const url = `${config.apiUrl}${config.endpoints.news}`;
-    const { data } = await axios.get(url); 
-  
-    return data;
+  return data;
 };
 
 export const fetchNewsById = async (id) => {
+  const url = `${config.apiUrl}${config.endpoints.eachNews}`;
 
-    const url = `${config.apiUrl}${config.endpoints.eachNews}`;
-    
-    const {data} = await axios.get(interpolate(url, {id}));
-  
-    return data;
-}
+  const { data } = await axios.get(interpolate(url, { id }));
+  console.log('new', data);
+
+  return data;
+};
 
 export const postNews = async (postData) => {
-
-    try{
-
+  try {
     const url = `${config.apiUrl}${config.endpoints.news}`;
-    const {data} = await axios.post((url), postData);
-  
+    const { data } = await axios.post(url, postData, { headers: { Authorization: `Bearer ${token}` } });
+
     return data;
-    }
-    catch(err) {
-        console.log(err);
-        return (err.response.data.message);
-    }
-}
+  } catch (err) {
+    console.log(err);
+    return err.response.data.message;
+  }
+};
 
 export const editNews = async (postData, id) => {
-
-    try{
-
+  try {
     const url = `${config.apiUrl}${config.endpoints.eachNews}`;
-    const {data} = await axios.put((interpolate(url, {id})), postData);
+    const { data } = await axios.put(interpolate(url, { id }), postData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     console.log('edited', data);
-  
+
     return data;
-    }
-    catch(err) {
-        return (err.response.data.message);
-    }
-}
+  } catch (err) {
+    return err.response.data.message;
+  }
+};
 
 export const deleteNewsById = async (id) => {
+  const url = `${config.apiUrl}${config.endpoints.eachNews}`;
+  const { data } = await axios.delete(interpolate(url, { id }), { headers: { Authorization: `Bearer ${token}` } });
 
-    const url = `${config.apiUrl}${config.endpoints.eachNews}`;
-    const {data} = await axios.delete(interpolate(url, {id}));
-  
-    return data;
-}
+  return data;
+};

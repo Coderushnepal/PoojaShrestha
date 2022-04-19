@@ -4,7 +4,7 @@
  * @param   {object} knex
  * @returns {Promise}
  */
- export function seed(knex) {
+export function seed(knex) {
   return knex('users')
     .del()
     .then(() => {
@@ -20,7 +20,7 @@
           password: 'postgres',
           email: 'pushpa@abc.com',
           is_admin: false,
-        }
+        },
       ]);
     });
 }

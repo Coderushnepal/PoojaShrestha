@@ -10,4 +10,3 @@ const schema = Joi.object({
 });
 
 export default schema;
-

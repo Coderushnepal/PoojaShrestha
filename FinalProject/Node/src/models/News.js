@@ -1,6 +1,6 @@
-import DBModel from "../models/DBModel.js";
-import getAllNewsQuery from "../db/queries/getAllNews.js";
-import getNewsDetailsQuery from "../db/queries/getNewsDetails.js";
+import DBModel from '../models/DBModel.js';
+import getAllNewsQuery from '../db/queries/getAllNews.js';
+import getNewsDetailsQuery from '../db/queries/getNewsDetails.js';
 
 class News extends DBModel {
   constructor() {
@@ -8,12 +8,11 @@ class News extends DBModel {
   }
 
   getAllNews() {
-    
     return this.query(getAllNewsQuery);
   }
 
   async getNewsDetails(newsId) {
-    const [details] = await this.query(getNewsDetailsQuery, {newsId}); 
+    const [details] = await this.query(getNewsDetailsQuery, { newsId });
 
     return details || null;
   }

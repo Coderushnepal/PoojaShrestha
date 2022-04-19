@@ -1,12 +1,11 @@
-import * as newsService from "../services/news.js"
+import * as newsService from '../services/news.js';
 
-export const FETCH_NEWS = "FETCH_NEWS";
-export const FETCH_NEWS_PENDING = "FETCH_NEWS_PENDING";
-export const FETCH_NEWS_REJECTED = "FETCH_NEWS_REJECTED";
-export const FETCH_NEWS_FULFILLED = "FETCH_NEWS_FULFILLED"
+export const FETCH_NEWS = 'FETCH_NEWS';
+export const FETCH_NEWS_PENDING = 'FETCH_NEWS_PENDING';
+export const FETCH_NEWS_REJECTED = 'FETCH_NEWS_REJECTED';
+export const FETCH_NEWS_FULFILLED = 'FETCH_NEWS_FULFILLED';
 
 export function fetchNews(news) {
-
   return async function (dispatch) {
     dispatch(fetchNewsPending());
 

@@ -8,11 +8,10 @@ import jwt from 'jsonwebtoken';
  * @return {string}
  */
 export function hash(password) {
-    console.log(process.env.SALT);
+  console.log(process.env.SALT);
+
   return bcrypt.hashSync(password, 10);
 }
-
-
 
 /**
  * Compare the actual string with the hashed string.
@@ -33,6 +32,6 @@ export function compare(password, hash) {
  */
 export function createToken(user) {
   return jwt.sign(user, process.env.TOKEN_SECRET, {
-    expiresIn: process.env.TOKEN_EXPIRATION
+    expiresIn: process.env.TOKEN_EXPIRATION,
   });
 }

@@ -6,7 +6,10 @@
     "seed:create": "knex seed:make --knexfile src/knexfile.js",
     "migrate": "knex migrate:latest --knexfile src/knexfile.js",
     "migrate:create": "knex migrate:make --knexfile src/knexfile.js",
-    "rollback": "knex migrate:rollback --knexfile src/knexfile.js"
+    "rollback": "knex migrate:rollback --knexfile src/knexfile.js",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prettify": "prettier --single-quote --print-width 120  --write \"src/**/*.js\""
   },
   "dependencies": {
     "@hapi/boom": "^9.1.4",
@@ -15,7 +18,6 @@
     "camelize": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "eslint": "^8.12.0",
     "express": "^4.17.3",
     "express-jwt": "^6.1.1",
     "helmet": "^5.0.2",
@@ -31,5 +33,8 @@
     "snakeize": "^0.1.0",
     "winston": "^3.6.0",
     "yarn": "^1.22.17"
+  },
+  "devDependencies": {
+    "eslint": "^8.13.0"
   }
 }

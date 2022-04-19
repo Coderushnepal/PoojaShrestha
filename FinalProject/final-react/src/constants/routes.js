@@ -7,6 +7,5 @@ export const CATEGORYDETAIL = '/category/:id';
 export const CREATENEWS = '/create';
 export const EDITNEWS = '/edit/:id';
 export const DELETENEWS = '/delete/:id';
-
-
-
+export const PROFILE = '/profile';
+export const EDITUSER = '/editUser/:id';

@@ -1,4 +1,4 @@
-import pinterpolate from "pinterpolate";
+import pinterpolate from 'pinterpolate';
 
 export const interpolate = function (url, params) {
   return pinterpolate(url, params);
@@ -11,9 +11,7 @@ export const unParseQuery = (object) => {
         return `${acc}${curr}[]=${object[curr].join(`&${curr}[]=`)}&`;
       }
 
-      return curr && object[curr]
-        ? `${acc}${curr}=${encodeURIComponent(object[curr])}&`
-        : acc;
-    }, "?")
+      return curr && object[curr] ? `${acc}${curr}=${encodeURIComponent(object[curr])}&` : acc;
+    }, '?')
     .slice(0, -1);
 };

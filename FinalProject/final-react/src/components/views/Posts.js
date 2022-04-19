@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import { useDispatch, useSelector } from "react-redux";
-import * as newsService from "../../services/news";
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
 
+import * as newsService from '../../services/news';
 
 function Posts() {
+  const [categoryId, setCategoryId] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [isExclusive, setIsExclusive] = useState(false);
+  const [userId, setUserId] = useState('');
 
-    const [categoryId, setCategoryId] = useState("");
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [isExclusive, setIsExclusive] = useState(false);
-    const [userId, setUserId] = useState("");
-
-    const history = useHistory()
+  const history = useHistory();
 
   async function onPost(e) {
     e.preventDefault();
@@ -24,30 +22,26 @@ function Posts() {
       title: title,
       description: description,
       isExclusive: isExclusive,
-      userId: userId
+      userId: userId,
     };
 
     const data = await newsService.postNews(postData);
 
-   
-    if (data.message === "Added record successfully") {
-          toast.success("Posted !");
-          setTimeout(() => {  history.push("/"); }, 2000);
-    }
-    else {
+    if (data.message === 'Added record successfully') {
+      toast.success('Posted !');
+      setTimeout(() => {
+        history.push('/');
+      }, 2000);
+    } else {
       toast.error(data);
     }
   }
 
   const category = useSelector((store) => store.category.list);
-  console.log('category is:', category)
-
-  
 
   return (
-    <div className='creating'>
-      
-        <form className='create-post-form' onSubmit={onPost} >
+    <div className="creating">
+      <form className="create-post-form" onSubmit={onPost}>
         <div className="formElements">
           <h2>Post to Exclusive Khabar!</h2>
           <label>Category Id: </label> <br />
@@ -75,7 +69,9 @@ function Posts() {
           />
           <br />
           <label>Description : </label> <br />
-          <textarea maxLength={1000} rows={10}
+          <textarea
+            maxLength={1000}
+            rows={10}
             type="text"
             onChange={(e) => {
               setDescription(e.target.value);
@@ -85,7 +81,7 @@ function Posts() {
             name="description"
             required
           ></textarea>
-          <br/>
+          <br />
           <label>Exclusive: </label>
           <input
             type="radio"
@@ -109,7 +105,7 @@ function Posts() {
             name="isExclusive"
             required
           />
-          <br/>
+          <br />
           <label>User Id : </label> <br />
           <input
             type="number"
@@ -121,9 +117,10 @@ function Posts() {
             name="userId"
             required
           />
-          
           <br />
-          <button className='button' type="submit">Post</button>
+          <button className="button" type="submit">
+            Post
+          </button>
           <ToastContainer
             position="top-center"
             autoClose={2000}
@@ -134,12 +131,11 @@ function Posts() {
             pauseOnFocusLoss={false}
             draggable
             pauseOnHover
-            />
-          
+          />
         </div>
       </form>
     </div>
-  )
+  );
 }
 
 export default Posts;
