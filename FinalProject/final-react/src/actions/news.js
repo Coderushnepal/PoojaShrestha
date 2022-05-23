@@ -6,35 +6,35 @@ export const FETCH_NEWS_REJECTED = 'FETCH_NEWS_REJECTED';
 export const FETCH_NEWS_FULFILLED = 'FETCH_NEWS_FULFILLED';
 
 export function fetchNews(news) {
-  return async function (dispatch) {
-    dispatch(fetchNewsPending());
+	return async function (dispatch) {
+		dispatch(fetchNewsPending());
 
-    try {
-      const data = await newsService.fetchNews(news);
+		try {
+			const data = await newsService.fetchNews(news);
 
-      dispatch(fetchNewsFulfilled(data));
-    } catch (err) {
-      dispatch(fetchNewsRejected(err));
-    }
-  };
+			dispatch(fetchNewsFulfilled(data));
+		} catch (err) {
+			dispatch(fetchNewsRejected(err));
+		}
+	};
 }
 
 function fetchNewsFulfilled(news) {
-  return {
-    type: FETCH_NEWS_FULFILLED,
-    payload: news,
-  };
+	return {
+		type: FETCH_NEWS_FULFILLED,
+		payload: news,
+	};
 }
 
 function fetchNewsRejected(err) {
-  return {
-    type: FETCH_NEWS_REJECTED,
-    payload: err,
-  };
+	return {
+		type: FETCH_NEWS_REJECTED,
+		payload: err,
+	};
 }
 
 function fetchNewsPending() {
-  return {
-    type: FETCH_NEWS_PENDING,
-  };
+	return {
+		type: FETCH_NEWS_PENDING,
+	};
 }

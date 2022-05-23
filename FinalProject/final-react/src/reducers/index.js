@@ -4,6 +4,6 @@ import newsReducer from './news';
 import categoryReducer from './category';
 
 export default combineReducers({
-  category: categoryReducer,
-  news: newsReducer,
+	category: categoryReducer,
+	news: newsReducer,
 });

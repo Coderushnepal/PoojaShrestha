@@ -29,13 +29,13 @@ router.get('/users/:userIdentifier', userController.getEachUser);
 
 router.post('/category', validateBody(addCategorySchema), categoryController.addCategory);
 
-router.post('/news', validateBody(addPostSchema), newsController.addNews);
+router.post('/news', authenticate, validateBody(addPostSchema), newsController.addNews);
 
 router.post('/users', validateBody(addUserSchema), userController.addUser);
 
 router.put('/users/:userIdentifier', validateBody(updateUserSchema), userController.updateUser);
 
-router.put('/news/:newsIdentifier', validateBody(updateNewsSchema), newsController.updateNews);
+router.put('/news/:newsIdentifier', authenticate, validateBody(updateNewsSchema), newsController.updateNews);
 
 router.delete('/news/:newsIdentifier', newsController.removeNews);
 

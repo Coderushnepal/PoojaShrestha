@@ -11,45 +11,45 @@ import { interpolate } from '../../utils/string';
 import NewsListing from './newsListing';
 
 function DeletePosts(props) {
-  const history = useHistory();
+	const history = useHistory();
 
-  const { id } = props.match.params;
+	const { id } = props.match.params;
 
-  const url = `${config.apiUrl}${config.endpoints.eachNews}`;
+	const url = `${config.apiUrl}${config.endpoints.eachNews}`;
 
-  useEffect(() => {
-    const deleteNews = async () => {
-      axios
-        .delete(interpolate(url, { id }))
-        .then((response) => {
-          const { data } = response;
+	useEffect(() => {
+		const deleteNews = async () => {
+			axios
+				.delete(interpolate(url, { id }))
+				.then((response) => {
+					const { data } = response;
 
-          if (data.message === 'Record removed successfully') {
-            toast.success('Deleted!');
-            setTimeout(() => {
-              history.push('/');
-            }, 2000);
-          } else {
-            toast.error(response);
-            console.log('oops', response);
-          }
-        })
-        .catch((err) => {
-          console.log('err', err);
-          toast.error('Something is wrong!');
-          history.push('/news');
-        });
-    };
+					if (data.message === 'Record removed successfully') {
+						toast.success('Deleted!');
+						setTimeout(() => {
+							history.push('/');
+						}, 2000);
+					} else {
+						toast.error(response);
+						console.log('oops', response);
+					}
+				})
+				.catch((err) => {
+					console.log('err', err);
+					toast.error('Something is wrong!');
+					history.push('/news');
+				});
+		};
 
-    deleteNews();
-  }, []);
+		deleteNews();
+	}, []);
 
-  return (
-    <>
-      <NewsListing />
-      <ToastContainer limit={1} />
-    </>
-  );
+	return (
+		<>
+			<NewsListing />
+			<ToastContainer limit={1} />
+		</>
+	);
 }
 
 export default DeletePosts;

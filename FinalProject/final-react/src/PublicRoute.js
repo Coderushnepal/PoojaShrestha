@@ -16,22 +16,21 @@ import EditPosts from './components/views/EditPosts.js';
 import history from './utils/history';
 
 import DeletePosts from './components/views/DeletePosts';
-import userProfile from './components/views/userProfile';
 // import CategoryComponent from "./components/views/CategoryComponent";
 
 function PublicRoute() {
-  return (
-    <Router history={history}>
-      <Header />
-      <Switch>
-        <Route exact path={routes.USERS} component={Users} />
-        <Route exact path={routes.NEWS} component={NewsListing} />
-        <Route exact path={routes.NEWSDETAIL} component={NewsDetails} />
+	return (
+		<Router history={history}>
+			<Header />
+			<Switch>
+				<Route exact path={routes.USERS} component={Users} />
+				<Route exact path={routes.NEWS} component={NewsListing} />
+				<Route exact path={routes.NEWSDETAIL} component={NewsDetails} />
 
-        <Redirect to={routes.USERS} />
-      </Switch>
-    </Router>
-  );
+				<Redirect to={routes.USERS} />
+			</Switch>
+		</Router>
+	);
 }
 
 export default PublicRoute;
